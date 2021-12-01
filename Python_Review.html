@@ -216,6 +216,117 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basics-of-python">
+   Basics of Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-data-types">
+     Basic data types
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numbers">
+       Numbers
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#booleans">
+       Booleans
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strings">
+       Strings
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lists">
+       Lists
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#slicing">
+       Slicing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#loops">
+       Loops
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#list-comprehensions">
+       List comprehensions:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dictionaries">
+       Dictionaries
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sets">
+       Sets
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tuples">
+       Tuples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classes">
+     Classes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy">
+   Numpy
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrays">
+     Arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-indexing">
+     Array indexing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datatypes">
+     Datatypes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-math">
+     Array math
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#broadcasting">
+     Broadcasting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pandas">
    Pandas
   </a>
@@ -316,23 +427,23 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#functions">
-     functions
+    <a class="reference internal nav-link" href="#id1">
+     Functions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#saving-and-loading">
-     saving and loading
+     Saving and Loading
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#save-and-load">
-     save and load
+     Save and Load
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combining-dataframes">
-     combining DataFrames
+     Combining DataFrames
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -362,7 +473,8 @@
 <h1>Python Tutorial<a class="headerlink" href="#python-tutorial" title="Permalink to this headline">¶</a></h1>
 <p>In the following sections, we will repeatedly use Python scripts. In case you are <strong>less</strong> familiar with Python, here is a short tutorial on what you need to know.
 Also, please take a look here: Google’s Python Class- <a class="reference external" href="https://developers.google.com/edu/python">https://developers.google.com/edu/python</a></p>
-<p>##Introduction</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Python is a general-purpose programming language that, combining with a few popular libraries (numpy, scipy, matplotlib), becomes a powerful environment for scientific computing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -376,10 +488,14 @@ Also, please take a look here: Google’s Python Class- <a class="reference exte
 </div>
 </div>
 </div>
-<p>##Basics of Python</p>
+</div>
+<div class="section" id="basics-of-python">
+<h2>Basics of Python<a class="headerlink" href="#basics-of-python" title="Permalink to this headline">¶</a></h2>
 <p>Python is a high-level, dynamically typed multiparadigm programming language. Python code is often said to be almost like pseudocode, since it allows you to express very powerful ideas in very few lines of code while being very readable.</p>
-<p>###Basic data types</p>
-<p>####Numbers</p>
+<div class="section" id="basic-data-types">
+<h3>Basic data types<a class="headerlink" href="#basic-data-types" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="numbers">
+<h4>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h4>
 <p>Integers and floats work as you would expect from other languages:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -441,7 +557,9 @@ Also, please take a look here: Google’s Python Class- <a class="reference exte
 </div>
 </div>
 </div>
-<p>####Booleans</p>
+</div>
+<div class="section" id="booleans">
+<h4>Booleans<a class="headerlink" href="#booleans" title="Permalink to this headline">¶</a></h4>
 <p>Python implements all of the usual operators for Boolean logic, but uses English words rather than symbols:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -474,7 +592,9 @@ True
 </div>
 </div>
 </div>
-<p>####Strings</p>
+</div>
+<div class="section" id="strings">
+<h4>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>   <span class="c1"># String literals can use single quotes</span>
@@ -539,7 +659,9 @@ world
 </div>
 </div>
 </div>
-<p>####Lists</p>
+</div>
+<div class="section" id="lists">
+<h4>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h4>
 <p>A list is the Python equivalent of an array, but is resizeable and can contain elements of different types:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,7 +717,9 @@ world
 </div>
 </div>
 </div>
-<p>####Slicing</p>
+</div>
+<div class="section" id="slicing">
+<h4>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h4>
 <p>In addition to accessing list elements one at a time, Python provides concise syntax to access sublists; this is known as slicing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -623,7 +747,9 @@ world
 </div>
 </div>
 </div>
-<p>####Loops</p>
+</div>
+<div class="section" id="loops">
+<h4>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h4>
 <p>You can loop over the elements of a list like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -658,7 +784,9 @@ monkey
 </div>
 </div>
 </div>
-<p>####List comprehensions:</p>
+</div>
+<div class="section" id="list-comprehensions">
+<h4>List comprehensions:<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h4>
 <p>When programming, frequently we want to transform one type of data into another. As a simple example, consider the following code that computes square numbers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -719,7 +847,9 @@ monkey
 </div>
 </div>
 </div>
-<p>####Dictionaries</p>
+</div>
+<div class="section" id="dictionaries">
+<h4>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h4>
 <p>A dictionary stores (key, value) pairs</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -832,7 +962,9 @@ A spider has 8 legs
 </div>
 </div>
 </div>
-<p>####Sets</p>
+</div>
+<div class="section" id="sets">
+<h4>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h4>
 <p>A set is an unordered collection of distinct elements. As a simple example, consider the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -863,7 +995,7 @@ False
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 3
-{&#39;fish&#39;, &#39;dog&#39;, &#39;cat&#39;}
+{&#39;dog&#39;, &#39;cat&#39;, &#39;fish&#39;}
 </pre></div>
 </div>
 </div>
@@ -881,7 +1013,7 @@ False
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 2
-{&#39;fish&#39;, &#39;dog&#39;}
+{&#39;dog&#39;, &#39;fish&#39;}
 </pre></div>
 </div>
 </div>
@@ -896,9 +1028,9 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>#1: fish
-#2: dog
-#3: cat
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>#1: dog
+#2: cat
+#3: fish
 </pre></div>
 </div>
 </div>
@@ -917,7 +1049,9 @@ False
 </div>
 </div>
 </div>
-<p>####Tuples</p>
+</div>
+<div class="section" id="tuples">
+<h4>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h4>
 <p>A tuple is an (immutable) ordered list of values. A tuple is in many ways similar to a list; one of the most important differences is that tuples can be used as keys in dictionaries and as elements of sets, while lists cannot. Here is a trivial example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -939,7 +1073,10 @@ False
 </div>
 </div>
 </div>
-<p>###Functions</p>
+</div>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <p>Python functions are defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -985,7 +1122,9 @@ HELLO, FRED
 </div>
 </div>
 </div>
-<p>###Classes</p>
+</div>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
 <p>The syntax for defining classes in Python is straightforward:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1017,7 +1156,10 @@ HELLO, FRED
 </div>
 </div>
 </div>
-<p>##Numpy</p>
+</div>
+</div>
+<div class="section" id="numpy">
+<h2>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
 <p>Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object, and tools for working with these arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1026,7 +1168,8 @@ HELLO, FRED
 </div>
 </div>
 </div>
-<p>###Arrays</p>
+<div class="section" id="arrays">
+<h3>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h3>
 <p>A numpy array is a grid of values, all of the same type, and is indexed by a tuple of nonnegative integers. The number of dimensions is the rank of the array; the shape of an array is a tuple of integers giving the size of the array along each dimension.</p>
 <p>We can initialize numpy arrays from nested Python lists, and access elements using square brackets:</p>
 <div class="cell docutils container">
@@ -1137,13 +1280,15 @@ HELLO, FRED
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.76986372 0.94495329]
- [0.36660904 0.77915649]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.68310225 0.7527226 ]
+ [0.07741058 0.7037527 ]]
 </pre></div>
 </div>
 </div>
 </div>
-<p>###Array indexing</p>
+</div>
+<div class="section" id="array-indexing">
+<h3>Array indexing<a class="headerlink" href="#array-indexing" title="Permalink to this headline">¶</a></h3>
 <p>Numpy offers several ways to index into arrays.</p>
 <p>Slicing: Similar to Python lists, numpy arrays can be sliced. Since arrays may be multidimensional, you must specify a slice for each dimension of the array:</p>
 <div class="cell docutils container">
@@ -1366,7 +1511,9 @@ original array:</p>
 </div>
 </div>
 <p>For brevity we have left out a lot of details about numpy array indexing; if you want to know more you should read the documentation.</p>
-<p>###Datatypes</p>
+</div>
+<div class="section" id="datatypes">
+<h3>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h3>
 <p>Every numpy array is a grid of elements of the same type. Numpy provides a large set of numeric datatypes that you can use to construct arrays. Numpy tries to guess a datatype when you create an array, but functions that construct arrays usually also include an optional argument to explicitly specify the datatype. Here is an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1384,7 +1531,9 @@ original array:</p>
 </div>
 </div>
 </div>
-<p>###Array math</p>
+</div>
+<div class="section" id="array-math">
+<h3>Array math<a class="headerlink" href="#array-math" title="Permalink to this headline">¶</a></h3>
 <p>Basic mathematical functions operate elementwise on arrays, and are available both as operator overloads and as functions in the numpy module:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1602,7 +1751,9 @@ original array:</p>
 </div>
 </div>
 </div>
-<p>###Broadcasting</p>
+</div>
+<div class="section" id="broadcasting">
+<h3>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h3>
 <p>Broadcasting is a powerful mechanism that allows numpy to work with arrays of different shapes when performing arithmetic operations. Frequently we have a smaller array and a larger array, and we want to use the smaller array multiple times to perform some operation on the larger array.</p>
 <p>For example, suppose that we want to add a constant vector to each row of a matrix. We could do it like this:</p>
 <div class="cell docutils container">
@@ -1696,9 +1847,6 @@ original array:</p>
  [11 11 13]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <p>The line <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">v</span></code> works even though <code class="docutils literal notranslate"><span class="pre">x</span></code> has shape <code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">3)</span></code> and <code class="docutils literal notranslate"><span class="pre">v</span></code> has shape <code class="docutils literal notranslate"><span class="pre">(3,)</span></code> due to broadcasting; this line works as if v actually had shape <code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">3)</span></code>, where each row was a copy of <code class="docutils literal notranslate"><span class="pre">v</span></code>, and the sum was performed elementwise.</p>
@@ -1729,9 +1877,7 @@ original array:</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 4  5]
  [ 8 10]
  [12 15]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3,) (2,)
+(3,) (2,)
 </pre></div>
 </div>
 </div>
@@ -1808,6 +1954,8 @@ original array:</p>
 </div>
 </div>
 <p>Broadcasting typically makes your code more concise and faster, so you should strive to use it where possible.</p>
+</div>
+</div>
 <div class="section" id="pandas">
 <h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is a software library in Python for data manipulation and analysis. It offers data structures and operations for manipulating numerical tables and time series.
@@ -5341,8 +5489,8 @@ dtype: bool
 </div></div></div>
 </div>
 </div>
-<div class="section" id="functions">
-<h3>functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>When dealing with large <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, it is useful to get a quick overview of its content. Pandas offers a few functions for this. First, let’s create a large <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with a mix of numeric values, missing values and text values. Notice how Jupyter displays only the corners of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6094,7 +6242,7 @@ dtype: bool
 </div>
 </div>
 <div class="section" id="saving-and-loading">
-<h3>saving and loading<a class="headerlink" href="#saving-and-loading" title="Permalink to this headline">¶</a></h3>
+<h3>Saving and Loading<a class="headerlink" href="#saving-and-loading" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">large_df</span>
@@ -6415,7 +6563,7 @@ dtype: bool
 </div>
 </div>
 <div class="section" id="save-and-load">
-<h3>save and load<a class="headerlink" href="#save-and-load" title="Permalink to this headline">¶</a></h3>
+<h3>Save and Load<a class="headerlink" href="#save-and-load" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">large_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;my_df.csv&quot;</span><span class="p">)</span>
@@ -6433,7 +6581,7 @@ dtype: bool
 </div>
 </div>
 <div class="section" id="combining-dataframes">
-<h3>combining DataFrames<a class="headerlink" href="#combining-dataframes" title="Permalink to this headline">¶</a></h3>
+<h3>Combining DataFrames<a class="headerlink" href="#combining-dataframes" title="Permalink to this headline">¶</a></h3>
 <p>pandas has the ability to perform SQL-like joins: inner joins, left/right outer joins and full joins</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
