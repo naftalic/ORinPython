@@ -3353,7 +3353,7 @@ print('optimal total revenue:', m.objVal)
 # The Gurobi python code just presented is too manual and would take too long too build a large scale LP problem. 
 # We should use appropriate data structures and Gurobi python functions and objects to abstract the problem and have the Gurobi python code build the LP problem of any size.
 
-# In[229]:
+# In[ ]:
 
 
 #Python list comprehension
@@ -3374,7 +3374,7 @@ sumsqrd = sum(i*i for i in range(5))
 print(sumsqrd)
 
 
-# In[230]:
+# In[ ]:
 
 
 from gurobipy import * 
@@ -3421,13 +3421,13 @@ m.setObjective(make.prod(price), GRB.MAXIMIZE)
 m.write('factory.lp')
 
 
-# In[231]:
+# In[ ]:
 
 
 cat factory.lp
 
 
-# In[232]:
+# In[ ]:
 
 
 # run optimization engine
@@ -3443,7 +3443,7 @@ print('optimal total revenue:', m.objVal)
 
 # Solving LP problems provides more information than only the values of the decision variables and the value of the objective function.
 
-# In[233]:
+# In[ ]:
 
 
 for v in m.getVars():
@@ -3487,7 +3487,7 @@ print("objective value =", m.objVal)
 # 
 # What about adding a new constraint as packaging, and varying costs for chairs and tables?
 
-# In[234]:
+# In[ ]:
 
 
 # Adding new variable
@@ -3513,13 +3513,13 @@ m.setObjective(make.prod(price), GRB.MAXIMIZE)
 m.write('factory.lp')
 
 
-# In[235]:
+# In[ ]:
 
 
 cat factory.lp
 
 
-# In[236]:
+# In[ ]:
 
 
 m.optimize()
@@ -3539,7 +3539,7 @@ for con in m.getConstrs(): # constraints
 print("objective value =", m.objVal)
 
 
-# In[237]:
+# In[ ]:
 
 
 # Adding new constraint
@@ -3570,13 +3570,13 @@ m.setObjective(make.prod(price), GRB.MAXIMIZE)
 m.write('factory.lp')
 
 
-# In[238]:
+# In[ ]:
 
 
 cat factory.lp
 
 
-# In[239]:
+# In[ ]:
 
 
 m.optimize()
@@ -3609,7 +3609,7 @@ print("objective value =", m.objVal)
 # \end{align} 
 # 
 
-# In[240]:
+# In[ ]:
 
 
 c = [10, 6]    
@@ -3655,7 +3655,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1, x_2\ge 0\\
 # \end{align} 
 
-# In[241]:
+# In[ ]:
 
 
 c = [0.5, 0.03]    
@@ -3701,7 +3701,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1, x_2, x_3\ge 0\\
 # \end{align} 
 
-# In[242]:
+# In[ ]:
 
 
 c = [4,3,2]    
@@ -3751,7 +3751,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0\\
 # \end{align} 
 
-# In[243]:
+# In[ ]:
 
 
 c = [22,18,35,41,30,28,25,36,18]    
@@ -3804,7 +3804,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0
 # \end{align} 
 
-# In[244]:
+# In[ ]:
 
 
 c = [22,18,35,41,30,28,25,36,18,20,20,20]    
@@ -3862,7 +3862,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2,x_3,x_4\ge 0\\
 # \end{align} 
 
-# In[245]:
+# In[ ]:
 
 
 c = [40,65,70,30]    
@@ -3903,7 +3903,7 @@ print("objective value =", m.objVal)
 # 
 # To place here a python code that follows the Simplex algorithm
 
-# In[246]:
+# In[ ]:
 
 
 c = [40,65,70,30]    
@@ -3959,7 +3959,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2,x_3,x_4 = 0~\text{or}~1\\
 # \end{align} 
 
-# In[247]:
+# In[ ]:
 
 
 c = [300,90,400,150]    
@@ -3999,7 +3999,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2\ge \text{and integer}\\
 # \end{align} 
 
-# In[248]:
+# In[ ]:
 
 
 c = [100,150]    
@@ -4041,7 +4041,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_3\ge \text{and integer}\\
 # \end{align} 
 
-# In[249]:
+# In[ ]:
 
 
 c = [9000,1500,1000]    
@@ -4084,7 +4084,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2\ge \text{and integer}\\
 # \end{align} 
 
-# In[250]:
+# In[ ]:
 
 
 c = [50,40]    
@@ -4116,7 +4116,7 @@ for con in m.getConstrs(): # constraints
 print("objective value =", m.objVal)
 
 
-# In[251]:
+# In[ ]:
 
 
 y=[]
@@ -4126,7 +4126,7 @@ for var in m.getVars():
 np.array(y).dot(np.array((50,40)))
 
 
-# In[252]:
+# In[ ]:
 
 
 c = [50,40]    
@@ -4171,7 +4171,7 @@ print("objective value =", m.objVal)
 # &\qquad y_1= 0~\text{or}~1\\
 # \end{align} 
 
-# In[253]:
+# In[ ]:
 
 
 c = [85000,60000,-18000]    
@@ -4221,7 +4221,7 @@ print("objective value =", m.objVal)
 # &\qquad x_i= 0~\text{or}~1\\
 # \end{align} 
 
-# In[254]:
+# In[ ]:
 
 
 c = [.36,.82,.29,.16,.56,.61,.48,.41]    
@@ -4269,7 +4269,7 @@ print("objective value =", m.objVal*1e6)
 # &\qquad x_i \ge 0~ \text{and integer}\\
 # \end{align} 
 
-# In[255]:
+# In[ ]:
 
 
 c = [1,1,1,1,1,1]    
@@ -4318,7 +4318,7 @@ print("objective value =", m.objVal)
 # \end{align} 
 # 
 
-# In[256]:
+# In[ ]:
 
 
 c = [25000,7000,9000]    
@@ -4351,7 +4351,7 @@ for var in m.getVars(): # descision variable
 print("objective value =", m.objVal*1e6)
 
 
-# In[257]:
+# In[ ]:
 
 
 c = [25000,7000,9000]    
@@ -4431,7 +4431,7 @@ print("objective value =", m.objVal*1e6)
 # 
 # 
 
-# In[258]:
+# In[ ]:
 
 
 # Transportation Model Example
@@ -4488,7 +4488,7 @@ print("objective value =", m.objVal)
 # \end{align}  
 # 
 
-# In[259]:
+# In[ ]:
 
 
 c = [14,9,16,18,11,8,1000,16,16,12,10,22]    
@@ -4530,7 +4530,7 @@ for var in m.getVars(): # descision variable
 print("objective value =", m.objVal)
 
 
-# In[260]:
+# In[ ]:
 
 
 c = [14,9,16,18,11,8,1000,16,16,12,10,22]    
@@ -4575,7 +4575,7 @@ print("objective value =", m.objVal)
 # ## Problem Example: C6Q30
 # Transshipment probelm is an extension of the transportation model in which intermediate trans-shipment points are added between sources and destinations.
 
-# In[261]:
+# In[ ]:
 
 
 c = [420,390,610,510,590,470,450,360,380,75,63,81,125,110,95,68,82,95]    
@@ -4640,7 +4640,7 @@ print("objective value =", m.objVal)
 # &\qquad x_{ij} \ge 0~ \text{and integer}\\
 # \end{align} 
 
-# In[262]:
+# In[ ]:
 
 
 c = [12,11,8,14,10,9,10,8,14,1000,7,11,6,8,10,9]    
@@ -4710,7 +4710,7 @@ print("objective value =", m.objVal)
 # \end{align}  
 # 
 
-# In[263]:
+# In[ ]:
 
 
 from gurobipy import *
@@ -4758,7 +4758,7 @@ for v in m.getVars():
 # &\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\\
 # \end{align}  
 
-# In[264]:
+# In[ ]:
 
 
 from gurobipy import *
@@ -4808,7 +4808,7 @@ for v in m.getVars():
 # &\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\\
 # \end{align}  
 
-# In[265]:
+# In[ ]:
 
 
 from gurobipy import *
@@ -4855,7 +4855,7 @@ for v in m.getVars():
 # &\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\\
 # \end{align}  
 
-# In[266]:
+# In[ ]:
 
 
 from gurobipy import *
@@ -4917,7 +4917,7 @@ for v in m.getVars():
 # &\qquad x_i \ge 0\\
 # \end{align}  
 
-# In[267]:
+# In[ ]:
 
 
 # import gurobi library
@@ -4953,7 +4953,7 @@ print('optimal total revenue:', m.objVal)
 # &\qquad x_i \ge 0\\
 # \end{align} 
 
-# In[268]:
+# In[ ]:
 
 
 get_ipython().system('pip install gurobipy')
@@ -4993,7 +4993,7 @@ print('optimal total revenue:', m.objVal)
 # &\qquad x_i \ge 0,~\text{and integer}\\
 # \end{align} 
 
-# In[269]:
+# In[ ]:
 
 
 from gurobipy import * 
@@ -5033,7 +5033,7 @@ print('optimal total revenue:', m.objVal)
 # &\qquad x, y \ge 0\\
 # \end{align} 
 
-# In[270]:
+# In[ ]:
 
 
 import gurobipy as gp
@@ -5063,7 +5063,7 @@ for w in m.getVars():
 print('optimal total revenue:', m.objVal)
 
 
-# In[271]:
+# In[ ]:
 
 
 import numpy as np
@@ -5094,7 +5094,7 @@ print(x,y,d)
 
 # ##Problem Example: C11Q5
 
-# In[272]:
+# In[ ]:
 
 
 from scipy.stats import binom
@@ -5103,7 +5103,7 @@ binom.cdf(k=4, n=20, p=.1), 1-binom.cdf(k=4, n=20, p=.1)
 
 # ## Problem Example: C11Q8
 
-# In[273]:
+# In[ ]:
 
 
 1-binom.cdf(k=2, n=7, p=.2)

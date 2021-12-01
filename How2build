@@ -1,7 +1,0 @@
-git add filename
-git commit -m "adding files"
-git push
-
-jupyter-book build ORinPython
-cd ORinPython
-ghp-import -n -p -f _build/html
