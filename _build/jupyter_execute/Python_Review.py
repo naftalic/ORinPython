@@ -7,7 +7,7 @@
 # Also, please take a look here: Google's Python Class- https://developers.google.com/edu/python
 # 
 
-# ##Introduction
+# ## Introduction
 
 # Python is a general-purpose programming language that, combining with a few popular libraries (numpy, scipy, matplotlib), becomes a powerful environment for scientific computing.
 
@@ -17,13 +17,13 @@
 get_ipython().system('python --version')
 
 
-# ##Basics of Python
+# ## Basics of Python
 
 # Python is a high-level, dynamically typed multiparadigm programming language. Python code is often said to be almost like pseudocode, since it allows you to express very powerful ideas in very few lines of code while being very readable.
 
-# ###Basic data types
+# ### Basic data types
 
-# ####Numbers
+# #### Numbers
 
 # Integers and floats work as you would expect from other languages:
 
@@ -59,7 +59,7 @@ y = 2.5
 print(y, y+1, y*2, y *2, type(y))
 
 
-# ####Booleans
+# #### Booleans
 
 # Python implements all of the usual operators for Boolean logic, but uses English words rather than symbols:
 
@@ -80,7 +80,7 @@ print(not t)   # Logical NOT;
 print(t != f)  # Logical XOR;
 
 
-# ####Strings
+# #### Strings
 
 # In[8]:
 
@@ -118,7 +118,7 @@ print(s.replace('l', '(ell)'))  # Replace all instances of one substring with an
 print('  world '.strip())  # Strip leading and trailing whitespace
 
 
-# ####Lists
+# #### Lists
 
 # A list is the Python equivalent of an array, but is resizeable and can contain elements of different types:
 
@@ -151,7 +151,7 @@ x = xs.pop()     # Remove and return the last element of the list
 print(x, xs)
 
 
-# ####Slicing
+# #### Slicing
 
 # In addition to accessing list elements one at a time, Python provides concise syntax to access sublists; this is known as slicing:
 
@@ -169,7 +169,7 @@ nums[2:4] = [8, 9] # Assign a new sublist to a slice
 print(nums)         # Prints "[0, 1, 8, 9, 4]"
 
 
-# ####Loops
+# #### Loops
 
 # You can loop over the elements of a list like this:
 
@@ -191,7 +191,7 @@ for idx, animal in enumerate(animals):
     print('#{}: {}'.format(idx + 1, animal))
 
 
-# ####List comprehensions:
+# #### List comprehensions:
 
 # When programming, frequently we want to transform one type of data into another. As a simple example, consider the following code that computes square numbers:
 
@@ -232,7 +232,7 @@ even_squares = [x ** 2 if x % 2 == 0 else -99 for x in nums ] # list comprehensi
 print(even_squares)
 
 
-# ####Dictionaries
+# #### Dictionaries
 
 # A dictionary stores (key, value) pairs
 
@@ -297,7 +297,7 @@ even_num_to_square = {x: x ** 2 for x in nums if x % 2 == 0}
 print(even_num_to_square)
 
 
-# ####Sets
+# #### Sets
 
 # A set is an unordered collection of distinct elements. As a simple example, consider the following:
 
@@ -348,7 +348,7 @@ from math import sqrt
 print({int(sqrt(x)) for x in range(30)})
 
 
-# ####Tuples
+# #### Tuples
 
 # A tuple is an (immutable) ordered list of values. A tuple is in many ways similar to a list; one of the most important differences is that tuples can be used as keys in dictionaries and as elements of sets, while lists cannot. Here is a trivial example:
 
@@ -363,7 +363,7 @@ print(d[t])
 print(d[(1, 2)])
 
 
-# ###Functions
+# ### Functions
 
 # Python functions are defined using the `def` keyword. For example:
 
@@ -397,7 +397,7 @@ hello('Bob')
 hello('Fred', loud=True)
 
 
-# ###Classes
+# ### Classes
 
 # The syntax for defining classes in Python is straightforward:
 
@@ -423,7 +423,7 @@ g.greet()            # Call an instance method; prints "Hello, Fred"
 g.greet(loud=True)   # Call an instance method; prints "HELLO, FRED!"
 
 
-# ##Numpy
+# ## Numpy
 
 # Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object, and tools for working with these arrays. 
 
@@ -433,7 +433,7 @@ g.greet(loud=True)   # Call an instance method; prints "HELLO, FRED!"
 import numpy as np
 
 
-# ###Arrays
+# ### Arrays
 
 # A numpy array is a grid of values, all of the same type, and is indexed by a tuple of nonnegative integers. The number of dimensions is the rank of the array; the shape of an array is a tuple of integers giving the size of the array along each dimension.
 
@@ -499,7 +499,7 @@ e = np.random.random((2,2)) # Create an array filled with random values between 
 print(e)
 
 
-# ###Array indexing
+# ### Array indexing
 
 # Numpy offers several ways to index into arrays.
 
@@ -643,7 +643,7 @@ print(a[a > 2])
 
 # For brevity we have left out a lot of details about numpy array indexing; if you want to know more you should read the documentation.
 
-# ###Datatypes
+# ### Datatypes
 
 # Every numpy array is a grid of elements of the same type. Numpy provides a large set of numeric datatypes that you can use to construct arrays. Numpy tries to guess a datatype when you create an array, but functions that construct arrays usually also include an optional argument to explicitly specify the datatype. Here is an example:
 
@@ -657,7 +657,7 @@ z = np.array([1, 2], dtype=np.int64)  # Force a particular datatype
 print(x.dtype, y.dtype, z.dtype)
 
 
-# ###Array math
+# ### Array math
 
 # Basic mathematical functions operate elementwise on arrays, and are available both as operator overloads and as functions in the numpy module:
 
@@ -780,7 +780,7 @@ print(v )
 print(v.T)
 
 
-# ###Broadcasting
+# ### Broadcasting
 
 # Broadcasting is a powerful mechanism that allows numpy to work with arrays of different shapes when performing arithmetic operations. Frequently we have a smaller array and a larger array, and we want to use the smaller array multiple times to perform some operation on the larger array.
 # 
@@ -1553,7 +1553,7 @@ pd.pivot_table(df9, index="level_0")
 pd.pivot_table(df9, index="level_0", values=["rows_ab"], aggfunc=np.max)
 
 
-# ### functions
+# ### Functions
 # When dealing with large `DataFrames`, it is useful to get a quick overview of its content. Pandas offers a few functions for this. First, let's create a large `DataFrame` with a mix of numeric values, missing values and text values. Notice how Jupyter displays only the corners of the `DataFrame`:
 
 # In[159]:
@@ -1584,7 +1584,7 @@ large_df.tail(4)
 large_df.describe()
 
 
-# ### saving and loading
+# ### Saving and Loading
 # 
 
 # In[163]:
@@ -1593,7 +1593,7 @@ large_df.describe()
 large_df
 
 
-# ### save and load
+# ### Save and Load
 # 
 
 # In[164]:
@@ -1609,7 +1609,7 @@ large_df.to_csv("my_df.xlsx")
 df0 = pd.read_csv("my_df.csv", index_col=0)
 
 
-# ### combining DataFrames
+# ### Combining DataFrames
 # pandas has the ability to perform SQL-like joins: inner joins, left/right outer joins and full joins
 
 # In[166]:

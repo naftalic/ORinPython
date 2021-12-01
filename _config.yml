@@ -3,7 +3,7 @@
 
 title: OR in Python
 author: Naftali Cohen
-logo: logo.png
+logo: mylogo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
