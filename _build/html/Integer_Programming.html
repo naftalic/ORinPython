@@ -334,74 +334,62 @@
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install gurobipy
 
-# Import gurobi library
-from gurobipy import * # This command imports the Gurobi functions and classes.
+<span class="c1"># Import gurobi library</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
 
-import numpy as np
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-c = [300,90,400,150]    
-A = [[35000,10000,25000,90000 ],
-     [4,2,7,3 ],
-     [1,1,0,0 ]]
-b =  [120000,12,1]
-print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
-decision_variables = range(len(c))     
-constraints = range(np.array(A).shape[0])
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">150</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">35000</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">25000</span><span class="p">,</span><span class="mi">90000</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">120000</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-m = Model(&quot;Example&quot;)
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">)</span>
 
-x = []
-for i in decision_variables:
-    x.append(m.addVar(lb = 0, vtype = GRB.BINARY, name = &#39;x&#39; + str(i)))
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
 
-m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MAXIMIZE) 
-m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
-                           &lt;= b[j] for j in constraints), &quot;constraints&quot;)
-m.optimize()
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span> 
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
-for var in m.getVars(): # descision variable
-    print(var.varName, &#39;=&#39;, var.x, var.obj)
-print(&quot;objective value =&quot;, m.objVal)
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting gurobipy
-  Downloading gurobipy-9.5.0-cp37-cp37m-manylinux2014_x86_64.whl (11.5 MB)
-     |████████████████████████████████| 11.5 MB 14.4 MB/s 
-?25hInstalling collected packages: gurobipy
-Successfully installed gurobipy-9.5.0
-(4,) (3, 4) (3,)
-Restricted license - for non-production use only - expires 2023-10-25
-Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
-Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
-Optimize a model with 3 rows, 4 columns and 10 nonzeros
-Model fingerprint: 0x593445fa
-Variable types: 0 continuous, 4 integer (4 binary)
-Coefficient statistics:
-  Matrix range     [1e+00, 9e+04]
-  Objective range  [9e+01, 4e+02]
-  Bounds range     [1e+00, 1e+00]
-  RHS range        [1e+00, 1e+05]
-Found heuristic solution: objective 700.0000000
-Presolve removed 3 rows and 4 columns
-Presolve time: 0.00s
-Presolve: All rows and columns removed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /Users/naftali/opt/anaconda3/lib/python3.7/site-packages (9.1.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4,) (3, 4) (3,)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">GurobiError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">88</span><span class="n">f5e44bf11a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
 
-Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
-Thread count was 1 (of 2 available processors)
+<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
 
-Solution count 1: 700 
+<span class="nn">src/gurobipy/gurobi.pxi</span> in <span class="ni">gurobipy.gurobi._getdefaultenv</span><span class="nt">()</span>
 
-Optimal solution found (tolerance 1.00e-04)
-Best objective 7.000000000000e+02, best bound 7.000000000000e+02, gap 0.0000%
-x0 = 1.0 300.0
-x1 = 0.0 90.0
-x2 = 1.0 400.0
-x3 = 0.0 150.0
-objective value = 700.0
+<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+
+<span class="ne">GurobiError</span>: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
 </pre></div>
 </div>
 </div>
@@ -420,7 +408,7 @@ objective value = 700.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">8000</span><span class="p">,</span><span class="mi">4000</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">30</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">40000</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
@@ -503,7 +491,7 @@ objective value = 1000.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9000</span><span class="p">,</span><span class="mi">1500</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9000</span><span class="p">,</span><span class="mi">1500</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">50000</span><span class="p">,</span><span class="mi">12000</span><span class="p">,</span><span class="mi">8000</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
@@ -587,7 +575,7 @@ objective value = 42250.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
@@ -648,7 +636,7 @@ objective value = 1473.6842105263158
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">=</span><span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">=</span><span class="p">[]</span>
 <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
     <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
 
@@ -664,7 +652,7 @@ objective value = 1473.6842105263158
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
@@ -750,7 +738,7 @@ objective value = 1460.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">85000</span><span class="p">,</span><span class="mi">60000</span><span class="p">,</span><span class="o">-</span><span class="mi">18000</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">85000</span><span class="p">,</span><span class="mi">60000</span><span class="p">,</span><span class="o">-</span><span class="mi">18000</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">10000</span><span class="p">,</span><span class="mi">7000</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">],</span>
@@ -842,7 +830,7 @@ objective value = 600000.0
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">36</span><span class="p">,</span><span class="o">.</span><span class="mi">82</span><span class="p">,</span><span class="o">.</span><span class="mi">29</span><span class="p">,</span><span class="o">.</span><span class="mi">16</span><span class="p">,</span><span class="o">.</span><span class="mi">56</span><span class="p">,</span><span class="o">.</span><span class="mi">61</span><span class="p">,</span><span class="o">.</span><span class="mi">48</span><span class="p">,</span><span class="o">.</span><span class="mi">41</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">36</span><span class="p">,</span><span class="o">.</span><span class="mi">82</span><span class="p">,</span><span class="o">.</span><span class="mi">29</span><span class="p">,</span><span class="o">.</span><span class="mi">16</span><span class="p">,</span><span class="o">.</span><span class="mi">56</span><span class="p">,</span><span class="o">.</span><span class="mi">61</span><span class="p">,</span><span class="o">.</span><span class="mi">48</span><span class="p">,</span><span class="o">.</span><span class="mi">41</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">60</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">92</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">73</span><span class="p">,</span><span class="mi">65</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
@@ -942,7 +930,7 @@ objective value = 1990000.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
@@ -1033,7 +1021,7 @@ objective value = 640.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25000</span><span class="p">,</span><span class="mi">7000</span><span class="p">,</span><span class="mi">9000</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25000</span><span class="p">,</span><span class="mi">7000</span><span class="p">,</span><span class="mi">9000</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">53000</span><span class="p">,</span><span class="mi">30000</span><span class="p">,</span><span class="mi">41000</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">32000</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="mi">21000</span><span class="p">,</span><span class="mi">20000</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="mi">10000</span><span class="p">,</span><span class="mi">18000</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="mi">23000</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">34000</span><span class="o">-.</span><span class="mi">6</span><span class="o">*</span><span class="mi">53000</span><span class="p">,</span><span class="mi">12000</span><span class="o">-.</span><span class="mi">6</span><span class="o">*</span><span class="mi">30000</span><span class="p">,</span><span class="mi">24000</span><span class="o">-.</span><span class="mi">6</span><span class="o">*</span><span class="mi">41000</span><span class="p">]]</span>
@@ -1098,7 +1086,7 @@ objective value = 100000000000.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25000</span><span class="p">,</span><span class="mi">7000</span><span class="p">,</span><span class="mi">9000</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25000</span><span class="p">,</span><span class="mi">7000</span><span class="p">,</span><span class="mi">9000</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">53000</span><span class="p">,</span><span class="mi">30000</span><span class="p">,</span><span class="mi">41000</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">32000</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="mi">21000</span><span class="p">,</span><span class="mi">20000</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="mi">10000</span><span class="p">,</span><span class="mi">18000</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="mi">23000</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">34000</span><span class="o">-.</span><span class="mi">6</span><span class="o">*</span><span class="mi">53000</span><span class="p">,</span><span class="mi">12000</span><span class="o">-.</span><span class="mi">6</span><span class="o">*</span><span class="mi">30000</span><span class="p">,</span><span class="mi">24000</span><span class="o">-.</span><span class="mi">6</span><span class="o">*</span><span class="mi">41000</span><span class="p">]]</span>
