@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# 
 # # Linear Algebra Review
+# 
+# [Colab notebook](https://colab.research.google.com/drive/1T5Tg-xY9y3cVS6HuFw_D8814H4oYrP-8?usp=sharing)
+# 
 
 # ## Scalars, Vectors, Matrices
 # 
@@ -800,7 +802,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # In this view, the solution $\mathbf{b}$ is a linear combination of the columns of $\mathbf{A}$, weighted by the components of $\mathbf{x}$.
 
 # * For the **underdetermined** system, $n \gt m$ and the system has **infinite number of solutions**. As an example in the column view,
-# $$
+# $
 # \begin{align}
 # a_{1,1}x_1+a_{1,2}x_2+a_{1,3}x_3=b_1\\
 # a_{2,1}x_1+a_{2,2}x_2+a_{2,3}x_3=b_2
@@ -826,13 +828,13 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 #     b_{1}\\
 #     b_{2}
 # \end{bmatrix}.
-# $$
+# $
 # 
 # But, if the columns of $\mathbf{A}$ are independent, two of them are enough to reach any point in $\mathbb{R}^2$. So, two components out of the three in $\mathbf{x}$ are set and the third is free, meaning that there are infinite number of solutions.
 # 
 # * For the **overdetermined** system $m\gt n$ and there is **no solution**. For example using the column view,
 # 
-# $$
+# $
 # \begin{align}
 # a_{1,1}x_1+a_{1,2}x_2=b_1\\
 # a_{2,1}x_1+a_{2,2}x_2=b_2\\
@@ -857,7 +859,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 #     b_{2}\\
 #     b_{3}
 # \end{bmatrix}.
-# $$
+# $
 # 
 # In the row view we have 3 lines and we are looking for unique intersection in the 2-dimensional plan. The three lines (if independent) will intesect in multiple points resulting in no solution. In the column view, becuase $n=2$ the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vecotr $\mathbf{b}$ lies, for some reason, in the subspace formed by these two vectors.
 
@@ -867,7 +869,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # 
 # As an example,
 # 
-# $$
+# $
 # \begin{align}
 # x_1+2x_2=b_1\\
 # 2x_1+4x_2=b_2
@@ -889,7 +891,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 #     b_1 \\
 #     b_2
 # \end{bmatrix}
-# $$.
+# $.
 # 
 # The columns $(1,2)^\top$ and $(2,4)^\top$ are **dependent** and hence their linear combination is not enough to span the full $\mathbb{R}^2$ and reach all points in this space. If $\mathbf{b}=(3,6)^\top$ there is a solution $\mathbf{x}^\top=(1,1)^\top$ because the vector $(1,2)^\top$ spans a subspace of $\mathbb{R}^2$ that contains the vector $\mathbf{b}=(3,6)^\top$.
 # But for more general solution, as say $\mathbf{b}=(3,7)$, there is no solution 

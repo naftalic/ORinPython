@@ -300,71 +300,96 @@
 <div class="section" id="fundamentals">
 <h2>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
 <p>Starting with a few definitions. A <strong>sample space</strong> is the set of all the possible experimental outcomes. And, <strong>experiment</strong>, is defined to be any process for which more than one <strong>outcome</strong> is possible.</p>
-<p>Imagine a sample space of <span class="math notranslate nohighlight">\(n\)</span> possible outcomes <span class="math notranslate nohighlight">\(S = \{ O_1, O_2, \cdots, O_n \}\)</span>. We assign a probability <span class="math notranslate nohighlight">\(p_i\)</span> to each outcome <span class="math notranslate nohighlight">\(O_i\)</span></p>
-<p>\begin{equation}
-P(O_i) = p_i.
-\end{equation}</p>
-<p>All <span class="math notranslate nohighlight">\(p_i\)</span> must satisfy
+<p>Imagine a sample space of <span class="math notranslate nohighlight">\(n\)</span> possible outcomes <span class="math notranslate nohighlight">\(S = \{ O_1, O_2, \cdots, O_n \}\)</span>. We assign a probability <span class="math notranslate nohighlight">\(p_i\)</span> to each outcome <span class="math notranslate nohighlight">\(O_i\)</span>
+<span class="math notranslate nohighlight">\(
 \begin{equation}
-0 \leq p_i \leq 1, \hspace{0.5cm} \forall i= 1,2, \cdots, n.
-\end{equation}</p>
-<p>If all <span class="math notranslate nohighlight">\(p_i\)</span> are equal to a constant <span class="math notranslate nohighlight">\(p\)</span> we say that all <span class="math notranslate nohighlight">\(n\)</span> outcomes are equally likely, and each probability has a value of <span class="math notranslate nohighlight">\(1/n\)</span>.</p>
-<p>An <strong>event</strong> is defined to be a subset of the sample space. The probability of an event <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(P(A)\)</span>, is obtained by summing the probabilities of the outcomes contained withing the event <span class="math notranslate nohighlight">\(A\)</span>. An event is said to occur if one of the outcomes contained within the event occurs. The complement of event <span class="math notranslate nohighlight">\(A\)</span> is the event <span class="math notranslate nohighlight">\(A^C\)</span> and is defined to be the event consisting of everything in the sample space <span class="math notranslate nohighlight">\(S\)</span> that is not contained within <span class="math notranslate nohighlight">\(A\)</span>. In example,</p>
-<p>\begin{equation}
-P(A) + P(A^C) = 1
-\end{equation}</p>
-<p><strong>Intersections</strong> of events, <span class="math notranslate nohighlight">\(A \cap B\)</span>, consists of the outcomes contained within both events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. The probability of the intersection, <span class="math notranslate nohighlight">\(P(A \cap B)\)</span>, is the probability that both events occur simultaneously.
+    P(O_i) = p_i.
+\end{equation}
+\)</span>
+All <span class="math notranslate nohighlight">\(p_i\)</span> must satisfy
+<span class="math notranslate nohighlight">\(
+\begin{equation}
+   0 \leq p_i \leq 1, \hspace{0.5cm} \forall i= 1,2, \cdots, n.
+\end{equation}
+\)</span>
+If all <span class="math notranslate nohighlight">\(p_i\)</span> are equal to a constant <span class="math notranslate nohighlight">\(p\)</span> we say that all <span class="math notranslate nohighlight">\(n\)</span> outcomes are equally likely, and each probability has a value of <span class="math notranslate nohighlight">\(1/n\)</span>.</p>
+<p>An <strong>event</strong> is defined to be a subset of the sample space. The probability of an event <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(P(A)\)</span>, is obtained by summing the probabilities of the outcomes contained withing the event <span class="math notranslate nohighlight">\(A\)</span>. An event is said to occur if one of the outcomes contained within the event occurs. The complement of event <span class="math notranslate nohighlight">\(A\)</span> is the event <span class="math notranslate nohighlight">\(A^C\)</span> and is defined to be the event consisting of everything in the sample space <span class="math notranslate nohighlight">\(S\)</span> that is not contained within <span class="math notranslate nohighlight">\(A\)</span>. In example,
+<span class="math notranslate nohighlight">\(
+\begin{equation}
+    P(A) + P(A^C) = 1
+\end{equation}
+\)</span>
+<strong>Intersections</strong> of events, <span class="math notranslate nohighlight">\(A \cap B\)</span>, consists of the outcomes contained within both events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. The probability of the intersection, <span class="math notranslate nohighlight">\(P(A \cap B)\)</span>, is the probability that both events occur simultaneously.
 A few known properties of the intersections of events:
-\text{For mutually exclusive events:}~</p>
-<p>\begin{align}
-&amp; P(A \cap B) +P(A \cap B^C) = P(A)\
-&amp;A \cap (B \cap C) = (A \cap B) \cap C\
-&amp; A \cap B = \emptyset \quad\text{(for mutually exclusive events)}\
-\end{align}</p>
-<p>The <strong>union</strong> of events, <span class="math notranslate nohighlight">\( A\cup B\)</span>, consists of the outcomes that are contained within at least one of the events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. The probability of this event, <span class="math notranslate nohighlight">\(P (A \cup B)\)</span> is the probability that at least one of these events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> occurs.
-A few known properties of the union of events:</p>
-<p>\begin{align}
-&amp; A \cup A^C = S \
-&amp; (A \cup B)^C = A^C \cap B^C\
-&amp; (A \cap B)^C = A^C \cup B^C\
-&amp; A \cup (B \cup C) = (A \cup B) \cup C \
-&amp; P(A \cup B) = P(A) + P(B) = \emptyset \quad\text{(for mutually exclusive events)}\
-&amp; P( A \cup B) = P(A \cap B^C) + P(A^C \cap B^C) + P(A \cap B)\
-\end{align}</p>
-<p>The union of three events is equal to
+<span class="math notranslate nohighlight">\(
+\begin{align}
+ &amp; P(A \cap B) +P(A \cap B^C) = P(A)\\
+&amp;A \cap (B \cap C) = (A \cap B) \cap C\\
+&amp; A \cap B = \emptyset \quad\text{(for mutually exclusive events)}\\
+\end{align}
+\)</span>
+The <strong>union</strong> of events, <span class="math notranslate nohighlight">\( A\cup B\)</span>, consists of the outcomes that are contained within at least one of the events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. The probability of this event, <span class="math notranslate nohighlight">\(P (A \cup B)\)</span> is the probability that at least one of these events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> occurs.
+A few known properties of the union of events:
+<span class="math notranslate nohighlight">\(
+\begin{align}
+&amp; A \cup A^C = S \\
+&amp; (A \cup B)^C = A^C \cap B^C\\
+&amp; (A \cap B)^C = A^C \cup B^C\\
+&amp; A \cup (B \cup C) = (A \cup B) \cup C \\
+&amp; P(A \cup B) = P(A) + P(B) = \emptyset \quad\text{(for mutually exclusive events)}\\
+&amp; P( A \cup B) = P(A \cap B^C) + P(A^C \cap B^C) + P(A \cap B)\\
+\end{align}
+\)</span>
+The union of three events is equal to
+<span class="math notranslate nohighlight">\( 
 \begin{align}
 P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P( B \cap C) - P( A \cap C) + P(A \cap B \cap C).
 \end{align}
+\)</span>
 If the events union is <strong>mutually exclusive</strong> then
+<span class="math notranslate nohighlight">\(
 \begin{align}
-P(A_1 \cup A_2 \cup \cdots \cup A_n) = P(A_1) + \cdots + P(A_n),
+    P(A_1 \cup A_2 \cup \cdots \cup A_n) = P(A_1) + \cdots + P(A_n),
 \end{align}
+\)</span>
 where the sequence <span class="math notranslate nohighlight">\(A_1, A_2, \cdots , A_n\)</span> are called the <strong>partition</strong> of <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p><strong>Conditional Probability</strong> is defined as an event <span class="math notranslate nohighlight">\(B\)</span> that is conditioned on another event <span class="math notranslate nohighlight">\(A\)</span>. In this case,
+<span class="math notranslate nohighlight">\(
 \begin{align}
-P(B \mid A) = \frac{P(A \cap B)}{P(A)} \hspace{0.5cm}  \text{for } P(A) &gt;0.
-\end{align}</p>
-<p>From the above equation, it follows that
+    P(B \mid A) = \frac{P(A \cap B)}{P(A)} \hspace{0.5cm}  \text{for } P(A) &gt;0.
+\end{align}
+\)</span>
+From the above equation, it follows that
+<span class="math notranslate nohighlight">\(
 \begin{align}
 P(A \cap B) = P (B \mid A) P(A).
-\end{align}</p>
-<p>It’s not hard to see that conditioning on more evets (e.g. two) results in
+\end{align}
+\)</span>
+It’s not hard to see that conditioning on more evets (e.g. two) results in
+<span class="math notranslate nohighlight">\(
 \begin{align}
 P(A \cap B\cap C) = P (C \mid B\cap A) P(B\cap A).
-\end{align}</p>
-<p>In general, for a sequence of events <span class="math notranslate nohighlight">\(A_1, A_2, \cdots, A_n\)</span>:
+\end{align}
+\)</span>
+In general, for a sequence of events <span class="math notranslate nohighlight">\(A_1, A_2, \cdots, A_n\)</span>:
+<span class="math notranslate nohighlight">\(
 \begin{align}
 \mathrm {P} (A_{n}\cap \ldots \cap A_{1})=\mathrm {P} (A_{n}|A_{n-1}\cap \ldots \cap A_{1})\cdot \mathrm {P} (A_{n-1}\cap \ldots \cap A_{1}).
-\end{align}</p>
-<p>If the two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent, knowledge about one event does not affect the probability of the other event. The following conditions are equivalent:
+\end{align}
+\)</span>
+If the two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent, knowledge about one event does not affect the probability of the other event. The following conditions are equivalent:
+<span class="math notranslate nohighlight">\(
 \begin{align}
-P(A \mid B) &amp;= P(A)\
-P(A \cap B) &amp;= P(A)P(B).\
-\end{align}</p>
-<p>In general, if <span class="math notranslate nohighlight">\(A_1, A_2, \cdots, A_n\)</span> are independent then
+P(A \mid B) &amp;= P(A)\\
+P(A \cap B) &amp;= P(A)P(B).\\
+\end{align}
+\)</span>
+In general, if <span class="math notranslate nohighlight">\(A_1, A_2, \cdots, A_n\)</span> are independent then
+<span class="math notranslate nohighlight">\(
 \begin{align}
 P(A_1 \cap A_2  \ldots \cap A_n) = P(A_1)P(A_2) \cdots P(A_n).
-\end{align}</p>
+\end{align}
+\)</span></p>
 <p>The law of total probability states that given a partition of the sample space <span class="math notranslate nohighlight">\(B\)</span> to <span class="math notranslate nohighlight">\(n\)</span> non-overlapping segments <span class="math notranslate nohighlight">\(\{ A_1, A_2, \cdots, A_n \}\)</span> the probability of an event <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(P(B)\)</span> can be expressed as:
 \begin{align}
 P(B) = \sum_{i=1}^n P(A_i)P(B \mid A_i)

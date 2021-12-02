@@ -360,6 +360,32 @@
      Column view
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#begin-align-a-1-1-x-1-a-1-2-x-2-b-1-a-2-1-x-1-a-2-2-x-2-b-2-a-3-1-x-1-a-3-2-x-2-b-3-end-align-quad-text-corresponds-to-quad-br-x-1-begin-bmatrix-a-1-1-a-2-1-a-3-1-end-bmatrix-x-2-begin-bmatrix-a-1-2-a-2-2-a-3-2-end-bmatrix">
+   $
+\begin{align}
+a_{1,1}x_1+a_{1,2}x_2=b_1\
+a_{2,1}x_1+a_{2,2}x_2=b_2\
+a_{3,1}x_1+a_{3,2}x_2=b_3\
+\end{align}
+\quad\text{corresponds to}\quad
+   <br/>
+   x_1
+\begin{bmatrix}
+a_{1,1}\
+a_{2,1}\
+a_{3,1}\
+\end{bmatrix}
++x_2
+\begin{bmatrix}
+a_{1,2}\
+a_{2,2}\
+a_{3,2}
+\end{bmatrix}
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-dependency">
      Linear dependency
@@ -369,7 +395,7 @@
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#begin-align-x-1-2x-2-b-1-2x-1-4x-2-b-2-end-align-quad-text-which-in-the-column-view-is-quad-x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix">
-   $$
+   $
 \begin{align}
 x_1+2x_2=b_1\
 2x_1+4x_2=b_2
@@ -418,6 +444,7 @@ x_2
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="linear-algebra-review">
 <h1>Linear Algebra Review<a class="headerlink" href="#linear-algebra-review" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1T5Tg-xY9y3cVS6HuFw_D8814H4oYrP-8?usp=sharing">Colab notebook</a></p>
 <div class="section" id="scalars-vectors-matrices">
 <h2>Scalars, Vectors, Matrices<a class="headerlink" href="#scalars-vectors-matrices" title="Permalink to this headline">¶</a></h2>
 <p>Values consisting of one numerical quantity are called <strong>scalars</strong>.
@@ -1405,7 +1432,7 @@ x_n
 <p>In this view, the solution <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is a linear combination of the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, weighted by the components of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 <ul class="simple">
 <li><p>For the <strong>underdetermined</strong> system, <span class="math notranslate nohighlight">\(n \gt m\)</span> and the system has <strong>infinite number of solutions</strong>. As an example in the column view,
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 \begin{align}
 a_{1,1}x_1+a_{1,2}x_2+a_{1,3}x_3=b_1\\
 a_{2,1}x_1+a_{2,2}x_2+a_{2,3}x_3=b_2
@@ -1431,41 +1458,41 @@ x_1
   b_{1}\\
   b_{2}
 \end{bmatrix}.
-\)</span>$</p></li>
+\)</span></p></li>
 </ul>
 <p>But, if the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are independent, two of them are enough to reach any point in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. So, two components out of the three in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> are set and the third is free, meaning that there are infinite number of solutions.</p>
 <ul class="simple">
 <li><p>For the <strong>overdetermined</strong> system <span class="math notranslate nohighlight">\(m\gt n\)</span> and there is <strong>no solution</strong>. For example using the column view,</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="begin-align-a-1-1-x-1-a-1-2-x-2-b-1-a-2-1-x-1-a-2-2-x-2-b-2-a-3-1-x-1-a-3-2-x-2-b-3-end-align-quad-text-corresponds-to-quad-br-x-1-begin-bmatrix-a-1-1-a-2-1-a-3-1-end-bmatrix-x-2-begin-bmatrix-a-1-2-a-2-2-a-3-2-end-bmatrix">
+<h1>$
 \begin{align}
-a_{1,1}x_1+a_{1,2}x_2=b_1\\
-a_{2,1}x_1+a_{2,2}x_2=b_2\\
-a_{3,1}x_1+a_{3,2}x_2=b_3\\
+a_{1,1}x_1+a_{1,2}x_2=b_1\
+a_{2,1}x_1+a_{2,2}x_2=b_2\
+a_{3,1}x_1+a_{3,2}x_2=b_3\
 \end{align}
-\quad\text{corresponds to}\quad\
+\quad\text{corresponds to}\quad<br />
 x_1
 \begin{bmatrix}
-    a_{1,1}\\
-    a_{2,1}\\
-    a_{3,1}\\
+a_{1,1}\
+a_{2,1}\
+a_{3,1}\
 \end{bmatrix}
 +x_2
 \begin{bmatrix}
-    a_{1,2}\\
-    a_{2,2}\\
-    a_{3,2}
-\end{bmatrix}
-=
-\begin{bmatrix}
-    b_{1}\\
-    b_{2}\\
-    b_{3}
+a_{1,2}\
+a_{2,2}\
+a_{3,2}
+\end{bmatrix}<a class="headerlink" href="#begin-align-a-1-1-x-1-a-1-2-x-2-b-1-a-2-1-x-1-a-2-2-x-2-b-2-a-3-1-x-1-a-3-2-x-2-b-3-end-align-quad-text-corresponds-to-quad-br-x-1-begin-bmatrix-a-1-1-a-2-1-a-3-1-end-bmatrix-x-2-begin-bmatrix-a-1-2-a-2-2-a-3-2-end-bmatrix" title="Permalink to this headline">¶</a></h1>
+<p>\begin{bmatrix}
+b_{1}\
+b_{2}\
+b_{3}
 \end{bmatrix}.
-\end{split}\]</div>
+$</p>
 <p>In the row view we have 3 lines and we are looking for unique intersection in the 2-dimensional plan. The three lines (if independent) will intesect in multiple points resulting in no solution. In the column view, becuase <span class="math notranslate nohighlight">\(n=2\)</span> the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vecotr <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> lies, for some reason, in the subspace formed by these two vectors.</p>
-</div>
 <div class="section" id="linear-dependency">
 <h2>Linear dependency<a class="headerlink" href="#linear-dependency" title="Permalink to this headline">¶</a></h2>
 <p>The number of columns can thus provide information on the number of solutions. But the number that we have to take into account is the number of linearly <strong>independent</strong> columns. Columns are linearly <strong>dependent</strong> if one of them is a linear combination of the others. In the column view, the direction of two linearly dependent vectors is the same and this doesn’t add value in spanning the space.</p>
@@ -1473,7 +1500,7 @@ x_1
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="begin-align-x-1-2x-2-b-1-2x-1-4x-2-b-2-end-align-quad-text-which-in-the-column-view-is-quad-x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix">
-<h1>$$
+<h1>$
 \begin{align}
 x_1+2x_2=b_1\
 2x_1+4x_2=b_2
@@ -1494,7 +1521,7 @@ x_2
 b_1 \
 b_2
 \end{bmatrix}
-$$.</p>
+$.</p>
 <p>The columns <span class="math notranslate nohighlight">\((1,2)^\top\)</span> and <span class="math notranslate nohighlight">\((2,4)^\top\)</span> are <strong>dependent</strong> and hence their linear combination is not enough to span the full <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> and reach all points in this space. If <span class="math notranslate nohighlight">\(\mathbf{b}=(3,6)^\top\)</span> there is a solution <span class="math notranslate nohighlight">\(\mathbf{x}^\top=(1,1)^\top\)</span> because the vector <span class="math notranslate nohighlight">\((1,2)^\top\)</span> spans a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> that contains the vector <span class="math notranslate nohighlight">\(\mathbf{b}=(3,6)^\top\)</span>.
 But for more general solution, as say <span class="math notranslate nohighlight">\(\mathbf{b}=(3,7)\)</span>, there is no solution
 as linear combinations of <span class="math notranslate nohighlight">\((1,2)^\top\)</span> are not enough to reach all points in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. This is an example of an <strong>overdetermined</strong> system with <span class="math notranslate nohighlight">\(m=2\gt n=1\)</span> because of the linear dependency between the columns.</p>

@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Python Tutorial
+# # Python Tutorial 
+# 
+# [Colab notebook](https://colab.research.google.com/drive/16hzyq99m4rVF8qRCXDhMAMX8NdW9y-J7?usp=sharing)
 # 
 # In the following sections, we will repeatedly use Python scripts. In case you are **less** familiar with Python, here is a short tutorial on what you need to know.
-# Also, please take a look here: Google's Python Class- https://developers.google.com/edu/python
-# 
+# Also, please take a look here: [Google's Python Class](https://developers.google.com/edu/python)
 
 # ## Introduction
 
