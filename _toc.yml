@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 chapters:
-- File: Linear_Programming.ipynb
+- File: Linear_Programming
 - File: Solving_problems_using_Python
 - File: Theory_of_LP
 - File: Integer_Programming
