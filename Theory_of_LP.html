@@ -270,79 +270,68 @@
 <p>To place here a python code that follows the Simplex algorithm</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import numpy as np
-!pip install gurobipy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">!</span>pip install gurobipy
 
-# Import gurobi library
-from gurobipy import * # This command imports the Gurobi functions and classes.
+<span class="c1"># Import gurobi library</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
 
 
-c = [40,65,70,30]    
-A = [[1,1,0,0 ],
-     [0,0,1,1 ],
-     [1,0,1,0 ],
-     [0,1,0,1 ]]
-b =  [250, 400, 300, 350]
-print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
-decision_variables = range(len(c))     
-constraints = range(np.array(A).shape[0])
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">30</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">250</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">350</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-m = Model(&quot;C4Q33&quot;)
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C4Q33&quot;</span><span class="p">)</span>
 
-x = []
-for i in decision_variables:
-    x.append(m.addVar(lb = 0, vtype = GRB.CONTINUOUS, name = &#39;x&#39; + str(i)))
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
 
-m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MINIMIZE) 
-m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
-                           == b[j] for j in constraints), &quot;constraints&quot;)
-m.optimize()
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span> 
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
-for var in m.getVars(): # descision variable
-    print(var.varName, &#39;=&#39;, var.x, (var.obj,var.SAObjLow, var.SAObjUp, var.RC))
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
 
-for con in m.getConstrs(): # constraints
-    print(con.ConstrName, &#39;: slack =&#39;, con.slack,&#39;, shadow price=&#39;,
-          con.pi,&#39;,&#39;, (con.RHS, con.SARHSLow, con.SARHSUp))
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
     
-print(&quot;objective value =&quot;, m.objVal)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting gurobipy
-  Downloading gurobipy-9.5.0-cp37-cp37m-manylinux2014_x86_64.whl (11.5 MB)
-     |████████████████████████████████| 11.5 MB 5.0 MB/s 
-?25hInstalling collected packages: gurobipy
-Successfully installed gurobipy-9.5.0
-(4,) (4, 4) (4,)
-Restricted license - for non-production use only - expires 2023-10-25
-Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
-Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
-Optimize a model with 4 rows, 4 columns and 8 nonzeros
-Model fingerprint: 0x1da74e02
-Coefficient statistics:
-  Matrix range     [1e+00, 1e+00]
-  Objective range  [3e+01, 7e+01]
-  Bounds range     [0e+00, 0e+00]
-  RHS range        [2e+02, 4e+02]
-Presolve removed 4 rows and 4 columns
-Presolve time: 0.02s
-Presolve: All rows and columns removed
-Iteration    Objective       Primal Inf.    Dual Inf.      Time
-       0    2.4000000e+04   0.000000e+00   0.000000e+00      0s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /Users/naftali/opt/anaconda3/lib/python3.7/site-packages (9.1.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4,) (4, 4) (4,)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">GurobiError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">86</span><span class="n">c3864f0533</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C4Q33&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> 
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
 
-Solved in 0 iterations and 0.03 seconds (0.00 work units)
-Optimal objective  2.400000000e+04
-x0 = 250.0 (40.0, -inf, 105.0, 0.0)
-x1 = 0.0 (65.0, 0.0, inf, 65.0)
-x2 = 50.0 (70.0, 5.0, inf, 0.0)
-x3 = 350.0 (30.0, -inf, 95.0, 0.0)
-constraints[0] : slack = 0.0 , shadow price= -0.0 , (250.0, 250.0, 250.0)
-constraints[1] : slack = 0.0 , shadow price= 30.0 , (400.0, 400.0, 400.0)
-constraints[2] : slack = 0.0 , shadow price= 40.0 , (300.0, 300.0, 300.0)
-constraints[3] : slack = 0.0 , shadow price= 0.0 , (350.0, 350.0, 350.0)
-objective value = 24000.0
+<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+
+<span class="nn">src/gurobipy/gurobi.pxi</span> in <span class="ni">gurobipy.gurobi._getdefaultenv</span><span class="nt">()</span>
+
+<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+
+<span class="ne">GurobiError</span>: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
 </pre></div>
 </div>
 </div>
