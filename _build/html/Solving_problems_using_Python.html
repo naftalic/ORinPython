@@ -1,0 +1,1387 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solving problems using Python &#8212; OR in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Theory of LP and the Simplex method" href="Theory_of_LP.html" />
+    <link rel="prev" title="Linear Programming" href="Linear_Programming.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OR in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Lecture notes in OR with Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linear_Programming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Solving problems using Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Theory_of_LP.html">
+   Theory of LP and the Simplex method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Integer_Programming.html">
+   Integer Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multicriteria_Decision_Making.html">
+   Multicriteria Decision Making
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Nonlinear_Programming.html">
+   Nonlinear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability_and_Statistics.html">
+   Probability and Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_Review.html">
+   Python Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linear_Algebra_Review.html">
+   Linear Algebra Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability_and_Statistics_Review.html">
+   Probability and Statistics Review
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Solving_problems_using_Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/naftalic/ORinPython"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/naftalic/ORinPython/issues/new?title=Issue%20on%20page%20%2FSolving_problems_using_Python.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/naftalic/ORinPython/master?urlpath=tree/docs/Solving_problems_using_Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sensitivity-analysis-of-lp-problems">
+   Sensitivity analysis of LP problems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective-value-coefficients">
+     Objective value coefficients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraint-quantity-values">
+     Constraint quantity values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shadow-prices">
+     Shadow prices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sensitivity-of-the-shadow-price">
+     Sensitivity of the shadow price
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-new-variable-and-or-new-constraint">
+     Adding new variable and/or new constraint
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-example-c2q1">
+   Problem example: C2Q1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-example-c2q2">
+   Problem example: C2Q2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-example-c4q8">
+   Problem example: C4Q8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-example-c4q32">
+   Problem example: C4Q32
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-example-c4q33">
+   Problem example: C4Q33
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="solving-problems-using-python">
+<h1>Solving problems using Python<a class="headerlink" href="#solving-problems-using-python" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
+
+# Import gurobi library
+from gurobipy import * # This command imports the Gurobi functions and classes.
+
+# Create new model
+m = Model(&#39;Factory&#39;) # The Model() constructor creates a model object m. The name of this new model is &#39;Factory&#39;.
+                     # This new model m initially contains no decision variables, constraints, or objective function.
+
+# Create decision variables
+# This method adds a decision variable to the model object m, one by one; i.e. x1 and then x2. 
+# The argument of the method gives the name of added decision variable. 
+# The default values are applied here; i.e. the decision variables are of type continuous and non-negative, with no upper bound.
+x1 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name=&#39;chairs&#39;) 
+x2 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name=&#39;tables&#39;)
+
+#Define objective function
+#This method adds the objective function to the model object m. The first
+#argument is a linear expression (LinExpr) and the second argument defines
+#the sense of the optimization.
+m.setObjective(40*x1+50*x2, GRB.MAXIMIZE)
+
+#Add constraints
+#This method adds a constraint to the model object m and considers a linear of coefficient-variables elements
+m.addConstr(1*x1+2*x2&lt;=40, name=&#39;wood&#39;)
+m.addConstr(4*x1+3*x2&lt;=120, name= &#39;labor&#39;)
+
+#Run optimization engine
+#This method runs the optimization engine to solve the LP problem in the model object m
+m.optimize()
+
+#display optimal production plan
+for v in m.getVars():
+  print(v.varName, v.x)
+print(&#39;optimal total revenue:&#39;, m.objVal)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /usr/local/lib/python3.7/dist-packages (9.5.0)
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 2 rows, 2 columns and 4 nonzeros
+Model fingerprint: 0x3a526911
+Coefficient statistics:
+  Matrix range     [1e+00, 4e+00]
+  Objective range  [4e+01, 5e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+01, 1e+02]
+Presolve time: 0.02s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    9.0000000e+31   3.250000e+30   9.000000e+01      0s
+       2    1.3600000e+03   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.04 seconds (0.00 work units)
+Optimal objective  1.360000000e+03
+chairs 24.0
+tables 8.0
+optimal total revenue: 1360.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>What if our LP problem has hundreds of thousands varibales and constraints?</strong></p>
+<p>The Gurobi python code just presented is too manual and would take too long too build a large scale LP problem.
+We should use appropriate data structures and Gurobi python functions and objects to abstract the problem and have the Gurobi python code build the LP problem of any size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Python list comprehension</span>
+<span class="c1">#List comprehension is compact way to create lists</span>
+<span class="n">sqrd</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrd</span><span class="p">)</span> 
+
+<span class="c1">#Can be used to create subsequences that satisfy certain conditions (ex: filtering a list)</span>
+<span class="n">bigsqrd</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bigsqrd</span><span class="p">)</span> 
+
+<span class="c1">#Can be used with multiple for loops (ex: all combinations)</span>
+<span class="n">prod</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prod</span><span class="p">)</span> 
+
+<span class="c1">#Generator expression is similar, but no brackets (ex: argument to aggregate sum)</span>
+<span class="n">sumsqrd</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sumsqrd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16]
+[9, 16]
+[0, 0, 0, 0, 0, 1, 2, 3, 0, 2, 4, 6]
+30
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> 
+
+<span class="c1">#resource data</span>
+<span class="c1">#The multidict function returns a list which maps each resource (key) to its capacity value.</span>
+<span class="n">resources</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span> 
+    <span class="s1">&#39;wood&#39;</span><span class="p">:</span>  <span class="mi">40</span><span class="p">,</span>
+    <span class="s1">&#39;labor&#39;</span><span class="p">:</span> <span class="mi">120</span> <span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resources</span><span class="p">,</span> <span class="n">capacity</span><span class="p">)</span>
+
+<span class="c1">#products data</span>
+<span class="c1">#This multidict function returns a list which maps each product (key) to its price value.</span>
+<span class="n">products</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span>
+    <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="mi">50</span> <span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
+
+<span class="c1">#bill of materials: resources required by each product</span>
+<span class="c1">#This dictionary has a 2-tuple as a key, mapping the resource required by a product with its quantity per.</span>
+<span class="n">bom</span><span class="o">=</span><span class="p">{</span>
+<span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;table&#39;</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;labor&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mi">4</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;labor&#39;</span><span class="p">,</span><span class="s1">&#39;table&#39;</span><span class="p">):</span><span class="mi">3</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bom</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span>
+
+<span class="c1">#This method adds decision variables to the model object m</span>
+<span class="n">make</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">)</span>
+
+<span class="c1">#This method adds constraints to the model object m</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(((</span><span class="nb">sum</span><span class="p">(</span><span class="n">bom</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">make</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">),</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+
+<span class="c1">#This method adds the objective function to the model object m.</span>
+<span class="c1">#The first argument is a linear expression which is generated by the &#39;prod&#39; method. </span>
+<span class="c1">#The &#39;prod&#39; method is the product of the object (revenue) with the object (make) </span>
+<span class="c1">#for each product p in the set (products). The second argument defines the sense of the optimization.</span>
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">make</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">price</span><span class="p">),</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
+
+<span class="c1">#save model for inspection</span>
+<span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;factory.lp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;wood&#39;, &#39;labor&#39;] {&#39;wood&#39;: 40, &#39;labor&#39;: 120}
+[&#39;chair&#39;, &#39;table&#39;] {&#39;chair&#39;: 40, &#39;table&#39;: 50}
+{(&#39;wood&#39;, &#39;chair&#39;): 1, (&#39;wood&#39;, &#39;table&#39;): 2, (&#39;labor&#39;, &#39;chair&#39;): 4, (&#39;labor&#39;, &#39;table&#39;): 3}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ Model Factory
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Maximize
+  40 make[chair] + 50 make[table]
+Subject To
+ R[wood]: make[chair] + 2 make[table] &lt;= 40
+ R[labor]: 4 make[chair] + 3 make[table] &lt;= 120
+Bounds
+End
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># run optimization engine</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="c1">#display optimal production plan</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 2 rows, 2 columns and 4 nonzeros
+Model fingerprint: 0x3a526911
+Coefficient statistics:
+  Matrix range     [1e+00, 4e+00]
+  Objective range  [4e+01, 5e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+01, 1e+02]
+Presolve time: 0.01s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    9.0000000e+31   3.250000e+30   9.000000e+01      0s
+       2    1.3600000e+03   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.02 seconds (0.00 work units)
+Optimal objective  1.360000000e+03
+make[chair] 24.0
+make[table] 8.0
+optimal total revenue: 1360.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sensitivity-analysis-of-lp-problems">
+<h2>Sensitivity analysis of LP problems<a class="headerlink" href="#sensitivity-analysis-of-lp-problems" title="Permalink to this headline">¶</a></h2>
+<p>Solving LP problems provides more information than only the values of the decision variables and the value of the objective function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>make[chair] 24.0
+make[table] 8.0
+optimal total revenue: 1360.0
+make[chair] = 24.0 (40.0, 25.0, 66.66666666666667, 0.0)
+make[table] = 8.0 (50.0, 30.0, 80.0, 0.0)
+R[wood] : slack = 0.0 , shadow price= 16.0 , (40.0, 30.0, 80.0)
+R[labor] : slack = 0.0 , shadow price= 6.0 , (120.0, 60.0, 160.0)
+objective value = 1360.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="objective-value-coefficients">
+<h3>Objective value coefficients<a class="headerlink" href="#objective-value-coefficients" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Optimally, we produce 24 chairs (<span class="math notranslate nohighlight">\(x1\)</span> has the optimal value of 24). We sell a chair for $40 (its objective coefficient is 40). While holding the other objective coefficients fix, the values of 40 can change within the range of (25.0, 66.67) without affecting the optimal solution of(24,8,0). However, changing the objective coefficient will change the objective value!</p></li>
+<li><p>Similarly, for tables, the objective coefficient is 50 but can vary (42.5, 80.0) without affecting the optimal solution point.</p></li>
+<li><p>Similarily, or benches. Although here, the value is just 0.</p></li>
+</ul>
+</div>
+<div class="section" id="constraint-quantity-values">
+<h3>Constraint quantity values<a class="headerlink" href="#constraint-quantity-values" title="Permalink to this headline">¶</a></h3>
+<p>The constraint quantity values are 40 m<span class="math notranslate nohighlight">\(^2\)</span> and 120 hours. Modifying these values will change the feasible area. Here, we are looking for the range of values over which the quantity values can change <strong>without changing the solution variable mix</strong> including slack.</p>
+<ul class="simple">
+<li><p>For the wood constraint, the RHS value is 40 m<span class="math notranslate nohighlight">\(^2\)</span> and it can change within the range of (30, 80) without changing the solution variable mix.</p></li>
+<li><p>For the labor constraint, the RHS value is 120 hours, and it can change within the range of (60, 160) without changing the solution variable mix.</p></li>
+</ul>
+</div>
+<div class="section" id="shadow-prices">
+<h3>Shadow prices<a class="headerlink" href="#shadow-prices" title="Permalink to this headline">¶</a></h3>
+<p>Associated with an LP optimal solution there are <strong>shadow prices</strong> (also known as: <strong>dual values</strong>, or <strong>marginal values</strong>) for the constraints.
+The <strong>shadow price</strong> of a constraint associated with the optimal solution represents the change in the value of the objective function per unit of increase in the RHS value of that constraint.</p>
+<ul class="simple">
+<li><p>Suppose the wood capacity is increased from 40 m<span class="math notranslate nohighlight">\(^2\)</span> to 41 m<span class="math notranslate nohighlight">\(^2\)</span>, then the objective function value will increase from the optimal value of 1360 to 1360+<strong>16</strong>. The shadow price of the wood constraint is 16.</p></li>
+<li><p>Similarly, suppose the labor capacity is increased from 120 hours to 121 hours, then the objective function value will increase from the optimal value of 1360 to 1360+<strong>6</strong>. The shadow price of the labor constraint is 6.</p></li>
+</ul>
+</div>
+<div class="section" id="sensitivity-of-the-shadow-price">
+<h3>Sensitivity of the shadow price<a class="headerlink" href="#sensitivity-of-the-shadow-price" title="Permalink to this headline">¶</a></h3>
+<p>The sensitivity range for a constraint quantity value is also the range over which the shadow price is valid (i.e., before a slack/surplus value is added to the mix). For example, the shadow price of 16 hours is valid over the range of (60, 160) hours for labor.</p>
+</div>
+<div class="section" id="adding-new-variable-and-or-new-constraint">
+<h3>Adding new variable and/or new constraint<a class="headerlink" href="#adding-new-variable-and-or-new-constraint" title="Permalink to this headline">¶</a></h3>
+<p>Is it profitable to make a third product, like benches?
+Assume that the price of a bench is $30, and a bench consumes 1.2 units of wood and 2 units of labor, then we can formulate the LP model using the previous resources constraints on wood and labor as follows:</p>
+<p>What about adding a new constraint as packaging, and varying costs for chairs and tables?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new variable</span>
+
+<span class="n">products</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span>
+    <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s1">&#39;bench&#39;</span> <span class="p">:</span> <span class="mi">30</span><span class="p">})</span>
+<span class="n">bom</span><span class="o">=</span><span class="p">{</span>
+<span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;table&#39;</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;bench&#39;</span><span class="p">):</span><span class="mf">1.2</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;labor&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mi">4</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;labor&#39;</span><span class="p">,</span><span class="s1">&#39;table&#39;</span><span class="p">):</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;labor&#39;</span><span class="p">,</span><span class="s1">&#39;bench&#39;</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span>
+
+<span class="n">make</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">products</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(((</span><span class="nb">sum</span><span class="p">(</span><span class="n">bom</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">make</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">),</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">make</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">price</span><span class="p">),</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;factory.lp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ Model Factory
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Maximize
+  40 make[chair] + 50 make[table] + 30 make[bench]
+Subject To
+ R[wood]: make[chair] + 2 make[table] + 1.2 make[bench] &lt;= 40
+ R[labor]: 4 make[chair] + 3 make[table] + 2 make[bench] &lt;= 120
+Bounds
+End
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="c1">#display optimal production plan</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 2 rows, 3 columns and 6 nonzeros
+Model fingerprint: 0x3b912b2a
+Coefficient statistics:
+  Matrix range     [1e+00, 4e+00]
+  Objective range  [3e+01, 5e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+01, 1e+02]
+Presolve time: 0.01s
+Presolved: 2 rows, 3 columns, 6 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    1.2000000e+32   4.350000e+30   1.200000e+02      0s
+       2    1.3600000e+03   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.02 seconds (0.00 work units)
+Optimal objective  1.360000000e+03
+make[chair] 24.0
+make[table] 8.0
+make[bench] 0.0
+optimal total revenue: 1360.0
+make[chair] = 24.0 (40.0, 25.00000000000002, 66.66666666666667, 0.0)
+make[table] = 8.0 (50.0, 47.85714285714286, 80.0, 0.0)
+make[bench] = 0.0 (30.0, -inf, 31.2, -1.1999999999999993)
+R[wood] : slack = 0.0 , shadow price= 16.0 , (40.0, 30.0, 80.0)
+R[labor] : slack = 0.0 , shadow price= 6.0 , (120.0, 60.0, 160.0)
+objective value = 1360.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new constraint</span>
+
+<span class="n">resources</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span> 
+    <span class="s1">&#39;wood&#39;</span><span class="p">:</span>  <span class="mi">40</span><span class="p">,</span>
+    <span class="s1">&#39;labor&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+    <span class="s1">&#39;packaging&#39;</span><span class="p">:</span> <span class="mi">5</span> <span class="p">})</span>
+
+
+<span class="n">products</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span>
+    <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">})</span>
+<span class="n">bom</span><span class="o">=</span><span class="p">{</span>
+<span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;table&#39;</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;labor&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mi">4</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;labor&#39;</span><span class="p">,</span><span class="s1">&#39;table&#39;</span><span class="p">):</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;packaging&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="p">(</span><span class="s1">&#39;packaging&#39;</span><span class="p">,</span><span class="s1">&#39;table&#39;</span><span class="p">):</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span>
+
+<span class="n">make</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">products</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(((</span><span class="nb">sum</span><span class="p">(</span><span class="n">bom</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">make</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">),</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">make</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">price</span><span class="p">),</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;factory.lp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ Model Factory
+\ LP format - for model browsing. Use MPS format to capture full model detail.
+Maximize
+  40 make[chair] + 50 make[table]
+Subject To
+ R[wood]: make[chair] + 2 make[table] &lt;= 40
+ R[labor]: 4 make[chair] + 3 make[table] &lt;= 120
+ R[packaging]: 0.2 make[chair] + 0.1 make[table] &lt;= 5
+Bounds
+End
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="c1">#display optimal production plan</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 3 rows, 2 columns and 6 nonzeros
+Model fingerprint: 0x0fe37c52
+Coefficient statistics:
+  Matrix range     [1e-01, 4e+00]
+  Objective range  [4e+01, 5e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [5e+00, 1e+02]
+Presolve time: 0.01s
+Presolved: 3 rows, 2 columns, 6 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    9.0000000e+31   4.450000e+30   9.000000e+01      0s
+       3    1.3000000e+03   0.000000e+00   0.000000e+00      0s
+
+Solved in 3 iterations and 0.03 seconds (0.00 work units)
+Optimal objective  1.300000000e+03
+make[chair] 20.0
+make[table] 10.0
+optimal total revenue: 1300.0
+make[chair] = 20.0 (40.0, 25.0, 100.0, 0.0)
+make[table] = 10.0 (50.0, 20.0, 80.0, 0.0)
+R[wood] : slack = 0.0 , shadow price= 20.0 , (40.0, 25.0, 55.0)
+R[labor] : slack = 10.0 , shadow price= 0.0 , (120.0, 110.0, inf)
+R[packaging] : slack = 0.0 , shadow price= 100.0 , (5.0, 2.0, 5.6)
+objective value = 1300.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-example-c2q1">
+<h2>Problem example: C2Q1<a class="headerlink" href="#problem-example-c2q1" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following LP problem:</p>
+<p>\begin{align}
+&amp;\text{max}\
+&amp;\qquad z=10x_1+6x_2\
+&amp;\text{s.t.}\
+&amp;\qquad 3x_1+8x_2\le 20\
+&amp;\qquad 45x_1+30x_2\le 180\
+&amp;\qquad x_1, x_2\ge 0\
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span>   <span class="mi">8</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">30</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">180</span><span class="p">]</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C2Q1&quot;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span> 
+
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2,) (2, 2) (2,)
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 2 rows, 2 columns and 4 nonzeros
+Model fingerprint: 0xbd442586
+Coefficient statistics:
+  Matrix range     [3e+00, 4e+01]
+  Objective range  [6e+00, 1e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+01, 2e+02]
+Presolve time: 0.01s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.7500000e+30   2.828125e+30   2.750000e+00      0s
+       1    4.0000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 1 iterations and 0.02 seconds (0.00 work units)
+Optimal objective  4.000000000e+01
+x0 = 4.0 (10.0, 9.000000000000002, inf, 0.0)
+x1 = 0.0 (6.0, -inf, 6.666666666666666, -0.6666666666666661)
+constraints[0] : slack = 8.0 , shadow price= 0.0 , (20.0, 12.0, inf)
+constraints[1] : slack = 0.0 , shadow price= 0.2222222222222222 , (180.0, 0.0, 300.0)
+objective value = 40.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-example-c2q2">
+<h2>Problem example: C2Q2<a class="headerlink" href="#problem-example-c2q2" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following LP problem:</p>
+<p>\begin{align}
+&amp;\text{min}\
+&amp;\qquad z=0.5x_1+0.03x_2\
+&amp;\text{s.t.}\
+&amp;\qquad 8x_1+6x_2\ge 48\
+&amp;\qquad x_1+2x_2\ge 12\
+&amp;\qquad x_1, x_2\ge 0\
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C2Q1&quot;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span> 
+
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">&gt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2,) (2, 2) (2,)
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 2 rows, 2 columns and 4 nonzeros
+Model fingerprint: 0x4d3e8f82
+Coefficient statistics:
+  Matrix range     [1e+00, 8e+00]
+  Objective range  [3e-02, 5e-01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 5e+01]
+Presolve time: 0.02s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   1.200000e+01   0.000000e+00      0s
+       1    2.4000000e-01   0.000000e+00   0.000000e+00      0s
+
+Solved in 1 iterations and 0.02 seconds (0.00 work units)
+Optimal objective  2.400000000e-01
+x0 = 0.0 (0.5, 0.03999999999999998, inf, 0.46)
+x1 = 8.0 (0.03, -3.469446951953614e-18, 0.375, 0.0)
+constraints[0] : slack = 0.0 , shadow price= 0.005 , (48.0, 36.0, inf)
+constraints[1] : slack = -4.0 , shadow price= 0.0 , (12.0, -inf, 16.0)
+objective value = 0.24
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-example-c4q8">
+<h2>Problem example: C4Q8<a class="headerlink" href="#problem-example-c4q8" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following LP problem:</p>
+<p>\begin{align}
+&amp;\text{min}\
+&amp;\qquad z=4x_1+3x_2+2x_3\
+&amp;\text{s.t.}\
+&amp;\qquad 2x_1+4x_2+x_3\ge 16\
+&amp;\qquad 3x_1+2x_2+x_3\ge 12\
+&amp;\qquad x_1, x_2, x_3\ge 0\
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C4Q8&quot;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span> 
+
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">&gt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3,) (2, 3) (2,)
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 2 rows, 3 columns and 6 nonzeros
+Model fingerprint: 0xf87028b1
+Coefficient statistics:
+  Matrix range     [1e+00, 4e+00]
+  Objective range  [2e+00, 4e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+01, 2e+01]
+Presolve time: 0.02s
+Presolved: 2 rows, 3 columns, 6 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   7.000000e+00   0.000000e+00      0s
+       2    1.7000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.03 seconds (0.00 work units)
+Optimal objective  1.700000000e+01
+x0 = 2.0000000000000004 (4.0, 1.4999999999999996, 4.5, 0.0)
+x1 = 2.9999999999999996 (3.0, 2.6666666666666665, 8.0, 0.0)
+x2 = 0.0 (2.0, 1.375, inf, 0.625)
+constraints[0] : slack = 0.0 , shadow price= 0.12500000000000003 , (16.0, 8.0, 24.000000000000004)
+constraints[1] : slack = 0.0 , shadow price= 1.25 , (12.0, 7.999999999999999, 24.0)
+objective value = 17.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-example-c4q32">
+<h2>Problem example: C4Q32<a class="headerlink" href="#problem-example-c4q32" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following LP problem:</p>
+<p>\begin{align}
+&amp;\text{min}\
+&amp;\qquad z=22x_1+18x_2+35x_3+41x_4+30x_5+28x_6+25x_7+36x_8+18x_9\
+&amp;\text{s.t.}\
+&amp;\qquad x_1+x_2+x_3=1\
+&amp;\qquad x_4+x_5+x_6=1\
+&amp;\qquad x_7+x_8+x_9=1\
+&amp;\qquad x_1+x_4+x_7=1\
+&amp;\qquad x_2+x_5+x_8=1\
+&amp;\qquad x_3+x_6+x_9=1\
+&amp;\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0\
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C4Q32&quot;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span> 
+
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9,) (6, 9) (6,)
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 6 rows, 9 columns and 18 nonzeros
+Model fingerprint: 0xadb8a4fb
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e+01, 4e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve time: 0.01s
+Presolved: 6 rows, 9 columns, 18 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    6.4000000e+01   2.000000e+00   0.000000e+00      0s
+       2    7.0000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.02 seconds (0.00 work units)
+Optimal objective  7.000000000e+01
+x0 = 1.0 (22.0, -inf, 23.0, 0.0)
+x1 = 0.0 (18.0, 17.0, 37.0, 0.0)
+x2 = 0.0 (35.0, 16.0, inf, 19.0)
+x3 = 0.0 (41.0, 34.0, inf, 7.0)
+x4 = 1.0 (30.0, 11.0, 31.0, 0.0)
+x5 = 0.0 (28.0, 27.0, 47.0, 0.0)
+x6 = 0.0 (25.0, 24.0, inf, 1.0)
+x7 = 0.0 (36.0, 20.0, inf, 16.0)
+x8 = 1.0 (18.0, -inf, 19.0, 0.0)
+constraints[0] : slack = 0.0 , shadow price= 18.0 , (1.0, 1.0, 1.0)
+constraints[1] : slack = 0.0 , shadow price= 30.0 , (1.0, 1.0, 1.0)
+constraints[2] : slack = 0.0 , shadow price= 20.0 , (1.0, 1.0, 1.0)
+constraints[3] : slack = 0.0 , shadow price= 4.0 , (1.0, 1.0, 1.0)
+constraints[4] : slack = 0.0 , shadow price= 0.0 , (1.0, 1.0, 1.0)
+constraints[5] : slack = 0.0 , shadow price= -2.0 , (1.0, 1.0, 1.0)
+objective value = 70.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This would require the model to be reformulated with three new variables, <span class="math notranslate nohighlight">\(x_{10}, x_{11}, x_{12}\)</span>, representing Kelly’s assignment to the press, lathe, and grinder. The model would be reformulated as,</p>
+<p>\begin{align}
+&amp;\text{min}\
+&amp;\qquad z=22x_1+18x_2+35x_3+41x_4+30x_5+28x_6+25x_7+36x_8+18x_9+20x_{10}+20x_{11}+20x_{12}\
+&amp;\text{s.t.}\
+&amp;\qquad x_1+x_2+x_3=1\
+&amp;\qquad x_4+x_5+x_6=1\
+&amp;\qquad x_7+x_8+x_9=1\
+&amp;\qquad x_1+x_4+x_7=1\
+&amp;\qquad x_2+x_5+x_8=1\
+&amp;\qquad x_3+x_6+x_9=1\
+&amp;\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C4Q32&quot;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span> 
+
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">)),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(12,) (7, 12) (7,)
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 7 rows, 12 columns and 24 nonzeros
+Model fingerprint: 0x447648af
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e+01, 4e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve time: 0.02s
+Presolved: 7 rows, 12 columns, 24 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    5.6000000e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.03 seconds (0.00 work units)
+Optimal objective  5.600000000e+01
+x0 = 0.0 (22.0, 20.0, inf, 2.0)
+x1 = 1.0 (18.0, -inf, 20.0, 0.0)
+x2 = 0.0 (35.0, 18.0, inf, 17.0)
+x3 = 0.0 (41.0, 20.0, inf, 21.0)
+x4 = 0.0 (30.0, 18.0, inf, 12.0)
+x5 = 0.0 (28.0, 18.0, inf, 10.0)
+x6 = 0.0 (25.0, 20.0, inf, 5.0)
+x7 = 0.0 (36.0, 18.0, inf, 18.0)
+x8 = 1.0 (18.0, -inf, 20.0, 0.0)
+x9 = 1.0 (20.0, -inf, 22.0, 0.0)
+x10 = 0.0 (20.0, 18.0, inf, 2.0)
+x11 = 0.0 (20.0, 18.0, inf, 2.0)
+constraints[0] : slack = 0.0 , shadow price= 0.0 , (1.0, 1.0, inf)
+constraints[1] : slack = 1.0 , shadow price= 0.0 , (1.0, 0.0, inf)
+constraints[2] : slack = 0.0 , shadow price= 0.0 , (1.0, 1.0, inf)
+constraints[3] : slack = 0.0 , shadow price= 0.0 , (1.0, 1.0, inf)
+constraints[4] : slack = 0.0 , shadow price= 20.0 , (1.0, 0.0, 1.0)
+constraints[5] : slack = 0.0 , shadow price= 18.0 , (1.0, 0.0, 1.0)
+constraints[6] : slack = 0.0 , shadow price= 18.0 , (1.0, 0.0, 1.0)
+objective value = 56.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-example-c4q33">
+<h2>Problem example: C4Q33<a class="headerlink" href="#problem-example-c4q33" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following LP problem:</p>
+<p>This is a transportation problem</p>
+<p>\begin{align}
+&amp;\text{min}\
+&amp;\qquad z=40x_1 + 65x_2 + 70x_3 + 30x_4\
+&amp;\text{s.t.}\
+&amp;\qquad x_1+x_2=250\
+&amp;\qquad x_3+x_4=400\
+&amp;\qquad x_1+x_3=300\
+&amp;\qquad x_2+x_4=350\
+&amp;\qquad x_1,x_2,x_3,x_4\ge 0\
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">30</span><span class="p">]</span>    
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span> <span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">250</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">350</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">decision_variables</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>     
+<span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;C4Q33&quot;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span> 
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
+                           <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
+          <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4,) (4, 4) (4,)
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 4 rows, 4 columns and 8 nonzeros
+Model fingerprint: 0x1da74e02
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e+01, 7e+01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e+02, 4e+02]
+Presolve removed 4 rows and 4 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    2.4000000e+04   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.02 seconds (0.00 work units)
+Optimal objective  2.400000000e+04
+x0 = 250.0 (40.0, -inf, 105.0, 0.0)
+x1 = 0.0 (65.0, 0.0, inf, 65.0)
+x2 = 50.0 (70.0, 5.0, inf, 0.0)
+x3 = 350.0 (30.0, -inf, 95.0, 0.0)
+constraints[0] : slack = 0.0 , shadow price= -0.0 , (250.0, 250.0, 250.0)
+constraints[1] : slack = 0.0 , shadow price= 30.0 , (400.0, 400.0, 400.0)
+constraints[2] : slack = 0.0 , shadow price= 40.0 , (300.0, 300.0, 300.0)
+constraints[3] : slack = 0.0 , shadow price= 0.0 , (350.0, 350.0, 350.0)
+objective value = 24000.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Linear_Programming.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Linear Programming</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Theory_of_LP.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Theory of LP and the Simplex method</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Naftali Cohen<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

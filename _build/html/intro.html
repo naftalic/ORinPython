@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture notes in “Operation Research in Python” &#8212; OR in Python</title>
+    <title>Lecture notes in OR with Python &#8212; OR in Python</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
+    <link rel="next" title="Linear Programming" href="Linear_Programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -77,7 +77,7 @@
         
       
       
-      <img src="_static/mylogo.png" class="logo" alt="logo">
+      <img src="_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">OR in Python</h1>
@@ -91,14 +91,44 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
-   Lecture notes in “Operation Research in Python”
+   Lecture notes in OR with Python
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
+  <a class="reference internal" href="Linear_Programming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Solving_problems_using_Python.html">
+   Solving problems using Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Theory_of_LP.html">
+   Theory of LP and the Simplex method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Integer_Programming.html">
+   Integer Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multicriteria_Decision_Making.html">
+   Multicriteria Decision Making
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Nonlinear_Programming.html">
+   Nonlinear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability_and_Statistics.html">
+   Probability and Statistics
   </a>
  </li>
  <li class="toctree-l1">
@@ -107,8 +137,23 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
    Python Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linear_Algebra_Review.html">
+   Linear Algebra Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability_and_Statistics_Review.html">
+   Probability and Statistics Review
   </a>
  </li>
 </ul>
@@ -201,19 +246,35 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-notes-in-operation-research-in-python">
-<h1>Lecture notes in “Operation Research in Python”<a class="headerlink" href="#lecture-notes-in-operation-research-in-python" title="Permalink to this headline">¶</a></h1>
-<p>This is a small sample book to give you a feel for how book content is
-structured.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Here is a note!</p>
-</div>
-<p>And here is a code block:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">mc</span><span class="o">^</span><span class="mi">2</span>
-</pre></div>
-</div>
-<p>Check out the content pages bundled with this sample book to see more.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-notes-in-or-with-python">
+<h1>Lecture notes in OR with Python<a class="headerlink" href="#lecture-notes-in-or-with-python" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to a short introductory material on Operation Research and Management Science using Python!</p>
+<p>Operations Research, (a.k.a., Management Science) is an interdisciplinary field that uses analytical methods for quantitative decision-making. The emphasis of Operations Research is on practical applications, and as such, it has substantial overlap with many other disciplines, like industrial engineering and business management. It uses tools from mathematical sciences, such as modeling, probability, statistics, and optimization, to arrive at optimal or near-optimal solutions to complex decision-making problems. Operations Research is often concerned with determining the extreme values of real-world objectives, such as maximizing profit or minimizing cost.</p>
+<!---
+Operations Research is used to deal with real-world problems. For example:
+
+* Scheduling: buses, planes, sporting events, hospital patients, classes.
+* Product development: pricing, sales forecasts.
+* Inventory: how many items to hold in stock, when to replenish.
+* Organizations: business management, business development.
+* Queueing: waiting for lines at amusement parks, banks, movie theaters, the line at the store to buy new electronic gadgets, traffic.
+* Environment: managing sustainable resources, reducing materials needed to manufacture a product.
+* Optimizing: internet search engines, product design.
+* Marketing: store layout, advertising, social media, online ad placement, recommendations on a website.
+* Decision making: security, investment, what college to attend.
+
+:::{note}
+Here is a note!
+:::
+
+And here is a code block:
+
+```
+e = mc^2
+```
+
+Check out the content pages bundled with this sample book to see more.
+--->
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -243,10 +304,10 @@ structured.</p>
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="markdown.html" title="next page">
+    <a class='right-next' id="next-link" href="Linear_Programming.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">Linear Programming</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
