@@ -8,7 +8,6 @@ chapters:
 - file: Solving_problems_using_Python
 - file: Theory_of_LP
 - file: Integer_Programming
-- file: Transportation_Transshipment_and_Assignment_Problems
 - file: Multicriteria_Decision_Making
 - file: Nonlinear_Programming
 - file: Probability_and_Statistics
