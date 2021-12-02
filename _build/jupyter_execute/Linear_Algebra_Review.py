@@ -528,7 +528,7 @@ b = A.dot(x)
 b
 
 
-# ## Inverse matrices¶
+# ## Inverse matrices
 # 
 
 # In[37]:
@@ -552,6 +552,8 @@ A_inv.dot(A)
 
 
 # ## Hyperplanes
+
+# 
 # 
 # A key object in linear algebra is the **hyperplane**.
 # In two dimensions the hyperplane is a **line**, and in three dimensions it is a **plane**. In more generality, in an $d$-dimensional vector space, a hyperplane has $d-1$ dimensions
@@ -563,7 +565,7 @@ A_inv.dot(A)
 # 
 # 
 
-# ## Solving a system of linear equations¶
+# ## Solving a system of linear equations
 # 
 
 # In[40]:
@@ -728,6 +730,8 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 
 
 # ## Span
+
+# 
 # 
 # Consider the above $\mathbf{x}$ and $\mathbf{y}$: ALL the points that can reached by their combination via some $a$ and $b$ are called the set of points is the span of the vectors $\{\mathbf{x}$, $\mathbf{y}\}$.
 # Vector **space** means all the points that can be reached by this vector. In example, the space of all real numbers is $\mathbb{R}$ and for $n$-dimensions the space is $\mathbb{R}^n$. 
@@ -857,7 +861,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # 
 # In the row view we have 3 lines and we are looking for unique intersection in the 2-dimensional plan. The three lines (if independent) will intesect in multiple points resulting in no solution. In the column view, becuase $n=2$ the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vecotr $\mathbf{b}$ lies, for some reason, in the subspace formed by these two vectors.
 
-# ### Linear dependency
+# ## Linear dependency
 # 
 # The number of columns can thus provide information on the number of solutions. But the number that we have to take into account is the number of linearly **independent** columns. Columns are linearly **dependent** if one of them is a linear combination of the others. In the column view, the direction of two linearly dependent vectors is the same and this doesn't add value in spanning the space.
 # 
@@ -892,7 +896,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # as linear combinations of $(1,2)^\top$ are not enough to reach all points in $\mathbb{R}^2$. This is an example of an **overdetermined** system with $m=2\gt n=1$ because of the linear dependency between the columns.
 # 
 
-# ### Square matrix
+# ## Square matrix
 # 
 # When $\mathbf{A}\in\mathbb{R}^{m\times n}$ and $m=n$ the matrix $\mathbf{A}$ is called square matrix and if the columns are linearly **independant** there is a unique solution to $\mathbf{A}\mathbf{x}=\mathbf{b}$.
 # The solution is simply $\mathbf{x}=\mathbf{A}^{-1}\mathbf{b}$, where $\mathbf{A}^{-1}$ is the inverse of $\mathbf{A}$.
@@ -921,7 +925,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # The matrix A can be expressed as a finite product of elementary matrices.
 # The matrix A has a left inverse (that is, there exists a B such that BA = I) or a right inverse (that is, there exists a C such that AC = I), in which case both left and right inverses exist and B = C = A−1. -->
 
-# ### Rank
+# ## Rank
 # 
 # The **column rank** of $\mathbf{A}$ is the dimension of the column space of $\mathbf{A}$ (i.e., the number of linearly independent columns), while the **row rank** of $\mathbf{A}$ is the dimension of the row space of $\mathbf{A}$ (i.e., the number of linearly independent rows).
 # 
@@ -935,7 +939,7 @@ A=np.array([[1,2],[3,4]]); B=np.array([[1,2],[2,4]]); C=np.array([[1,0,0],[0,1,0
 np.linalg.matrix_rank(A), np.linalg.matrix_rank(B), np.linalg.matrix_rank(C)
 
 
-# ### Invertibility
+# ## Invertibility
 # 
 # An $n\times n$ square matrix $\mathbf{A}$ is called **invertible** (also **nonsingular** or **nondegenerate**), if there exists an $n\times n$ square matrix $\mathbf{B}$ such that
 # $$
