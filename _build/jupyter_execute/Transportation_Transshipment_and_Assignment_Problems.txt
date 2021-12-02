@@ -1,0 +1,191 @@
+!pip install gurobipy
+
+# Import gurobi library
+from gurobipy import * # This command imports the Gurobi functions and classes.
+
+import numpy as np
+
+# Transportation Model Example
+c = [6,8,10,7,11,11,4,5,12]    
+A = [[1,1,1,0,0,0,0,0,0],
+     [0,0,0,1,1,1,0,0,0],
+     [0,0,0,0,0,0,1,1,1],
+     [1,0,0,1,0,0,1,0,0],
+     [0,1,0,0,1,0,0,1,0],
+     [0,0,1,0,0,1,0,0,1]]
+b =  [150,175,275,200,100,300]
+print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
+decision_variables = range(len(c))     
+constraints = range(np.array(A).shape[0])
+
+m = Model("example")
+
+x = []
+for i in decision_variables:
+    x.append(m.addVar(lb = 0, vtype = GRB.INTEGER, name = 'x' + str(i)))
+
+m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MINIMIZE) 
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           == b[j] for j in constraints), "constraints")
+m.optimize()
+
+for var in m.getVars(): # descision variable
+    print(var.varName, '=', var.x, var.obj)
+
+#for con in m.getConstrs(): # constraints
+#    print(con.ConstrName, ': slack =', con.slack,', shadow price=',
+#          con.pi,',', (con.RHS, con.SARHSLow, con.SARHSUp))
+    
+print("objective value =", m.objVal)
+
+c = [14,9,16,18,11,8,1000,16,16,12,10,22]    
+A = [[1,1,1,1,0,0,0,0,0,0,0,0],
+     [0,0,0,0,1,1,1,1,0,0,0,0],
+     [0,0,0,0,0,0,0,0,1,1,1,1],
+     [1,0,0,0,1,0,0,0,1,0,0,0],
+     [0,1,0,0,0,1,0,0,0,1,0,0],
+     [0,0,1,0,0,0,1,0,0,0,1,0],
+     [0,0,0,1,0,0,0,1,0,0,0,1]]
+b =  [150,210,320,130,70,180,240]
+print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
+decision_variables = range(len(c))     
+constraints = range(np.array(A).shape[0])
+
+m = Model("example")
+
+x = []
+for i in decision_variables:
+    x.append(m.addVar(lb = 0, vtype = GRB.INTEGER, name = 'x' + str(i)))
+
+m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MINIMIZE) 
+
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           <= b[j] for j in constraints[:3]), "constraints")
+
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           == b[j] for j in constraints[3:]), "constraints")
+              
+m.optimize()
+
+for var in m.getVars(): # descision variable
+    print(var.varName, '=', var.x, var.obj)
+
+#for con in m.getConstrs(): # constraints
+#    print(con.ConstrName, ': slack =', con.slack,', shadow price=',
+#          con.pi,',', (con.RHS, con.SARHSLow, con.SARHSUp))
+    
+print("objective value =", m.objVal)
+
+c = [14,9,16,18,11,8,1000,16,16,12,10,22]    
+A = [[1,1,1,1,0,0,0,0,0,0,0,0],
+     [0,0,0,0,1,1,1,1,0,0,0,0],
+     [0,0,0,0,0,0,0,0,1,1,1,1],
+     [1,0,0,0,1,0,0,0,1,0,0,0],
+     [0,1,0,0,0,1,0,0,0,1,0,0],
+     [0,0,1,0,0,0,1,0,0,0,1,0],
+     [0,0,0,1,0,0,0,1,0,0,0,1]]
+b =  [150,210,290,130,70,180,240]
+print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
+decision_variables = range(len(c))     
+constraints = range(np.array(A).shape[0])
+
+m = Model("example")
+
+x = []
+for i in decision_variables:
+    x.append(m.addVar(lb = 0, vtype = GRB.INTEGER, name = 'x' + str(i)))
+
+m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MINIMIZE) 
+
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           <= b[j] for j in constraints[:3]), "constraints")
+
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           == b[j] for j in constraints[3:]), "constraints")
+              
+m.optimize()
+
+for var in m.getVars(): # descision variable
+    print(var.varName, '=', var.x, var.obj)
+
+#for con in m.getConstrs(): # constraints
+#    print(con.ConstrName, ': slack =', con.slack,', shadow price=',
+#          con.pi,',', (con.RHS, con.SARHSLow, con.SARHSUp))
+    
+print("objective value =", m.objVal)
+
+c = [420,390,610,510,590,470,450,360,380,75,63,81,125,110,95,68,82,95]    
+A = [[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+     [0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0],
+     [0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0],
+     [0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1],
+     [1,0,0,1,0,0,1,0,0,-1,-1,-1,0,0,0,0,0,0],
+     [0,1,0,0,1,0,0,1,0,0,0,0,-1,-1,-1,0,0,0],
+     [0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,-1,-1,-1]]
+b =  [55,78,37,60,45,50,0,0,0]
+print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
+decision_variables = range(len(c))     
+constraints = range(np.array(A).shape[0])
+
+m = Model("example")
+
+x = []
+for i in decision_variables:
+    x.append(m.addVar(lb = 0, vtype = GRB.INTEGER, name = 'x' + str(i)))
+
+m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MINIMIZE) 
+
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           <= b[j] for j in constraints[:3]), "constraints")
+
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           == b[j] for j in constraints[3:]), "constraints")
+              
+m.optimize()
+
+for var in m.getVars(): # descision variable
+    print(var.varName, '=', var.x, var.obj)
+
+#for con in m.getConstrs(): # constraints
+#    print(con.ConstrName, ': slack =', con.slack,', shadow price=',
+#          con.pi,',', (con.RHS, con.SARHSLow, con.SARHSUp))
+    
+print("objective value =", m.objVal)
+
+c = [12,11,8,14,10,9,10,8,14,1000,7,11,6,8,10,9]    
+A = [[1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
+     [0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0],
+     [0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0],
+     [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
+     [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],
+     [0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0],
+     [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0],
+     [0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1]]
+b =  [1,1,1,1,1,1,1,1]
+print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
+decision_variables = range(len(c))     
+constraints = range(np.array(A).shape[0])
+
+m = Model("example")
+
+x = []
+for i in decision_variables:
+    x.append(m.addVar(lb = 0, vtype = GRB.INTEGER, name = 'x' + str(i)))
+
+m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MINIMIZE) 
+
+m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
+                           == b[j] for j in constraints), "constraints")
+           
+m.optimize()
+
+for var in m.getVars(): # descision variable
+    print(var.varName, '=', var.x, var.obj)
+
+#for con in m.getConstrs(): # constraints
+#    print(con.ConstrName, ': slack =', con.slack,', shadow price=',
+#          con.pi,',', (con.RHS, con.SARHSLow, con.SARHSUp))
+    
+print("objective value =", m.objVal)

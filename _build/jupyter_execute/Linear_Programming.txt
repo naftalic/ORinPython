@@ -1,0 +1,142 @@
+import numpy as np
+%matplotlib inline
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
+
+plt.figure(figsize=(16,8))
+#-------------------
+plt.subplot(2,3,1)
+plt.plot([40,0],[0,20],'-b')
+plt.text(35,5, '$1x_1+2x_2 <= 40$', color='b')
+P = np.array([
+        [0, 40, 0],
+        [0, 0, 20]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="b"))
+plt.grid()
+plt.axis([0, 60, 0, 60])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('a) feasiblewood contraint: $1x_1+2x_2 <= 40$')
+#-------------------
+plt.subplot(2,3,2)
+plt.plot([30,0],[0,40],'-r')
+plt.text(5,35, '$4x_1+3x_2 <= 120$', color='r')
+P = np.array([
+        [0, 30, 0],
+        [0, 0, 40]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="r"))
+plt.grid()
+plt.axis([0, 60, 0, 60])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('b) feasible labor contraint: $4x_1+3x_2 <= 120$')
+#-------------------
+plt.subplot(2,3,3)
+plt.plot([800/40,0],[0,800/50],'--g')
+plt.text(20,5, '$40x_1+50x_2=800$', color='g')
+
+plt.plot([2000/40,0],[0,2000/50],'--k')
+plt.text(40,15, '$40x_1+50x_2=2000$', color='k')
+plt.grid()
+plt.axis([0, 60, 0, 60])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('c) multiple objective $40x_1+50x_2$ lines')
+#-------------------
+plt.subplot(2,3,4)
+#plt.plot([40,0],[0,20],'-b')
+#plt.text(35,5, '$1x_1+2x_2 <= 40$', color='b')
+P = np.array([
+        [0, 40, 0],
+        [0, 0, 20]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="b"))
+P = np.array([
+        [0, 30, 0],
+        [0, 0, 40]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="r"))
+plt.grid()
+plt.axis([0, 60, 0, 60])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('d) intersecting the two feasible constraint regions')
+#-------------------
+plt.subplot(2,3,5)
+#plt.plot([40,0],[0,20],'-b')
+#plt.text(35,5, '$1x_1+2x_2 <= 40$', color='b')
+P = np.array([
+        [0, 30, 24,0],
+        [0, 0, 8 ,20]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="b"))
+P = np.array([
+        [0, 30, 24,0],
+        [0, 0, 8 ,20]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="r"))
+plt.plot([600/40,0],[0,600/50],'--k')
+plt.plot([1360/40,0],[0,1360/50],'--k')
+plt.plot([2000/40,0],[0,2000/50],'--k')
+plt.grid()
+plt.axis([0, 60, 0, 60])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('e) the feasible area and multiple objective lines')
+
+#-------------------
+plt.subplot(2,3,6)
+#plt.plot([40,0],[0,20],'-b')
+#plt.text(35,5, '$1x_1+2x_2 <= 40$', color='b')
+P = np.array([
+        [0, 30, 24,0],
+        [0, 0, 8 ,20]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="b"))
+P = np.array([
+        [0, 30, 24,0],
+        [0, 0, 8 ,20]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="r"))
+plt.plot([1360/40,0],[0,1360/50],'--k')
+plt.text(25,15, '$z=40x_1+50x_2=1360$', color='k')
+plt.scatter(24,8,s=50,c='k')
+plt.grid()
+plt.axis([0, 60, 0, 60])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('f) the feasible area and optimal solution')
+
+plt.tight_layout()
+plt.show()
+
+import numpy as np
+%matplotlib inline
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
+
+plt.figure(figsize=(16,3))
+#-------------------
+plt.subplot(1,2,1)
+P = np.array([
+        [8, 12, 12, 0,  0, 4.8],
+        [0,  0, 12, 12, 8, 1.6]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="r"))
+plt.grid()
+plt.axis([0, 12, 0, 12])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('a) feasible area for the minimiztion problem')
+#-------------------
+plt.subplot(1,2,2)
+P = np.array([
+        [8, 12, 12, 0,  0, 4.8],
+        [0,  0, 12, 12, 8, 1.6]
+    ])
+plt.gca().add_artist(Polygon(P.T, alpha=0.3, color="r"))
+plt.plot([33.6/6,0],[0,33.6/3],'--k')
+plt.scatter(4.8,1.6,s=50,c='k')
+plt.text(1,2, '$z=6x_1+3x_2=33.6$', color='k')
+
+plt.grid()
+plt.axis([0, 12, 0, 12])
+plt.xlabel('$x_1$');plt.ylabel('$x_2$')
+plt.title('b) feasible area for the minimiztion problem + optimal solution')
+plt.tight_layout()
+plt.show()

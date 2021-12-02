@@ -4,6 +4,17 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
+- File: Linear_Programming.ipynb
+- File: Solving_problems_using_Python
+- File: Theory_of_LP
+- File: Integer_Programming
+- File: Transportation_Transshipment_and_Assignment_Problems
+- File: Multicriteria_Decision_Making
+- File: Nonlinear_Programming
+- File: Probability_and_Statistics
 - file: notebooks
+- file: markdown
 - file: Python_Review
+- file: Linear_Algebra_Review
+- file: Probability_and_Statistics_Review
+
