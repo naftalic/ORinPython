@@ -1,0 +1,6 @@
+from scipy.stats import binom
+binom.cdf(k=4, n=20, p=.1), 1-binom.cdf(k=4, n=20, p=.1)
+
+1-binom.cdf(k=2, n=7, p=.2)
+
+
