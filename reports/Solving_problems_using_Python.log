@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1093, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 560, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/naftali/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+!pip install gurobipy
+
+# Import gurobi library
+from gurobipy import * # This command imports the Gurobi functions and classes.
+
+# Create new model
+m = Model('Factory') # The Model() constructor creates a model object m. The name of this new model is 'Factory'.
+                     # This new model m initially contains no decision variables, constraints, or objective function.
+
+# Create decision variables
+# This method adds a decision variable to the model object m, one by one; i.e. x1 and then x2. 
+# The argument of the method gives the name of added decision variable. 
+# The default values are applied here; i.e. the decision variables are of type continuous and non-negative, with no upper bound.
+x1 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name='chairs') 
+x2 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name='tables')
+
+#Define objective function
+#This method adds the objective function to the model object m. The first
+#argument is a linear expression (LinExpr) and the second argument defines
+#the sense of the optimization.
+m.setObjective(40*x1+50*x2, GRB.MAXIMIZE)
+
+#Add constraints
+#This method adds a constraint to the model object m and considers a linear of coefficient-variables elements
+m.addConstr(1*x1+2*x2<=40, name='wood')
+m.addConstr(4*x1+3*x2<=120, name= 'labor')
+
+#Run optimization engine
+#This method runs the optimization engine to solve the LP problem in the model object m
+m.optimize()
+
+#display optimal production plan
+for v in m.getVars():
+  print(v.varName, v.x)
+print('optimal total revenue:', m.objVal)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mGurobiError[0m                               Traceback (most recent call last)
+[0;32m<ipython-input-1-54e01eaaa2a9>[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m [0;34m[0m[0m
+[1;32m      6[0m [0;31m# Create new model[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mm[0m [0;34m=[0m [0mModel[0m[0;34m([0m[0;34m'Factory'[0m[0;34m)[0m [0;31m# The Model() constructor creates a model object m. The name of this new model is 'Factory'.[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m                      [0;31m# This new model m initially contains no decision variables, constraints, or objective function.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0;34m[0m[0m
+
+[0;32msrc/gurobipy/env.pxi[0m in [0;36mgurobipy.Env.__init__[0;34m()[0m
+
+[0;32msrc/gurobipy/gurobi.pxi[0m in [0;36mgurobipy.gurobi._getdefaultenv[0;34m()[0m
+
+[0;32msrc/gurobipy/env.pxi[0m in [0;36mgurobipy.Env.__init__[0;34m()[0m
+
+[0;31mGurobiError[0m: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
+GurobiError: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
+
