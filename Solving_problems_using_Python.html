@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solving problems using Python &#8212; OR in Python</title>
+    <title>Solving problems using Python &#8212; OR/MS in Python</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -83,7 +83,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">OR in Python</h1>
+      <h1 class="site-logo" id="site-title">OR/MS in Python</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -94,7 +94,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Lecture notes in OR with Python
+   Lecture notes in OR/MS with Python
   </a>
  </li>
 </ul>
@@ -335,67 +335,64 @@
 <h1>Solving problems using Python<a class="headerlink" href="#solving-problems-using-python" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install gurobipy
 
-# Import gurobi library
-from gurobipy import * # This command imports the Gurobi functions and classes.
+<span class="c1"># Import gurobi library</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
 
-# Create new model
-m = Model(&#39;Factory&#39;) # The Model() constructor creates a model object m. The name of this new model is &#39;Factory&#39;.
-                     # This new model m initially contains no decision variables, constraints, or objective function.
+<span class="c1"># Create new model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span> <span class="c1"># The Model() constructor creates a model object m. The name of this new model is &#39;Factory&#39;.</span>
+                     <span class="c1"># This new model m initially contains no decision variables, constraints, or objective function.</span>
 
-# Create decision variables
-# This method adds a decision variable to the model object m, one by one; i.e. x1 and then x2. 
-# The argument of the method gives the name of added decision variable. 
-# The default values are applied here; i.e. the decision variables are of type continuous and non-negative, with no upper bound.
-x1 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name=&#39;chairs&#39;) 
-x2 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name=&#39;tables&#39;)
+<span class="c1"># Create decision variables</span>
+<span class="c1"># This method adds a decision variable to the model object m, one by one; i.e. x1 and then x2. </span>
+<span class="c1"># The argument of the method gives the name of added decision variable. </span>
+<span class="c1"># The default values are applied here; i.e. the decision variables are of type continuous and non-negative, with no upper bound.</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;chairs&#39;</span><span class="p">)</span> 
+<span class="n">x2</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;tables&#39;</span><span class="p">)</span>
 
-#Define objective function
-#This method adds the objective function to the model object m. The first
-#argument is a linear expression (LinExpr) and the second argument defines
-#the sense of the optimization.
-m.setObjective(40*x1+50*x2, GRB.MAXIMIZE)
+<span class="c1">#Define objective function</span>
+<span class="c1">#This method adds the objective function to the model object m. The first</span>
+<span class="c1">#argument is a linear expression (LinExpr) and the second argument defines</span>
+<span class="c1">#the sense of the optimization.</span>
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="mi">40</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mi">50</span><span class="o">*</span><span class="n">x2</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
 
-#Add constraints
-#This method adds a constraint to the model object m and considers a linear of coefficient-variables elements
-m.addConstr(1*x1+2*x2&lt;=40, name=&#39;wood&#39;)
-m.addConstr(4*x1+3*x2&lt;=120, name= &#39;labor&#39;)
+<span class="c1">#Add constraints</span>
+<span class="c1">#This method adds a constraint to the model object m and considers a linear of coefficient-variables elements</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x2</span><span class="o">&lt;=</span><span class="mi">40</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;wood&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">x2</span><span class="o">&lt;=</span><span class="mi">120</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s1">&#39;labor&#39;</span><span class="p">)</span>
 
-#Run optimization engine
-#This method runs the optimization engine to solve the LP problem in the model object m
-m.optimize()
+<span class="c1">#Run optimization engine</span>
+<span class="c1">#This method runs the optimization engine to solve the LP problem in the model object m</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
-#display optimal production plan
-for v in m.getVars():
-  print(v.varName, v.x)
-print(&#39;optimal total revenue:&#39;, m.objVal)
+<span class="c1">#display optimal production plan</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /usr/local/lib/python3.7/dist-packages (9.5.0)
-Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
-Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
-Optimize a model with 2 rows, 2 columns and 4 nonzeros
-Model fingerprint: 0x3a526911
-Coefficient statistics:
-  Matrix range     [1e+00, 4e+00]
-  Objective range  [4e+01, 5e+01]
-  Bounds range     [0e+00, 0e+00]
-  RHS range        [4e+01, 1e+02]
-Presolve time: 0.02s
-Presolved: 2 rows, 2 columns, 4 nonzeros
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /Users/naftali/opt/anaconda3/lib/python3.7/site-packages (9.1.2)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">GurobiError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">54e01</span><span class="n">eaaa2a9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Create new model</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span> <span class="c1"># The Model() constructor creates a model object m. The name of this new model is &#39;Factory&#39;.</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>                      <span class="c1"># This new model m initially contains no decision variables, constraints, or objective function.</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
 
-Iteration    Objective       Primal Inf.    Dual Inf.      Time
-       0    9.0000000e+31   3.250000e+30   9.000000e+01      0s
-       2    1.3600000e+03   0.000000e+00   0.000000e+00      0s
+<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
 
-Solved in 2 iterations and 0.04 seconds (0.00 work units)
-Optimal objective  1.360000000e+03
-chairs 24.0
-tables 8.0
-optimal total revenue: 1360.0
+<span class="nn">src/gurobipy/gurobi.pxi</span> in <span class="ni">gurobipy.gurobi._getdefaultenv</span><span class="nt">()</span>
+
+<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+
+<span class="ne">GurobiError</span>: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
 </pre></div>
 </div>
 </div>
@@ -405,7 +402,7 @@ optimal total revenue: 1360.0
 We should use appropriate data structures and Gurobi python functions and objects to abstract the problem and have the Gurobi python code build the LP problem of any size.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Python list comprehension</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Python list comprehension</span>
 <span class="c1">#List comprehension is compact way to create lists</span>
 <span class="n">sqrd</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sqrd</span><span class="p">)</span> 
@@ -435,7 +432,7 @@ We should use appropriate data structures and Gurobi python functions and object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> 
 
 <span class="c1">#resource data</span>
 <span class="c1">#The multidict function returns a list which maps each resource (key) to its capacity value.</span>
@@ -490,7 +487,7 @@ We should use appropriate data structures and Gurobi python functions and object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
 </pre></div>
 </div>
 </div>
@@ -510,7 +507,7 @@ End
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># run optimization engine</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run optimization engine</span>
 <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
 <span class="c1">#display optimal production plan</span>
@@ -551,7 +548,7 @@ optimal total revenue: 1360.0
 <p>Solving LP problems provides more information than only the values of the decision variables and the value of the objective function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
 
@@ -615,7 +612,7 @@ Assume that the price of a bench is $30, and a bench consumes 1.2 units of wood 
 <p>What about adding a new constraint as packaging, and varying costs for chairs and tables?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new variable</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new variable</span>
 
 <span class="n">products</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span>
     <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
@@ -642,7 +639,7 @@ Assume that the price of a bench is $30, and a bench consumes 1.2 units of wood 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
 </pre></div>
 </div>
 </div>
@@ -662,7 +659,7 @@ End
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
 <span class="c1">#display optimal production plan</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
@@ -715,7 +712,7 @@ objective value = 1360.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new constraint</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new constraint</span>
 
 <span class="n">resources</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span> 
     <span class="s1">&#39;wood&#39;</span><span class="p">:</span>  <span class="mi">40</span><span class="p">,</span>
@@ -747,7 +744,7 @@ objective value = 1360.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
 </pre></div>
 </div>
 </div>
@@ -768,7 +765,7 @@ End
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
 <span class="c1">#display optimal production plan</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
@@ -833,7 +830,7 @@ objective value = 1300.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span>   <span class="mi">8</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">30</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">180</span><span class="p">]</span>
@@ -910,7 +907,7 @@ objective value = 40.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
@@ -985,7 +982,7 @@ objective value = 0.24
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
@@ -1065,7 +1062,7 @@ objective value = 17.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
@@ -1156,7 +1153,7 @@ objective value = 70.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
@@ -1255,7 +1252,7 @@ objective value = 56.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">30</span><span class="p">]</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">30</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>

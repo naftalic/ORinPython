@@ -1,4 +1,4 @@
-# Lecture notes in OR with Python
+# Lecture notes in OR/MS with Python
 
 Welcome to a short introductory material on Operation Research and Management Science using Python!
 
