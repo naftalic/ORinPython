@@ -1,4 +1,4 @@
-# Notes in OR/MS with Python
+# Notes on OR and MS with Python
 
 Welcome to a short introductory material on Operation Research and Management Science using Python!
 
