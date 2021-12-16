@@ -53,8 +53,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Probability and Statistics Review" href="Probability_and_Statistics_Review.html" />
-    <link rel="prev" title="Python Tutorial" href="Python_Review.html" />
+    <link rel="prev" title="Python Review" href="Python_Review.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -94,7 +93,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Lecture notes in OR/MS with Python
+   Notes on OR and MS with Python
   </a>
  </li>
 </ul>
@@ -146,17 +145,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
-   Python Tutorial
+   Python Review
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Linear Algebra Review
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Probability_and_Statistics_Review.html">
-   Probability and Statistics Review
   </a>
  </li>
 </ul>
@@ -323,6 +317,26 @@
      Linear equations
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#or-begin-bmatrix-a-1-1-a-1-2-cdots-a-1-n-a-2-1-a-2-2-cdots-a-2-n-cdots-cdots-cdots-cdots-a-m-1-a-m-2-cdots-a-m-n-end-bmatrix-begin-bmatrix-x-1-x-2-cdots-x-n-end-bmatrix">
+   or
+$$
+\begin{bmatrix}
+a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \
+a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots \
+a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \
+x_2 \
+\cdots \
+x_n
+\end{bmatrix}
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#row-view">
      Row view
@@ -394,13 +408,8 @@ a_{3,2}
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#begin-align-x-1-2x-2-b-1-2x-1-4x-2-b-2-end-align-quad-text-which-in-the-column-view-is-quad-x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix">
-   $
-\begin{align}
-x_1+2x_2=b_1\
-2x_1+4x_2=b_2
-\end{align}
-\quad\text{which in the column view is}\quad
+  <a class="reference internal nav-link" href="#x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix">
+   $$
 x_1
 \begin{bmatrix}
 1 \
@@ -448,7 +457,7 @@ x_2
 <div class="section" id="scalars-vectors-matrices">
 <h2>Scalars, Vectors, Matrices<a class="headerlink" href="#scalars-vectors-matrices" title="Permalink to this headline">¶</a></h2>
 <p>Values consisting of one numerical quantity are called <strong>scalars</strong>.
-For example, the average annual temperature in New York City during is <span class="math notranslate nohighlight">\(53^\circ\)</span>F.
+For example, the average annual temperature in New York City is <span class="math notranslate nohighlight">\(53^\circ\)</span>F.
 In the following, we adopt the mathematical notation where <strong>scalar</strong> variables are denoted by ordinary lower-cased letters (e.g., <span class="math notranslate nohighlight">\(x, y,\)</span> and <span class="math notranslate nohighlight">\(z\)</span>).</p>
 <p>We denote the space of real-valued scalars by <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. Formally, <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span> means that <span class="math notranslate nohighlight">\(x\)</span> is a real-valued scalar, where the symbol <span class="math notranslate nohighlight">\(\in\)</span> is pronounced “in,” and simply denotes membership in a set.</p>
 <div class="cell docutils container">
@@ -465,7 +474,7 @@ In the following, we adopt the mathematical notation where <strong>scalar</stron
 </div>
 </div>
 </div>
-<p><strong>Vector</strong> is simply a list (or an array) of scalar values.
+<p><strong>Vector</strong> is a list (a.k.a., array) of scalar values.
 We denote vectors in bold, lower-case letters (e.g., <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>).
 Vectors can be presented either as a <strong>column</strong> or as a <strong>row</strong>.
 In example,
@@ -595,14 +604,12 @@ a <span class="math notranslate nohighlight">\(n \times m\)</span> matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">==</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="p">(</span><span class="n">A</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ True  True  True]
- [ True  True  True]
- [ True  True  True]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -768,7 +775,7 @@ we write <span class="math notranslate nohighlight">\(\sum_{i=1}^n x_i\)</span>.
 </div>
 <div class="section" id="broadcasting">
 <h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h2>
-<p>Broadcasting describes how Numpy handles arrays with different shapes during arithmetic operations. Subject to certain constraints, the smaller array is “broadcast” across the larger array so that they have compatible shapes.
+<p>Broadcasting describes how numpy handles arrays with different shapes during arithmetic operations. Subject to certain constraints, the smaller array is “broadcast” across the larger array so that they have compatible shapes.
 NumPy operations are done on <strong>pairs</strong> of arrays on an element-by-element basis.</p>
 <p>The simplest broadcasting example occurs when an array and a scalar value are combined in an operation</p>
 <div class="cell docutils container">
@@ -829,13 +836,13 @@ Given two vectors <span class="math notranslate nohighlight">\(\mathbf{x}, \math
 <p>The dot product has a geometric interpretation related to the <strong>angle</strong> between the two vectors</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{x}\cdot\mathbf{y} = \mathbf{x}^\top\mathbf{y} = \|\mathbf{x}\|\|\mathbf{y}\|\cos(\theta),
+\mathbf{x}\cdot\mathbf{y} = \mathbf{x}^\top\mathbf{y} = \|\mathbf{x}\|\|\mathbf{y}\|\cos\theta,
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> is the <strong>norm</strong> operator applied to tha vector. Norms will be discussed later on.</p>
-<p>In the Machine Learning contexts, the angle <span class="math notranslate nohighlight">\(\theta\)</span> is often used to measure the closeness, or similarity, of two vectors. This can be computed simply via</p>
+<p>In the Machine Learning contexts, the angle <span class="math notranslate nohighlight">\(\theta\)</span> is often used to measure the closeness, or similarity, of two vectors. This can be computed as</p>
 <div class="math notranslate nohighlight">
 \[
-\cos(\theta) = \frac{\mathbf{x}^\top\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}.
+\cos\theta = \frac{\mathbf{x}^\top\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}.
 \]</div>
 <p>This (cosine) similarity takes values between -1 and 1. A maximum value of <span class="math notranslate nohighlight">\(1\)</span>
 when the two vectors point in the same direction, a minimum value of <span class="math notranslate nohighlight">\(-1\)</span> when pointing in opposite directions, and a value of <span class="math notranslate nohighlight">\(0\)</span> when orthogonal.</p>
@@ -852,7 +859,7 @@ when the two vectors point in the same direction, a minimum value of <span class
 </div>
 </div>
 <p>Consider now the dot product of a matrix <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> and a vector <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^n\)</span>.
-We can write the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> in terms of its <strong>row</strong> vectors</p>
+To follow with the above dot-product definition we write the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> in terms of its <strong>row</strong> vectors</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{A}=
 \begin{bmatrix}
@@ -865,92 +872,129 @@ We can write the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\
 is a <strong>row</strong> vector of length <span class="math notranslate nohighlight">\(n\)</span>, representing the <span class="math notranslate nohighlight">\(i^\mathrm{th}\)</span> row of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.
 Now, the matrix-vector dot product <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}\)</span>
 is simply a column vector of length <span class="math notranslate nohighlight">\(m\)</span>,
-whose <span class="math notranslate nohighlight">\(i^\mathrm{th}\)</span> element is the dot product <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \mathbf{x}\)</span></p>
+whose <span class="math notranslate nohighlight">\(i^\mathrm{th}\)</span> element is the dot product <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \cdot \mathbf{x}=\mathbf{a}_i \mathbf{x}\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\mathbf{A}\mathbf{x}
+\mathbf{A}\cdot\mathbf{x}
 = \begin{bmatrix}
 \mathbf{a}^\top_{1} \\
 \mathbf{a}^\top_{2} \\
 \vdots \\
 \mathbf{a}^\top_m \\
-\end{bmatrix}\mathbf{x}
+\end{bmatrix}\cdot\mathbf{x}
 = \begin{bmatrix}
- \mathbf{a}^\top_{1} \mathbf{x}  \\
- \mathbf{a}^\top_{2} \mathbf{x} \\
+ \mathbf{a}^\top_{1}\cdot \mathbf{x}  \\
+ \mathbf{a}^\top_{2}\cdot \mathbf{x} \\
 \vdots\\
- \mathbf{a}^\top_{m} \mathbf{x}\\
+ \mathbf{a}^\top_{m}\cdot \mathbf{x}\\
+\end{bmatrix}
+= \begin{bmatrix}
+ \mathbf{a}_{1} \mathbf{x}  \\
+ \mathbf{a}_{2} \mathbf{x} \\
+\vdots\\
+ \mathbf{a}_{m} \mathbf{x}\\
+\end{bmatrix}
+= \begin{bmatrix}
+ b_{1} \\
+ b_{2} \\
+\vdots\\
+ b_{m}\\
 \end{bmatrix}.
 \end{split}\]</div>
-<p>To make it clear, in the above example there are <span class="math notranslate nohighlight">\(m\)</span> dot products, each <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \mathbf{x}\)</span> which is a multiplcation on <span class="math notranslate nohighlight">\(n\)</span>-sized <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i\)</span> by <span class="math notranslate nohighlight">\(n\)</span>-sized <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. The result of each dot product is a scalar.</p>
+<p>To make it clear, in the above example there are <span class="math notranslate nohighlight">\(m\)</span> dot products, each <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \mathbf{x}\)</span> which is a multiplcation of an <span class="math notranslate nohighlight">\(n\)</span>-sized <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i\)</span> by an <span class="math notranslate nohighlight">\(n\)</span>-sized <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. The result of each dot product is a scalar.</p>
 <p>We can think of the multiplication of <span class="math notranslate nohighlight">\(\mathbf{A}\in \mathbb{R}^{m \times n}\)</span> by <span class="math notranslate nohighlight">\(\mathbf{x}\in \mathbb{R}^n\)</span> as a transformation that projects vectors, <span class="math notranslate nohighlight">\(\mathbf{x}\in \mathbb{R}^n\)</span>,
 from <span class="math notranslate nohighlight">\(\mathbb{R}^{n}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}^{m}\)</span>.
-Note that the column dimension of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> (its length along axis 1)
-must be the same as the dimension of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+Note that the column dimension of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> must be the same as the dimension of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5, 11, 17])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3,  7, 11])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Whereas this is computation results in broadcasting</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">*</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2],
+       [3, 4],
+       [5, 6]])
 </pre></div>
 </div>
 </div>
 </div>
 <p>Next we consider matrix-matrix multiplication.
-Given two matrices <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{n \times k}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} \in \mathbb{R}^{k \times m}\)</span>:</p>
+Given two matrices <span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times k}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{B} \in \mathbb{R}^{k \times n}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{A}=\begin{bmatrix}
  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1k} \\
  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2k} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
- a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nk} \\
+ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mk} \\
 \end{bmatrix},\quad
 \mathbf{B}=\begin{bmatrix}
- b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1m} \\
- b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2m} \\
+ b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1n} \\
+ b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
- b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
+ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{kn} \\
 \end{bmatrix}.\end{split}\]</div>
 <p>Denote by <span class="math notranslate nohighlight">\(\mathbf{a}^\top_{i} \in \mathbb{R}^k\)</span>
 the row vector representing the <span class="math notranslate nohighlight">\(i^\mathrm{th}\)</span> row of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>,
 and let <span class="math notranslate nohighlight">\(\mathbf{b}_{j} \in \mathbb{R}^k\)</span>
 be the column vector of the <span class="math notranslate nohighlight">\(j^\mathrm{th}\)</span> column of the matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>.
-The matrix product <span class="math notranslate nohighlight">\(\mathbf{C} = \mathbf{A}\mathbf{B}\)</span>, is easiest to understand with <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> specified by its row vectors and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> specified by its column vectors,</p>
+The dot matrix-matrix product <span class="math notranslate nohighlight">\(\mathbf{C} = \mathbf{A}\cdot\mathbf{B}\)</span>, is easiest to understand with <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> specified by its row vectors and <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> specified by its column vectors,</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\mathbf{A}=
+\[\begin{split}
+\mathbf{A}=
 \begin{bmatrix}
 \mathbf{a}^\top_{1} \\
 \mathbf{a}^\top_{2} \\
 \vdots \\
-\mathbf{a}^\top_n \\
+\mathbf{a}^\top_m \\
 \end{bmatrix},
 \quad \mathbf{B}=\begin{bmatrix}
- \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{m} \\
+ \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{n} \\
 \end{bmatrix}.
 \end{split}\]</div>
-<p>The matrix product <span class="math notranslate nohighlight">\(\mathbf{C}\in \mathbb{R}^{n \times m}\)</span> is produced as we simply compute each element <span class="math notranslate nohighlight">\(c_{ij}\)</span> as the dot product <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \mathbf{b}_j\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\mathbf{C} = \mathbf{AB} = \begin{bmatrix}
-\mathbf{a}^\top_{1} \\
-\mathbf{a}^\top_{2} \\
-\vdots \\
-\mathbf{a}^\top_n \\
+<p>The matrix product <span class="math notranslate nohighlight">\(\mathbf{C}\in \mathbb{R}^{m \times n}\)</span> is produced by computing each element <span class="math notranslate nohighlight">\(c_{ij}\)</span> as the dot product <span class="math notranslate nohighlight">\(\mathbf{a}^\top_i \mathbf{b}_j\)</span>:</p>
+<p>\begin{align}
+\mathbf{C} &amp;= \mathbf{A\cdot B} \
+&amp;= \begin{bmatrix}
+\mathbf{a}^\top_{1} \
+\mathbf{a}^\top_{2} \
+\vdots \
+\mathbf{a}^\top_m \
 \end{bmatrix}
+\cdot
 \begin{bmatrix}
- \mathbf{b}_{1} &amp; \mathbf{b}_{2} &amp; \cdots &amp; \mathbf{b}_{m} \\
-\end{bmatrix}
-= \begin{bmatrix}
-\mathbf{a}^\top_{1} \mathbf{b}_1 &amp; \mathbf{a}^\top_{1}\mathbf{b}_2&amp; \cdots &amp; \mathbf{a}^\top_{1} \mathbf{b}_m \\
- \mathbf{a}^\top_{2}\mathbf{b}_1 &amp; \mathbf{a}^\top_{2} \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}^\top_{2} \mathbf{b}_m \\
- \vdots &amp; \vdots &amp; \ddots &amp;\vdots\\
-\mathbf{a}^\top_{n} \mathbf{b}_1 &amp; \mathbf{a}^\top_{n}\mathbf{b}_2&amp; \cdots&amp; \mathbf{a}^\top_{n} \mathbf{b}_m
+\mathbf{b}<em>{1} &amp; \mathbf{b}</em>{2} &amp; \cdots &amp; \mathbf{b}_{n} \
+\end{bmatrix}\
+&amp;= \begin{bmatrix}
+\mathbf{a}^\top_1\cdot \mathbf{b}_1 &amp; \mathbf{a}^\top_1\cdot\mathbf{b}_2&amp; \cdots &amp; \mathbf{a}^\top_1\cdot \mathbf{b}_n \
+\mathbf{a}^\top_2\cdot\mathbf{b}_1 &amp; \mathbf{a}^\top_2\cdot \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}^\top_2\cdot \mathbf{b}_n\
+\vdots &amp; \vdots &amp; \ddots &amp;\vdots\
+\mathbf{a}^\top_m\cdot \mathbf{b}_1 &amp; \mathbf{a}^\top_m\cdot\mathbf{b}_2&amp; \cdots&amp; \mathbf{a}^\top_m\cdot \mathbf{b}_n
+\end{bmatrix}\
+&amp;= \begin{bmatrix}
+\mathbf{a}_1\mathbf{b}_1 &amp; \mathbf{a}_1\mathbf{b}_2&amp; \cdots &amp; \mathbf{a}_1 \mathbf{b}_n \
+\mathbf{a}_2\mathbf{b}_1 &amp; \mathbf{a}_2 \mathbf{b}_2 &amp; \cdots &amp; \mathbf{a}_2 \mathbf{b}_n\
+\vdots &amp; \vdots &amp; \ddots &amp;\vdots\
+\mathbf{a}_m \mathbf{b}_1 &amp; \mathbf{a}_m\mathbf{b}_2&amp; \cdots&amp; \mathbf{a}_m \mathbf{b}_n
 \end{bmatrix}.
-\end{split}\]</div>
+\end{align}</p>
+<p>Again, <span class="math notranslate nohighlight">\(\mathbf{a}_1\mathbf{b}_1\)</span> is the dot product of the 1st row in <span class="math notranslate nohighlight">\(\mathbf A\)</span> by the 1st column in <span class="math notranslate nohighlight">\(\mathbf B\)</span>, etc.</p>
+<p>It is common notation practice to <em>omit</em> the dot while writing <span class="math notranslate nohighlight">\(\mathbf A \cdot \mathbf x\)</span> or <span class="math notranslate nohighlight">\(\mathbf A \cdot \mathbf B\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
@@ -973,14 +1017,12 @@ The matrix product <span class="math notranslate nohighlight">\(\mathbf{C} = \ma
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
-<span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="p">)</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">+</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">+</span><span class="n">C</span><span class="p">)</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">+</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ True],
-       [ True],
-       [ True]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -991,14 +1033,12 @@ The matrix product <span class="math notranslate nohighlight">\(\mathbf{C} = \ma
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
-<span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ True],
-       [ True],
-       [ True]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -1008,12 +1048,12 @@ The matrix product <span class="math notranslate nohighlight">\(\mathbf{C} = \ma
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
-<span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ True]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -1023,13 +1063,12 @@ The matrix product <span class="math notranslate nohighlight">\(\mathbf{C} = \ma
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[False, False],
-       [False, False]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -1039,19 +1078,25 @@ The matrix product <span class="math notranslate nohighlight">\(\mathbf{C} = \ma
 <h2>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">¶</a></h2>
 <p>One of the important operators in linear algebra are the <strong>norms</strong>.
 The norm of a vector tells you how large a vector is by maping a vector
-to a scalar. This scalar measures, not the dimensions, but the magnitude of the components.</p>
-<p>Formally, given any vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, the vector norm is a function <span class="math notranslate nohighlight">\(f\)</span> that has multiple propeerties:</p>
-<p>The first is a scaling property that says
+to a scalar. This scalar measures, not the dimensions, but the magnitude of the components.
+Formally, given any vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, the vector norm is a function <span class="math notranslate nohighlight">\(f\)</span> that has multiple propeerties:</p>
+<ul class="simple">
+<li><p>The first is a scaling property that says
 that if we scale all the elements of a vector
 by a constant factor <span class="math notranslate nohighlight">\(\alpha\)</span>,
-its norm also scales by the <em>absolute value</em>
-of the same constant factor. In example,</p>
+its norm also scales by the <strong>absolute value</strong>
+of the same constant factor. In example,</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x}).\]</div>
-<p>The second property is the triangle inequality:</p>
+<ul class="simple">
+<li><p>The second property is the triangle inequality:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y}).\]</div>
-<p>The third property simply says that the norm must be non-negative:</p>
+<ul class="simple">
+<li><p>The third property simply says that the norm must be non-negative:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[f(\mathbf{x}) \geq 0.\]</div>
 <p>The final property requires that the smallest norm is achieved if and only if
@@ -1077,9 +1122,7 @@ the <span class="math notranslate nohighlight">\(L_2\)</span> norm, and is defin
 </div>
 </div>
 <p>The <span class="math notranslate nohighlight">\(L_1\)</span> norm is defined as the sum of the absolute values of the vector elements:
-$<span class="math notranslate nohighlight">\(\|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|.\)</span><span class="math notranslate nohighlight">\(
-In more generality, the \)</span>L_p<span class="math notranslate nohighlight">\( norm is defined as 
-\)</span><span class="math notranslate nohighlight">\(\|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}.\)</span>$</p>
+$<span class="math notranslate nohighlight">\(\|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|.\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -1093,6 +1136,8 @@ In more generality, the \)</span>L_p<span class="math notranslate nohighlight">\
 </div>
 </div>
 </div>
+<p>In more generality, the <span class="math notranslate nohighlight">\(L_p\)</span> norm is defined as
+$<span class="math notranslate nohighlight">\(\|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}.\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -1109,6 +1154,7 @@ In more generality, the \)</span>L_p<span class="math notranslate nohighlight">\
 </div>
 <div class="section" id="identity-matrices">
 <h2>Identity matrices<a class="headerlink" href="#identity-matrices" title="Permalink to this headline">¶</a></h2>
+<p>The identity matrix of size n is the <span class="math notranslate nohighlight">\(n \times n\)</span> square matrix with ones on the main diagonal and zeros elsewhere. It is denoted by <span class="math notranslate nohighlight">\(\mathbf I_n\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -1157,6 +1203,13 @@ In more generality, the \)</span>L_p<span class="math notranslate nohighlight">\
 </div>
 <div class="section" id="inverse-matrices">
 <h2>Inverse matrices<a class="headerlink" href="#inverse-matrices" title="Permalink to this headline">¶</a></h2>
+<p>An <span class="math notranslate nohighlight">\(n\times n\)</span> square matrix <span class="math notranslate nohighlight">\(\mathbf A\)</span> is called invertible (also nonsingular or nondegenerate), if there exists an <span class="math notranslate nohighlight">\(n\times n\)</span> square matrix <span class="math notranslate nohighlight">\(\mathbf B\)</span> such that
+$<span class="math notranslate nohighlight">\(
+\mathbf {AB} =\mathbf {BA} =\mathbf {I} _{n}.
+\)</span>$</p>
+<p>In this case, the matrix <span class="math notranslate nohighlight">\(\mathbf B\)</span> is uniquely determined by <span class="math notranslate nohighlight">\(\mathbf A\)</span>, and is called the inverse of <span class="math notranslate nohighlight">\(\mathbf A\)</span>, denoted by <span class="math notranslate nohighlight">\(\mathbf A^{-1}\)</span>.
+A square matrix that is not invertible is called singular or degenerate.
+This topic will be discussed further in later sections.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
@@ -1208,85 +1261,121 @@ In more generality, the \)</span>L_p<span class="math notranslate nohighlight">\
 In two dimensions the hyperplane is a <strong>line</strong>, and in three dimensions it is a <strong>plane</strong>. In more generality, in an <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector space, a hyperplane has <span class="math notranslate nohighlight">\(d-1\)</span> dimensions
 and <strong>divides the space into two half-spaces</strong>.
 In the Machine Learning language in the contex of classification hyperplanes that separate the space are named <strong>decision planes</strong>.</p>
-<p>In example, <span class="math notranslate nohighlight">\(\mathbf{a}=(1,2)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{b}=1\)</span> define the line <span class="math notranslate nohighlight">\(2y = 1 - x\)</span> in the two dimensional space, while <span class="math notranslate nohighlight">\(\mathbf{a}=(1,2,3)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{b}=1\)</span> defines the plane <span class="math notranslate nohighlight">\( z= 1 - x-2y\)</span> in the three dimensional space.</p>
+<p>In example,</p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\mathbf{a}=(1,2)\)</span> the equation <span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{b}=1\)</span> defines the <strong>line</strong> <span class="math notranslate nohighlight">\(2y = 1 - x\)</span> in the <strong>two dimensional</strong> space, while</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\mathbf{a}=(1,2,3)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{b}=1\)</span> defines the <strong>plane</strong> <span class="math notranslate nohighlight">\( z= 1 - x-2y\)</span> in the <strong>three dimensional</strong> space.</p></li>
+</ul>
 </div>
 <div class="section" id="solving-a-system-of-linear-equations">
 <h2>Solving a system of linear equations<a class="headerlink" href="#solving-a-system-of-linear-equations" title="Permalink to this headline">¶</a></h2>
+<p>The set of equations
+$<span class="math notranslate nohighlight">\(
+\mathbf A \mathbf x = \mathbf b
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\mathbf{A}\in \mathbb{R}^{m \times n}<span class="math notranslate nohighlight">\(, \)</span>\mathbf{x}\in \mathbb{R}^n<span class="math notranslate nohighlight">\(, and \)</span>\mathbf{b}\in \mathbb{R}^m<span class="math notranslate nohighlight">\(, has the solution
+\)</span><span class="math notranslate nohighlight">\(
+\mathbf A^{-1} \mathbf A \mathbf x =\mathbf I_n\mathbf x =\mathbf x=\mathbf A^{-1}  \mathbf b
+\)</span><span class="math notranslate nohighlight">\(
+given that \)</span>\mathbf A^{-1}$ exists.</p>
+<p>with <span class="math notranslate nohighlight">\(m=n=2\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.],
-       [2.]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2.])
 </pre></div>
 </div>
 </div>
 </div>
-<p>Singular matrices are not invertible and are called singular.</p>
+<p>with <span class="math notranslate nohighlight">\(m=3\)</span>, and <span class="math notranslate nohighlight">\(n=2\)</span> we use a <strong>pseudoinverse</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5, 1. ])
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="linear-equations">
 <h2>Linear equations<a class="headerlink" href="#linear-equations" title="Permalink to this headline">¶</a></h2>
 <p>The set of equations</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{A}\mathbf{x}=\mathbf{b}\]</div>
-<p>corresponds</p>
+<p>correspond to an <span class="math notranslate nohighlight">\(m\)</span> equations with <span class="math notranslate nohighlight">\(n\)</span> unknowns</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
 a_{1,1}x_1 + a_{1,2}x_2 + \cdots + a_{1,n}x_n = b_1 \\\\
 a_{2,1}x_1 + a_{2,2}x_2 + \cdots + a_{2,n}x_n = b_2 \\\\
 \cdots \\\\
-a_{m,1}x_1 + a_{m,2}x_2 + \cdots + a_{m,n}x_n = b_n
+a_{m,1}x_1 + a_{m,2}x_2 + \cdots + a_{m,n}x_n = b_m
 \end{align}
-\quad\text{or}\quad
-\begin{bmatrix}
-    a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\\\
-    a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\\\
-    \cdots &amp; \cdots &amp; \cdots &amp; \cdots \\\\
-    a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
-\end{bmatrix}
-\begin{bmatrix}
-    x_1 \\\\
-    x_2 \\\\
-    \cdots \\\\
-    x_n
-\end{bmatrix}
-=
-\begin{bmatrix}
-    b_1 \\\\
-    b_2 \\\\
-    \cdots \\\\
-    b_m
-\end{bmatrix}.
 \end{split}\]</div>
-<p>Here we have <span class="math notranslate nohighlight">\(m\)</span> equations representing…, with <span class="math notranslate nohighlight">\(n\)</span> unknowns representing the <strong>dimension space</strong>.
-Commonly, we are given <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>, and we solve for <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> that satisfy the above equations.</p>
-<p>How many solutions does <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> have? There are three possibilites:</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="or-begin-bmatrix-a-1-1-a-1-2-cdots-a-1-n-a-2-1-a-2-2-cdots-a-2-n-cdots-cdots-cdots-cdots-a-m-1-a-m-2-cdots-a-m-n-end-bmatrix-begin-bmatrix-x-1-x-2-cdots-x-n-end-bmatrix">
+<h1>or
+$$
+\begin{bmatrix}
+a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \
+a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \
+\cdots &amp; \cdots &amp; \cdots &amp; \cdots \
+a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \
+x_2 \
+\cdots \
+x_n
+\end{bmatrix}<a class="headerlink" href="#or-begin-bmatrix-a-1-1-a-1-2-cdots-a-1-n-a-2-1-a-2-2-cdots-a-2-n-cdots-cdots-cdots-cdots-a-m-1-a-m-2-cdots-a-m-n-end-bmatrix-begin-bmatrix-x-1-x-2-cdots-x-n-end-bmatrix" title="Permalink to this headline">¶</a></h1>
+<p>\begin{bmatrix}
+b_1 \
+b_2 \
+\cdots \
+b_m
+\end{bmatrix}.
+$$</p>
+<p>Commonly, we are given <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> as inputs, and we solve for <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> that satisfy the above equations.</p>
+<p>How many solutions does <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> have? There are the three possibilites:</p>
 <ol class="simple">
 <li><p>No solution</p></li>
 <li><p>One solution</p></li>
 <li><p>Infinite number of solutions</p></li>
 </ol>
-<p>Why can’t there be more than one solution and less than an infinite number of solutions ?</p>
+<p>Why can’t there be more than one solution and less than an infinite number of solutions?</p>
 <p>On the intuition level, it is because we are working with linear equations.
-It is clear if we consider the simple scenario of two equations and two unknowns: the solution of this system corresponds to the intersection of the lines. One possibility is that the two lines never cross (parallel). Another possibility is that they cross exactly once. And the last possibility is that they cross everywhere (superimposed).</p>
+It is clear if we consider the simple scenario of two equations and two unknowns: the solution of this system corresponds to the intersection of lines.</p>
+<ol class="simple">
+<li><p>One possibility is that the two lines never cross (parallel).</p></li>
+<li><p>Another possibility is that they cross exactly once.</p></li>
+<li><p>And the last possibility is that they cross everywhere (superimposed).</p></li>
+</ol>
 <p>There are two ways to describe a system of linear equations: the <strong>row view</strong> and the <strong>column view</strong>.</p>
-</div>
 <div class="section" id="row-view">
 <h2>Row view<a class="headerlink" href="#row-view" title="Permalink to this headline">¶</a></h2>
-<p>The row view is probably more intuitive because it is the representation used when we have only one equation. It can now be extended to an infinite number of equations and unknowns.</p>
-<p>We said that the solutions of the linear system of equations are the sets of values of <span class="math notranslate nohighlight">\(x_1...x_n\)</span> that satisfies all equations. For instance, in the case of <span class="math notranslate nohighlight">\(\mathbf{A}\in \mathbb{R}^{m \times n}\)</span> with <span class="math notranslate nohighlight">\(m=n=2\)</span> the equations correspond to 2 lines in the 2-dimensional space and the solution of the system is the intersection of these lines.</p>
+<p>The row view is probably more intuitive than the column view.
+We mentioned that the solution of a linear system of equations are the sets of values of <span class="math notranslate nohighlight">\(\mathbf x = (x_1, x_2, ... x_n)\)</span> that satisfy all equations. For instance, in the case of <span class="math notranslate nohighlight">\(\mathbf{A}\in \mathbb{R}^{m \times n}\)</span> with <span class="math notranslate nohighlight">\(m=n=2\)</span> the equations correspond to 2 lines in the 2-dimensional space and the solution of the system is the intersection of these lines.</p>
 <p>As mentioned before, a linear system can be viewed as a set of <span class="math notranslate nohighlight">\((n-1)\)</span>-dimensional hyperplanes in a <span class="math notranslate nohighlight">\(n\)</span>-dimensional space. The system can also be characterized by its number of equations <span class="math notranslate nohighlight">\(m\)</span>, and the number of unknown variables <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(m \gt n\)</span>, that is there are more equations than unknows the system is called <strong>overdetermined</strong>. In example, a system of 3 equations (represented by 3 lines) and 2 unknowns (corresponding to 2 dimensions). In this example, if the lines are independent, there is no solution since there is no point belonging to the three lines.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(m\lt n\)</span>, that is there are more unknowns than equations the system is named <strong>underdetermined</strong>. In example, there is only 1 equation (1 line) and 2 dimensions. In this case, each point along the line is a solution to the system and the system has infinite number of solutions.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(m \gt n\)</span>, there are more equations than unknowns, the system is called <strong>overdetermined</strong>. For example, consider a system of 3 equations (represented by 3 lines) and 2 unknowns (corresponding to 2 dimensions). If the equations (or lines) are independent in this system, there is no solution since there is no point that belongs to the three lines.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(m \lt n\)</span>, there are more unknowns than equations, and the system is termed <strong>underdetermined</strong>. For example, consider a system of 1 equation (1 line) and 2 dimensions. In this case, each point along the line is a solution to the system, resulting in an infinite number of solutions.</p></li>
 </ul>
+<p>Let’s look at these examples in more depth:</p>
 <div class="section" id="example-1-1-equation-and-2-variables">
 <h3>Example 1: 1 equation and 2 variables<a class="headerlink" href="#example-1-1-equation-and-2-variables" title="Permalink to this headline">¶</a></h3>
 <p>Let us start with an <strong>underdetermined</strong> example with  <span class="math notranslate nohighlight">\(m=1\)</span> and  <span class="math notranslate nohighlight">\(n=2\)</span>:</p>
@@ -1294,8 +1383,8 @@ It is clear if we consider the simple scenario of two equations and two unknowns
 \[
 a_{1,1}x_1 + a_{1,2}x_2 = b_1
 \]</div>
-<p>The graphical interpretation of <span class="math notranslate nohighlight">\(n=2\)</span> is that we have a 2-dimensional space. So we represent it with 2 axes. Since our hyperplane is of <span class="math notranslate nohighlight">\(n-1\)</span>-dimensional, we have a 1-dimensional hyperplane. This is simply a line. As <span class="math notranslate nohighlight">\(m=1\)</span>, we have only one equation. This means that we have only one line characterizing our linear system.</p>
-<p>Note that the last equation can also be written in a way that may be more usual:</p>
+<p>The graphical interpretation of <span class="math notranslate nohighlight">\(n=2\)</span> is that we have a 2-dimensional space represented visually by 2 axes. Since the hyperplane is of <span class="math notranslate nohighlight">\(n-1\)</span>-dimensional, we have a 1-dimensional hyperplane which is simply a line. As <span class="math notranslate nohighlight">\(m=1\)</span>, we have only one equation. This means that we have only one line characterizing the linear system.</p>
+<p>Note that the last equation can also be written in a way that may be more common:</p>
 <div class="math notranslate nohighlight">
 \[
 x_2 = \frac{a_{1,1}}{a_{1,2}}x_1 +\frac{b_1}{a_{1,2}}b_1,\quad\text{or}\quad
@@ -1312,20 +1401,18 @@ y = \frac{a_{1,1}}{a_{1,2}}x +\frac{b_1}{a_{1,2}}b_1,
 a_{1,1}x_1 + a_{1,2}x_2 = b_1\\
 a_{2,1}x_1 + a_{2,2}x_2 = b_2.
 \end{split}\]</div>
-<p>The graphical interpretation of <span class="math notranslate nohighlight">\(n=2\)</span> is as before. That is, we have a 2-dimensional space, represented with 2 axes, and each equation represents an <span class="math notranslate nohighlight">\(1\)</span>-dimensional hyperplane which is simply a line.</p>
-<p>But, here <span class="math notranslate nohighlight">\(m=2\)</span>, which means that we have two equations, or 2 lines in a 2-dimensional space.
-There are multiple scenarios:</p>
+<p>The graphical interpretation of <span class="math notranslate nohighlight">\(n=2\)</span> is as before. That is, we have a system in the 2-dimensional space, represented visually with 2 axes, and each equation represents a <span class="math notranslate nohighlight">\(1\)</span>-dimensional hyperplane which is simply a line.</p>
+<p>But, here <span class="math notranslate nohighlight">\(m=2\)</span>, which means that we have two equations or 2 lines in the 2-dimensional space.
+Now, there are multiple scenarios:</p>
 <ul class="simple">
-<li><p>The two lines run in parallel and there is no solution.</p></li>
-<li><p>The two lines intersect and we have one unique solution.</p></li>
-<li><p>The two lines superimpose: it is the same equation or linearily dependant. In this case there are infinite number of solutions since each and every point on the lines corresponds to a solution.</p></li>
+<li><p>The two lines run in parallel, and there is no solution,</p></li>
+<li><p>The two lines intersect, and there is a unique solution, or</p></li>
+<li><p>The two lines superimpose representing the same equation (or line). In this case, there is an infinite number of solutions since each point along the lines correspond to a solution.</p></li>
 </ul>
-<p>Same conlusioned can be drawn with higher values of <span class="math notranslate nohighlight">\(m\)</span> (number of equations) and <span class="math notranslate nohighlight">\(n\)</span> (number of dimensions). For example, two 2-dimensional plane in a 3-dimensional space can be</p>
-<ul class="simple">
-<li><p>parallel (no solution),</p></li>
-<li><p>cross (infinitely many solutions since their crossing is a line), or</p></li>
-<li><p>superimposed (infinitely many solutions).</p></li>
-</ul>
+<!-- Same conclusion can be drawn with higher values of $m$ (number of equations) and $n$ (number of dimensions). For example, two 2-dimensional planes in a 3-dimensional space can be 
+* parallel (no solution),
+* cross (infinitely many solutions since their crossing is a line), or
+* superimposed (infinitely many solutions).  -->
 </div>
 <div class="section" id="example-3-3-equation-and-2-variables">
 <h3>Example 3: 3 equation and 2 variables<a class="headerlink" href="#example-3-3-equation-and-2-variables" title="Permalink to this headline">¶</a></h3>
@@ -1336,16 +1423,16 @@ a_{1,1}x_1 + a_{1,2}x_2 = b_1\\
 a_{2,1}x_1 + a_{2,2}x_2 = b_2\\
 a_{3,1}x_1 + a_{3,2}x_2 = b_3
 \end{split}\]</div>
-<p>The graphical interpretation of <span class="math notranslate nohighlight">\(n=2\)</span> is as before. That is, we have a 2-dimensional space, represented by 2 axes, and each equation represents an <span class="math notranslate nohighlight">\(1\)</span>-dimensional hyperplane which is simply a line.</p>
+<p>The graphical interpretation of <span class="math notranslate nohighlight">\(n=2\)</span> is as before. That is, we have a system in the 2-dimensional space, represented by 2 axes, and each equation represents an <span class="math notranslate nohighlight">\(1\)</span>-dimensional hyperplane which, as before, is simply a line.</p>
 <p>Here <span class="math notranslate nohighlight">\(m=3\)</span>, which means that we have three equations, or 3 lines in a 2-dimensional space.</p>
 <p>There are multiple scenarios:</p>
 <ul class="simple">
-<li><p>The three lines run in parallel and there is no solution.</p></li>
-<li><p>The three lines intersect. If the three lines are independent, there are multiple intersections with no unique solution.</p></li>
-<li><p>Two lines are dependent and the third is independent: we have a unique solution at the intersection of them with the third line.</p></li>
-<li><p>The three lines superimpose: there are infinite number of solutions.</p></li>
+<li><p>The three lines run in parallel, and there is no solution,</p></li>
+<li><p>The three lines intersect. If the three lines are independent, there are multiple intersections with no unique solution,</p></li>
+<li><p>Two lines are dependent, and the third is independent: we have a unique solution at the intersection of the dependent’s two with the third line, or</p></li>
+<li><p>The three lines superimpose: there is an infinite number of solutions.</p></li>
 </ul>
-<p>As before, these conlusioned can be generalized to higher spaces.</p>
+<p>These examples can be generalized to higher spaces.</p>
 </div>
 </div>
 <div class="section" id="linear-combination">
@@ -1354,7 +1441,9 @@ a_{3,1}x_1 + a_{3,2}x_2 = b_3
 In example:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{x}^\top=(1,2,3),~\mathbf{y}^\top=(4,5,6),\quad \text{and}\quad \mathbf{y}^\top=a\mathbf{x}^\top+b\mathbf{y}^\top,\text{with}~ a=1,~b=2.
+\mathbf{x}^\top=(1,2,3),~\mathbf{y}^\top=(4,5,6),
+\quad \text{and}
+\quad \mathbf{z}^\top=a\mathbf{x}^\top+b\mathbf{y}^\top,\text{with}~ a=1,~b=2.
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1372,21 +1461,30 @@ In example:</p>
 </div>
 <div class="section" id="span">
 <h2>Span<a class="headerlink" href="#span" title="Permalink to this headline">¶</a></h2>
-<p>Consider the above <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>: ALL the points that can reached by their combination via some <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are called the set of points is the span of the vectors <span class="math notranslate nohighlight">\(\{\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}\}\)</span>.
-Vector <strong>space</strong> means all the points that can be reached by this vector. In example, the space of all real numbers is <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> and for <span class="math notranslate nohighlight">\(n\)</span>-dimensions the space is <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.
-Vector <strong>subspace</strong> means that the space occupies only part of the space. In example, a 2-dimensional plane is a subspace in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> and a line is a subspace in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
+<p>Consider the above <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>: ALL the points that can be reached by their combination via some <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are called the set of points is the <strong>span</strong> of the vectors <span class="math notranslate nohighlight">\(\{\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}\}\)</span>.
+Vector <strong>space</strong> means all the points that can be reached by this vector. In example,</p>
+<ul class="simple">
+<li><p>the space of all real numbers is <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, and</p></li>
+<li><p>for <span class="math notranslate nohighlight">\(n\)</span>-dimensions the space is <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
+</ul>
+<p>Vector <strong>subspace</strong> means that the space occupies only part of the space. In example,</p>
+<ul class="simple">
+<li><p>a 2-dimensional plane is a subspace in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>, and</p></li>
+<li><p>a line is a subspace in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p></li>
+</ul>
 <p>In general, we will say that a collection of vectors
 <span class="math notranslate nohighlight">\(\mathbf{x}_1,\mathbf{x}_2, \ldots, \mathbf{x}_n\)</span> are linearly <strong>dependent</strong>
-if there exist coefficients <span class="math notranslate nohighlight">\(a_1,a_2 \ldots, a_n\)</span> not all zero such that</p>
+if there exist coefficients <span class="math notranslate nohighlight">\(a_1,a_2 \ldots, a_n\)</span>, not all zeros, such that</p>
 <div class="math notranslate nohighlight">
 \[
 \sum_{i=1}^n a_i\mathbf{x_i} = 0.
 \]</div>
-<p>In this case, we can solve for one of the vectors in terms of a combination of the others, and thus this vector is redundant.
-Similarly, a linear dependence in the columns of a matrix means that this matrix can be compresed down to a lower dimension. If there is no linear dependence we say the vectors are linearly independent. In a matrix, if the columns are linearly independent, the matrix cannot be compressed to a lowed dimension.</p>
-<p>A set of vectors which is linearly <strong>independent</strong> and <strong>spans</strong> some vector space, forms a <strong>basis</strong> for that vector space.
+<p>In this case, we can solve for one of the vectors in terms of a combination of the others, and thus this vector is <strong>redundant</strong>.
+Similarly, a linear dependence in the columns of a matrix means that this matrix can be <strong>compressed</strong> down to a lower dimension.</p>
+<p>If there is no linear dependence, we say the vectors are <strong>linearly independent</strong>. In a matrix, if the columns are linearly independent, the matrix cannot be compressed to a lowed dimension.</p>
+<p>A set of vectors that is linearly <strong>independent</strong> and <strong>spans</strong> some vector space forms a <strong>basis</strong> for that vector space.
 The <strong>standard basis</strong> (also called natural basis or canonical basis) in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is the set of vectors whose components are all zero, except one that equals 1. For example, the standard basis in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> is formed by the vectors <span class="math notranslate nohighlight">\(\mathbf{x}^\top=(1,0)^\top\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}^\top=(0,1)^\top\)</span>.</p>
-<p>The linear combination of vectors in a space stay in the same space. For instance, any linear combination of two lines in a <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> result in another vector in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
+<p>The linear combination of vectors in a space stays in the same space. For instance, any linear combination of two lines in a <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> results in another vector in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p>
 </div>
 <div class="section" id="column-view">
 <h2>Column view<a class="headerlink" href="#column-view" title="Permalink to this headline">¶</a></h2>
@@ -1431,38 +1529,7 @@ x_n
 \end{split}\]</div>
 <p>In this view, the solution <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is a linear combination of the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, weighted by the components of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 <ul class="simple">
-<li><p>For the <strong>underdetermined</strong> system, <span class="math notranslate nohighlight">\(n \gt m\)</span> and the system has <strong>infinite number of solutions</strong>. As an example in the column view,
-<span class="math notranslate nohighlight">\(
-\begin{align}
-a_{1,1}x_1+a_{1,2}x_2+a_{1,3}x_3=b_1\\
-a_{2,1}x_1+a_{2,2}x_2+a_{2,3}x_3=b_2
-\end{align}
-\quad\text{corresponds to}\quad\
-x_1
-\begin{bmatrix}
-  a_{1,1}\\
-  a_{2,1}
-\end{bmatrix}
-+x_2
-\begin{bmatrix}
-  a_{1,2}\\
-  a_{2,2}
-\end{bmatrix}
-+x_3
-\begin{bmatrix}
-  a_{1,3}\\
-  a_{2,3}
-\end{bmatrix}
-=
-\begin{bmatrix}
-  b_{1}\\
-  b_{2}
-\end{bmatrix}.
-\)</span></p></li>
-</ul>
-<p>But, if the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are independent, two of them are enough to reach any point in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. So, two components out of the three in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> are set and the third is free, meaning that there are infinite number of solutions.</p>
-<ul class="simple">
-<li><p>For the <strong>overdetermined</strong> system <span class="math notranslate nohighlight">\(m\gt n\)</span> and there is <strong>no solution</strong>. For example using the column view,</p></li>
+<li><p>For the <strong>overdetermined</strong> system <span class="math notranslate nohighlight">\(m\gt n\)</span> and there is <strong>no solution</strong>. For example, in the column view,</p></li>
 </ul>
 </div>
 </div>
@@ -1492,20 +1559,54 @@ b_{2}\
 b_{3}
 \end{bmatrix}.
 $</p>
-<p>In the row view we have 3 lines and we are looking for unique intersection in the 2-dimensional plan. The three lines (if independent) will intesect in multiple points resulting in no solution. In the column view, becuase <span class="math notranslate nohighlight">\(n=2\)</span> the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vecotr <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> lies, for some reason, in the subspace formed by these two vectors.</p>
+<p>In the row view, we have 3 lines, and we are looking for a unique intersection in the 2-dimensional plane. The three lines (if independent) will intersect in multiple points resulting in no solution. In the column view, because <span class="math notranslate nohighlight">\(n=2\)</span> the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vector <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> lies, for some reason, in the subspace formed by these two vectors.</p>
+<ul class="simple">
+<li><p>For the <strong>underdetermined</strong> system, <span class="math notranslate nohighlight">\(m \lt n\)</span> and the system has <strong>infinite number of solutions</strong>. As an example in the column view,
+$<span class="math notranslate nohighlight">\(
+\begin{align}
+a_{1,1}x_1+a_{1,2}x_2+a_{1,3}x_3=b_1\\
+a_{2,1}x_1+a_{2,2}x_2+a_{2,3}x_3=b_2
+\end{align}
+\quad\text{corresponds to}\quad\
+x_1
+\begin{bmatrix}
+  a_{1,1}\\
+  a_{2,1}
+\end{bmatrix}
++x_2
+\begin{bmatrix}
+  a_{1,2}\\
+  a_{2,2}
+\end{bmatrix}
++x_3
+\begin{bmatrix}
+  a_{1,3}\\
+  a_{2,3}
+\end{bmatrix}
+=
+\begin{bmatrix}
+  b_{1}\\
+  b_{2}
+\end{bmatrix}.
+\)</span>$</p></li>
+</ul>
+<p>But, if the columns of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are independent, two of them are enough to reach any point in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. So, two components out of the three in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> are used to determine the solution while the third is free, meaning that there is an infinite number of solutions.</p>
 <div class="section" id="linear-dependency">
 <h2>Linear dependency<a class="headerlink" href="#linear-dependency" title="Permalink to this headline">¶</a></h2>
-<p>The number of columns can thus provide information on the number of solutions. But the number that we have to take into account is the number of linearly <strong>independent</strong> columns. Columns are linearly <strong>dependent</strong> if one of them is a linear combination of the others. In the column view, the direction of two linearly dependent vectors is the same and this doesn’t add value in spanning the space.</p>
+<p>The number of <strong>columns</strong> can thus provide information on the number of solutions. But the number that we have to take into account is the number of linearly <strong>independent</strong> columns. Columns are linearly <strong>dependent</strong> if one of them is a linear combination of the others. In the column view, the direction of two linearly dependent vectors is the same, and this doesn’t add value in spanning the space.</p>
 <p>As an example,</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="begin-align-x-1-2x-2-b-1-2x-1-4x-2-b-2-end-align-quad-text-which-in-the-column-view-is-quad-x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix">
-<h1>$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-x_1+2x_2=b_1\
+x_1+2x_2=b_1\\
 2x_1+4x_2=b_2
 \end{align}
-\quad\text{which in the column view is}\quad
+\end{split}\]</div>
+<p>which in the column view is</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix">
+<h1>$$
 x_1
 \begin{bmatrix}
 1 \
@@ -1516,20 +1617,19 @@ x_2
 \begin{bmatrix}
 2 \
 4
-\end{bmatrix}<a class="headerlink" href="#begin-align-x-1-2x-2-b-1-2x-1-4x-2-b-2-end-align-quad-text-which-in-the-column-view-is-quad-x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix" title="Permalink to this headline">¶</a></h1>
+\end{bmatrix}<a class="headerlink" href="#x-1-begin-bmatrix-1-2-end-bmatrix-x-2-begin-bmatrix-2-4-end-bmatrix" title="Permalink to this headline">¶</a></h1>
 <p>\begin{bmatrix}
 b_1 \
 b_2
 \end{bmatrix}
-$.</p>
+$$.</p>
 <p>The columns <span class="math notranslate nohighlight">\((1,2)^\top\)</span> and <span class="math notranslate nohighlight">\((2,4)^\top\)</span> are <strong>dependent</strong> and hence their linear combination is not enough to span the full <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> and reach all points in this space. If <span class="math notranslate nohighlight">\(\mathbf{b}=(3,6)^\top\)</span> there is a solution <span class="math notranslate nohighlight">\(\mathbf{x}^\top=(1,1)^\top\)</span> because the vector <span class="math notranslate nohighlight">\((1,2)^\top\)</span> spans a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> that contains the vector <span class="math notranslate nohighlight">\(\mathbf{b}=(3,6)^\top\)</span>.
-But for more general solution, as say <span class="math notranslate nohighlight">\(\mathbf{b}=(3,7)\)</span>, there is no solution
-as linear combinations of <span class="math notranslate nohighlight">\((1,2)^\top\)</span> are not enough to reach all points in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. This is an example of an <strong>overdetermined</strong> system with <span class="math notranslate nohighlight">\(m=2\gt n=1\)</span> because of the linear dependency between the columns.</p>
+But for a more general solution, as say <span class="math notranslate nohighlight">\(\mathbf{b}=(3,7)\)</span>, there is no solution as linear combinations of <span class="math notranslate nohighlight">\((1,2)^\top\)</span> are not enough to reach all points in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. This is an example of an <strong>overdetermined</strong> system with <span class="math notranslate nohighlight">\(m=2\gt n=1\)</span> because of the linear dependency between the columns.</p>
 <div class="section" id="square-matrix">
 <h2>Square matrix<a class="headerlink" href="#square-matrix" title="Permalink to this headline">¶</a></h2>
-<p>When <span class="math notranslate nohighlight">\(\mathbf{A}\in\mathbb{R}^{m\times n}\)</span> and <span class="math notranslate nohighlight">\(m=n\)</span> the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is called square matrix and if the columns are linearly <strong>independant</strong> there is a unique solution to <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span>.
+<p>When <span class="math notranslate nohighlight">\(\mathbf{A}\in\mathbb{R}^{m\times n}\)</span> and <span class="math notranslate nohighlight">\(m=n\)</span>, the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is called square matrix and if the columns are linearly <strong>independant</strong> there is a unique solution to <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span>.
 The solution is simply <span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{A}^{-1}\mathbf{b}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span> is the inverse of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
-<p>When <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span> exist, we say that <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is invertible (aka, nonsingular, or nondegenerate).
+<p>When <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span> exist, we say that <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is invertible (a.k.a., nonsingular, or nondegenerate).
 In this case, the columns and rows of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> are linearly independent.</p>
 <!-- A is invertible, that is, A has an inverse, is nonsingular, or is nondegenerate.
 A is row-equivalent to the n-by-n identity matrix In.
@@ -1548,20 +1648,50 @@ There is an n-by-n matrix B such that AB = In = BA.
 The transpose AT is an invertible matrix (hence rows of A are linearly independent, span Kn, and form a basis of Kn).
 The number 0 is not an eigenvalue of A.
 The matrix A can be expressed as a finite product of elementary matrices.
-The matrix A has a left inverse (that is, there exists a B such that BA = I) or a right inverse (that is, there exists a C such that AC = I), in which case both left and right inverses exist and B = C = A−1. --></div>
+The matrix A has a left inverse (that is, there exists a B such that BA = I) or a right inverse (that is, there exists a C such that AC = I), in which case both left and right inverses exist and B = C = A−1. --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.2,  0.2,  0. ],
+       [-0.2,  0.3,  1. ],
+       [ 0.2, -0.3, -0. ]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="rank">
 <h2>Rank<a class="headerlink" href="#rank" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>column rank</strong> of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is the dimension of the column space of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> (i.e., the number of linearly independent columns), while the <strong>row rank</strong> of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is the dimension of the row space of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> (i.e., the number of linearly independent rows).</p>
-<p>A fundamental result in linear algebra is that the column rank and the row rank are <strong>always equal</strong> and this number is simply called the rank of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.
+<p>A fundamental result in linear algebra is that the column rank and the row rank are <strong>always equal</strong>, and this number is called the rank of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.
 A matrix <span class="math notranslate nohighlight">\(\mathbf{A}\in\mathbb{R}^{m\times n}\)</span> is said to have <strong>full rank</strong> if it’s rank equals to <span class="math notranslate nohighlight">\(\min(m, n\)</span>); otherwise, the matrix is <strong>rank deficient</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]);</span> <span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]]);</span> <span class="n">C</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]);</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]]);</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
 <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2]
+ [3 4]]
+[[1 2]
+ [2 4]]
+[[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 1, 3)
 </pre></div>
 </div>
@@ -1576,7 +1706,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{I}_n\)</span> denotes the <span class="math notranslate nohighlight">\(n\times n\)</span> identity matrix. In this case, then the matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is uniquely determined by <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, and is called the inverse of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, denoted by <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span>.</p>
 <p>A square matrix that is not invertible is called <strong>singular</strong> or <strong>degenerate</strong>. Non-square matrices (<span class="math notranslate nohighlight">\(m\times n\)</span> matrices with <span class="math notranslate nohighlight">\(n\ne n\)</span>) do not have an inverse (but they may have a left inverse or right inverse).
-A square matrix is singular if and only if its determinant is zero. In practice, singular square matrices are quite rare.</p>
+A square matrix is singular if and only if its determinant is zero. In practice, singular square matrices are pretty rare.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{A} = \begin{bmatrix}
@@ -1592,8 +1722,19 @@ d &amp; -b \\
 -c &amp; a
 \end{bmatrix}.
 \end{split}\]</div>
-<p>We can test to see this by seeing that multiplying
-by the inverse given by the formula above works in practice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]]);</span> 
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -1626,15 +1767,8 @@ by the inverse given by the formula above works in practice.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Python Tutorial</p>
+            <p class="prev-next-title">Python Review</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="Probability_and_Statistics_Review.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability and Statistics Review</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
         
