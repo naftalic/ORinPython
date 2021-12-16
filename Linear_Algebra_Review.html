@@ -1083,8 +1083,9 @@ the <span class="math notranslate nohighlight">\(L_2\)</span> norm, and is defin
 </div>
 </div>
 </div>
-<p>The <span class="math notranslate nohighlight">\(L_1\)</span> norm is defined as the sum of the absolute values of the vector elements:
-$<span class="math notranslate nohighlight">\(\|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|.\)</span>$</p>
+<p>The <span class="math notranslate nohighlight">\(L_1\)</span> norm is defined as the sum of the absolute values of the vector elements:</p>
+<div class="math notranslate nohighlight">
+\[\|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -1098,8 +1099,9 @@ $<span class="math notranslate nohighlight">\(\|\mathbf{x}\|_1 = \sum_{i=1}^n \l
 </div>
 </div>
 </div>
-<p>In more generality, the <span class="math notranslate nohighlight">\(L_p\)</span> norm is defined as
-$<span class="math notranslate nohighlight">\(\|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}.\)</span>$</p>
+<p>In more generality, the <span class="math notranslate nohighlight">\(L_p\)</span> norm is defined as</p>
+<div class="math notranslate nohighlight">
+\[\|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -1165,10 +1167,11 @@ $<span class="math notranslate nohighlight">\(\|\mathbf{x}\|_p = \left(\sum_{i=1
 </div>
 <div class="section" id="inverse-matrices">
 <h2>Inverse matrices<a class="headerlink" href="#inverse-matrices" title="Permalink to this headline">¶</a></h2>
-<p>An <span class="math notranslate nohighlight">\(n\times n\)</span> square matrix <span class="math notranslate nohighlight">\(\mathbf A\)</span> is called invertible (also nonsingular or nondegenerate), if there exists an <span class="math notranslate nohighlight">\(n\times n\)</span> square matrix <span class="math notranslate nohighlight">\(\mathbf B\)</span> such that
-$<span class="math notranslate nohighlight">\(
+<p>An <span class="math notranslate nohighlight">\(n\times n\)</span> square matrix <span class="math notranslate nohighlight">\(\mathbf A\)</span> is called invertible (also nonsingular or nondegenerate), if there exists an <span class="math notranslate nohighlight">\(n\times n\)</span> square matrix <span class="math notranslate nohighlight">\(\mathbf B\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf {AB} =\mathbf {BA} =\mathbf {I} _{n}.
-\)</span>$</p>
+\]</div>
 <p>In this case, the matrix <span class="math notranslate nohighlight">\(\mathbf B\)</span> is uniquely determined by <span class="math notranslate nohighlight">\(\mathbf A\)</span>, and is called the inverse of <span class="math notranslate nohighlight">\(\mathbf A\)</span>, denoted by <span class="math notranslate nohighlight">\(\mathbf A^{-1}\)</span>.
 A square matrix that is not invertible is called singular or degenerate.
 This topic will be discussed further in later sections.</p>
