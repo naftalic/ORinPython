@@ -3,17 +3,41 @@
 
 # # Solving problems using Python
 
+# We will solve LP problems using Python. In case you are less familiar with Python, I recommend you to go over the Python Review section.
+# 
+# In this course we will mostly use Gurobi to solve the optimization problems. The Gurobi optimizer is a mathematical optimization software library for solving mixed-integer linear and quadratic optimization problems.
+#  
+# For more information, see:
+# https://www.gurobi.com/academia/academic-program-and-licenses/
+# 
+# Other useful resources can be found here
+# * https://www.gurobi.com/documentation/
+# * https://support.gurobi.com/hc/en-us/community/topics
+
 # In[1]:
 
 
+# install the Gurobi package
 get_ipython().system('pip install gurobipy')
+
+
+# In[2]:
+
 
 # Import gurobi library
 from gurobipy import * # This command imports the Gurobi functions and classes.
 
+
+# In[3]:
+
+
 # Create new model
 m = Model('Factory') # The Model() constructor creates a model object m. The name of this new model is 'Factory'.
                      # This new model m initially contains no decision variables, constraints, or objective function.
+
+
+# In[ ]:
+
 
 # Create decision variables
 # This method adds a decision variable to the model object m, one by one; i.e. x1 and then x2. 
@@ -22,20 +46,36 @@ m = Model('Factory') # The Model() constructor creates a model object m. The nam
 x1 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name='chairs') 
 x2 = m.addVar(lb=0, vtype = GRB.CONTINUOUS, name='tables')
 
-#Define objective function
-#This method adds the objective function to the model object m. The first
-#argument is a linear expression (LinExpr) and the second argument defines
-#the sense of the optimization.
+
+# In[ ]:
+
+
+# Define objective function
+# This method adds the objective function to the model object m. The first
+# argument is a linear expression and the second argument defines
+# the sense of the optimization.
 m.setObjective(40*x1+50*x2, GRB.MAXIMIZE)
 
-#Add constraints
-#This method adds a constraint to the model object m and considers a linear of coefficient-variables elements
+
+# In[ ]:
+
+
+# Add constraints
+# This method adds a constraint to the model object m
 m.addConstr(1*x1+2*x2<=40, name='wood')
 m.addConstr(4*x1+3*x2<=120, name= 'labor')
 
-#Run optimization engine
-#This method runs the optimization engine to solve the LP problem in the model object m
+
+# In[ ]:
+
+
+# Run optimization engine
+# This method runs the optimization engine to solve the LP problem in the model object m
 m.optimize()
+
+
+# In[ ]:
+
 
 #display optimal production plan
 for v in m.getVars():
@@ -43,53 +83,62 @@ for v in m.getVars():
 print('optimal total revenue:', m.objVal)
 
 
+# Given the constraints, the maximum revenue is $1360 structured such that we produce 24 chairs and 8 tables.
+
 # **What if our LP problem has hundreds of thousands varibales and constraints?** 
 # 
 # The Gurobi python code just presented is too manual and would take too long too build a large scale LP problem. 
-# We should use appropriate data structures and Gurobi python functions and objects to abstract the problem and have the Gurobi python code build the LP problem of any size.
+# We should use appropriate data structures, python functions and objects to abstract the problem to any size.
 
-# In[15]:
+# Python list comprehension:
+
+# In[ ]:
 
 
-#Python list comprehension
 #List comprehension is compact way to create lists
-sqrd = [i*i for i in range(5)]
+sqrd = [i*i for i in range(10)]
 print(sqrd) 
 
 #Can be used to create subsequences that satisfy certain conditions (ex: filtering a list)
-bigsqrd = [i*i for i in range(5) if i*i >= 5]
+bigsqrd = [i*i for i in range(10) if i*i >= 5]
 print(bigsqrd) 
 
 #Can be used with multiple for loops (ex: all combinations)
-prod = [i*j for i in range(3) for j in range(4)]
+prod = [i+j for i in range(3) for j in range(3)]
 print(prod) 
 
 #Generator expression is similar, but no brackets (ex: argument to aggregate sum)
-sumsqrd = sum(i*i for i in range(5))
-print(sumsqrd)
+sum_sq = sum(i for i in range(11))
+print(sum_sq)
 
 
-# In[16]:
+# In[ ]:
 
 
-from gurobipy import * 
-
-#resource data
-#The multidict function returns a list which maps each resource (key) to its capacity value.
+# Resource data
+# The multidict function returns a list which maps each resource (key) to its capacity value.
 resources, capacity = multidict({ 
     'wood':  40,
     'labor': 120 })
 print(resources, capacity)
 
-#products data
-#This multidict function returns a list which maps each product (key) to its price value.
+
+# In[ ]:
+
+
+# Products data
+# This multidict function returns a list which maps each product (key) to its price value.
 products, price = multidict({
     'chair': 40,
     'table': 50 })
 print(products, price)
 
-#bill of materials: resources required by each product
-#This dictionary has a 2-tuple as a key, mapping the resource required by a product with its quantity per.
+
+# In[ ]:
+
+
+# Bill of materials: resources required by each product
+# This dictionary has a 2-tuple as a key, mapping the resource required by a product with its quantity per.
 bom={
 ('wood','chair'):1,
 ('wood','table'):2,
@@ -98,35 +147,59 @@ bom={
 }
 print(bom)
 
+
+# In[ ]:
+
+
 m = Model('Factory')
 
-#This method adds decision variables to the model object m
+
+# In[ ]:
+
+
+# This method adds decision variables to the model object m
 make = m.addVars(products, name='make')
 
-#This method adds constraints to the model object m
-res = m.addConstrs(((sum(bom[r,p]*make[p] for p in products) <= capacity[r]) for r in resources),name='R')
 
-#This method adds the objective function to the model object m.
-#The first argument is a linear expression which is generated by the 'prod' method. 
-#The 'prod' method is the product of the object (revenue) with the object (make) 
-#for each product p in the set (products). The second argument defines the sense of the optimization.
+# In[ ]:
+
+
+# This method adds constraints to the model object m
+res = m.addConstrs(((sum(bom[r,p]*make[p] for p in products) <= capacity[r]) for r in resources), name='R')
+
+
+# In[ ]:
+
+
+# This method adds the objective function to the model object m.
+# The first argument is a linear expression which is generated by the 'prod' method. 
+# The 'prod' method is the product of the object (revenue) with the object (make) 
+# for each product p in the set (products). The second argument defines the sense of the optimization.
 m.setObjective(make.prod(price), GRB.MAXIMIZE)
+
+
+# In[ ]:
+
 
 #save model for inspection
 m.write('factory.lp')
 
 
-# In[17]:
+# In[ ]:
 
 
 cat factory.lp
 
 
-# In[18]:
+# In[ ]:
 
 
 # run optimization engine
 m.optimize()
+
+
+# In[ ]:
+
 
 #display optimal production plan
 for v in m.getVars():
@@ -134,31 +207,43 @@ for v in m.getVars():
 print('optimal total revenue:', m.objVal)
 
 
-# ## Sensitivity analysis of LP problems
+# # Sensitivity analysis of LP problems
 
 # Solving LP problems provides more information than only the values of the decision variables and the value of the objective function.
 
-# In[19]:
+# In[ ]:
 
 
 for v in m.getVars():
   print(v.varName, v.x)
 print('optimal total revenue:', m.objVal)
 
+
+# In[ ]:
+
+
 for var in m.getVars(): # descision variable
     print(var.varName, '=', var.x, (var.obj,var.SAObjLow, var.SAObjUp, var.RC))
+
+
+# In[ ]:
+
 
 for con in m.getConstrs(): # constraints
     print(con.ConstrName, ': slack =', con.slack,', shadow price=',
           con.pi,',', (con.RHS, con.SARHSLow, con.SARHSUp))
-    
+
+
+# In[ ]:
+
+
 print("objective value =", m.objVal)
 
 
 # ### Objective value coefficients
-# * Optimally, we produce 24 chairs ($x1$ has the optimal value of 24). We sell a chair for $40 (its objective coefficient is 40). While holding the other objective coefficients fix, the values of 40 can change within the range of (25.0, 66.67) without affecting the optimal solution of(24,8,0). However, changing the objective coefficient will change the objective value!
+# * Optimally, we produce 24 chairs ($x1$ has the optimal value of 24). We sell a chair for $40 (its objective coefficient is 40). While holding the other objective coefficients fix, the values of 40 can change within the range of (25.0, 66.67) **without affecting the optimal solution** of (24,8). However, changing the objective coefficient will change the objective value!
 # * Similarly, for tables, the objective coefficient is 50 but can vary (42.5, 80.0) without affecting the optimal solution point.
-# * Similarily, or benches. Although here, the value is just 0.
+# 
 
 # ### Constraint quantity values
 # The constraint quantity values are 40 m$^2$ and 120 hours. Modifying these values will change the feasible area. Here, we are looking for the range of values over which the quantity values can change **without changing the solution variable mix** including slack. 
@@ -169,20 +254,17 @@ print("objective value =", m.objVal)
 # Associated with an LP optimal solution there are **shadow prices** (also known as: **dual values**, or **marginal values**) for the constraints.
 # The **shadow price** of a constraint associated with the optimal solution represents the change in the value of the objective function per unit of increase in the RHS value of that constraint.
 # 
-# * Suppose the wood capacity is increased from 40 m$^2$ to 41 m$^2$, then the objective function value will increase from the optimal value of 1360 to 1360+**16**. The shadow price of the wood constraint is 16.
-# * Similarly, suppose the labor capacity is increased from 120 hours to 121 hours, then the objective function value will increase from the optimal value of 1360 to 1360+**6**. The shadow price of the labor constraint is 6. 
+# * Suppose the wood capacity is increased from 40 m$^2$ to 41 m$^2$, then the objective function value will increase from the optimal value of 1360 to 1360+**16**. The shadow price of the wood constraint is thus \$16.
+# * Similarly, suppose the labor capacity is increased from 120 hours to 121 hours, then the objective function value will increase from the optimal value of 1360 to 1360+**6**. The shadow price of the labor constraint is thus \$6. 
 
-# 
-# ### Sensitivity of the shadow price
-# The sensitivity range for a constraint quantity value is also the range over which the shadow price is valid (i.e., before a slack/surplus value is added to the mix). For example, the shadow price of 16 hours is valid over the range of (60, 160) hours for labor.
+# #### Sensitivity of the shadow price
+# The sensitivity range for a constraint quantity value is also the range over which the shadow price is valid (i.e., before a slack/surplus value is added to the mix). For example, the shadow price of $16 is valid over the range of (60, 160) hours for labor.
 
 # ### Adding new variable and/or new constraint
 # Is it profitable to make a third product, like benches?
 # Assume that the price of a bench is $30, and a bench consumes 1.2 units of wood and 2 units of labor, then we can formulate the LP model using the previous resources constraints on wood and labor as follows:
-# 
-# What about adding a new constraint as packaging, and varying costs for chairs and tables?
 
-# In[20]:
+# In[ ]:
 
 
 # Adding new variable
@@ -208,13 +290,13 @@ m.setObjective(make.prod(price), GRB.MAXIMIZE)
 m.write('factory.lp')
 
 
-# In[21]:
+# In[ ]:
 
 
 cat factory.lp
 
 
-# In[22]:
+# In[ ]:
 
 
 m.optimize()
@@ -234,7 +316,9 @@ for con in m.getConstrs(): # constraints
 print("objective value =", m.objVal)
 
 
-# In[23]:
+# What about adding a new constraint as packaging and varying costs for chairs and tables?
+
+# In[ ]:
 
 
 # Adding new constraint
@@ -265,13 +349,13 @@ m.setObjective(make.prod(price), GRB.MAXIMIZE)
 m.write('factory.lp')
 
 
-# In[24]:
+# In[ ]:
 
 
 cat factory.lp
 
 
-# In[25]:
+# In[ ]:
 
 
 m.optimize()
@@ -304,7 +388,7 @@ print("objective value =", m.objVal)
 # \end{align} 
 # 
 
-# In[26]:
+# In[ ]:
 
 
 c = [10, 6]    
@@ -352,7 +436,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1, x_2\ge 0\\
 # \end{align} 
 
-# In[27]:
+# In[ ]:
 
 
 c = [0.5, 0.03]    
@@ -398,7 +482,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1, x_2, x_3\ge 0\\
 # \end{align} 
 
-# In[28]:
+# In[ ]:
 
 
 c = [4,3,2]    
@@ -448,7 +532,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0\\
 # \end{align} 
 
-# In[29]:
+# In[ ]:
 
 
 c = [22,18,35,41,30,28,25,36,18]    
@@ -501,7 +585,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0
 # \end{align} 
 
-# In[30]:
+# In[ ]:
 
 
 c = [22,18,35,41,30,28,25,36,18,20,20,20]    
@@ -559,7 +643,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2,x_3,x_4\ge 0\\
 # \end{align} 
 
-# In[31]:
+# In[ ]:
 
 
 c = [40,65,70,30]    

@@ -17,7 +17,7 @@
 #  
 # 
 
-# ##Goal programming example:
+# ## Goal programming example:
 # Solve the following problem:
 # 
 # \begin{align}
@@ -70,7 +70,7 @@ for v in m.getVars():
 #print('Obj :', m.objVal)
 
 
-# ##Altered goal programming example:
+# ## Altered goal programming example:
 # Solve the following problem:
 # \begin{align}
 # &\text{min}\\
@@ -85,7 +85,7 @@ for v in m.getVars():
 # &\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\\
 # \end{align}  
 
-# In[3]:
+# In[ ]:
 
 
 from gurobipy import *
@@ -135,7 +135,7 @@ for v in m.getVars():
 # &\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\\
 # \end{align}  
 
-# In[4]:
+# In[ ]:
 
 
 from gurobipy import *
@@ -182,7 +182,7 @@ for v in m.getVars():
 # &\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\\
 # \end{align}  
 
-# In[5]:
+# In[ ]:
 
 
 from gurobipy import *

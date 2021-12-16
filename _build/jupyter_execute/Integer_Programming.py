@@ -5,10 +5,9 @@
 # 
 
 # There are three types of model problems:
-# * Total integer model: where all the decision variables required to have integer solution values.
-# * Binary integer (0-1) model: where all decision variables required to have integer values of zero or one.
-# 
-# * Mixed integer (MI) model: where some of the decision variables (but not all) required to have integer values.
+# * Total integer model: all the decision variables are required to have integer solution values
+# * Binary integer (0-1) model: all decision variables must have zero or one integer value
+# * Mixed-integer (MI) model: some decision variables required to have integer values
 
 # ## A 0 - 1 Integer Model:
 # Solve the following LP problem:
@@ -23,13 +22,14 @@
 # &\qquad x_1,x_2,x_3,x_4 = 0~\text{or}~1\\
 # \end{align} 
 
+# Note to make use of vtype = GRB.BINARY
+
 # In[1]:
 
 
 get_ipython().system('pip install gurobipy')
 
-# Import gurobi library
-from gurobipy import * # This command imports the Gurobi functions and classes.
+from gurobipy import *
 
 import numpy as np
 
@@ -48,6 +48,7 @@ x = []
 for i in decision_variables:
     x.append(m.addVar(lb = 0, vtype = GRB.BINARY, name = 'x' + str(i)))
 
+# list comprehensions
 m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MAXIMIZE) 
 m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
                            <= b[j] for j in constraints), "constraints")
@@ -70,7 +71,9 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2\ge \text{and integer}\\
 # \end{align} 
 
-# In[3]:
+# Note to make use of vtype = GRB.INTEGER
+
+# In[ ]:
 
 
 c = [100,150]    
@@ -112,7 +115,9 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_3\ge \text{and integer}\\
 # \end{align} 
 
-# In[4]:
+# Note that vtype has a mixture of INTEGER and CONTINUOUS
+
+# In[ ]:
 
 
 c = [9000,1500,1000]    
@@ -155,7 +160,7 @@ print("objective value =", m.objVal)
 # &\qquad x_1,x_2\ge \text{and integer}\\
 # \end{align} 
 
-# In[5]:
+# In[ ]:
 
 
 c = [50,40]    
@@ -187,7 +192,7 @@ for con in m.getConstrs(): # constraints
 print("objective value =", m.objVal)
 
 
-# In[6]:
+# In[ ]:
 
 
 y=[]
@@ -197,7 +202,7 @@ for var in m.getVars():
 np.array(y).dot(np.array((50,40)))
 
 
-# In[7]:
+# In[ ]:
 
 
 c = [50,40]    
@@ -242,7 +247,7 @@ print("objective value =", m.objVal)
 # &\qquad y_1= 0~\text{or}~1\\
 # \end{align} 
 
-# In[8]:
+# In[ ]:
 
 
 c = [85000,60000,-18000]    
@@ -292,7 +297,7 @@ print("objective value =", m.objVal)
 # &\qquad x_i= 0~\text{or}~1\\
 # \end{align} 
 
-# In[9]:
+# In[ ]:
 
 
 c = [.36,.82,.29,.16,.56,.61,.48,.41]    
@@ -340,7 +345,7 @@ print("objective value =", m.objVal*1e6)
 # &\qquad x_i \ge 0~ \text{and integer}\\
 # \end{align} 
 
-# In[10]:
+# In[ ]:
 
 
 c = [1,1,1,1,1,1]    
@@ -389,7 +394,7 @@ print("objective value =", m.objVal)
 # \end{align} 
 # 
 
-# In[11]:
+# In[ ]:
 
 
 c = [25000,7000,9000]    
@@ -422,7 +427,7 @@ for var in m.getVars(): # descision variable
 print("objective value =", m.objVal*1e6)
 
 
-# In[12]:
+# In[ ]:
 
 
 c = [25000,7000,9000]    

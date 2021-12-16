@@ -19,44 +19,53 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 !pip install gurobipy
 
-from gurobipy import *
+# Import gurobi library
+from gurobipy import * # This command imports the Gurobi functions and classes.
 
 import numpy as np
 
-c = [300,90,400,150]    
-A = [[35000,10000,25000,90000 ],
-     [4,2,7,3 ],
-     [1,1,0,0 ]]
-b =  [120000,12,1]
+# Transportation Model Example
+c = [6,8,10,7,11,11,4,5,12]    
+A = [[1,1,1,0,0,0,0,0,0],
+     [0,0,0,1,1,1,0,0,0],
+     [0,0,0,0,0,0,1,1,1],
+     [1,0,0,1,0,0,1,0,0],
+     [0,1,0,0,1,0,0,1,0],
+     [0,0,1,0,0,1,0,0,1]]
+b =  [150,175,275,200,100,300]
 print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
 decision_variables = range(len(c))     
 constraints = range(np.array(A).shape[0])
 
-m = Model("Example")
+m = Model("example")
 
 x = []
 for i in decision_variables:
-    x.append(m.addVar(lb = 0, vtype = GRB.BINARY, name = 'x' + str(i)))
+    x.append(m.addVar(lb = 0, vtype = GRB.INTEGER, name = 'x' + str(i)))
 
-# list comprehensions
-m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MAXIMIZE) 
+m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MINIMIZE) 
 m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
-                           <= b[j] for j in constraints), "constraints")
+                           == b[j] for j in constraints), "constraints")
 m.optimize()
 
 for var in m.getVars(): # descision variable
     print(var.varName, '=', var.x, var.obj)
+
+#for con in m.getConstrs(): # constraints
+#    print(con.ConstrName, ': slack =', con.slack,', shadow price=',
+#          con.pi,',', (con.RHS, con.SARHSLow, con.SARHSUp))
+    
 print("objective value =", m.objVal)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mGurobiError[0m                               Traceback (most recent call last)
-[0;32m<ipython-input-1-5237bf5d8ce0>[0m in [0;36m<module>[0;34m[0m
-[1;32m     14[0m [0mconstraints[0m [0;34m=[0m [0mrange[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0marray[0m[0;34m([0m[0mA[0m[0;34m)[0m[0;34m.[0m[0mshape[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     15[0m [0;34m[0m[0m
-[0;32m---> 16[0;31m [0mm[0m [0;34m=[0m [0mModel[0m[0;34m([0m[0;34m"Example"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     17[0m [0;34m[0m[0m
-[1;32m     18[0m [0mx[0m [0;34m=[0m [0;34m[[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-1-3712b1757a42>[0m in [0;36m<module>[0;34m[0m
+[1;32m     19[0m [0mconstraints[0m [0;34m=[0m [0mrange[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0marray[0m[0;34m([0m[0mA[0m[0;34m)[0m[0;34m.[0m[0mshape[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     20[0m [0;34m[0m[0m
+[0;32m---> 21[0;31m [0mm[0m [0;34m=[0m [0mModel[0m[0;34m([0m[0;34m"example"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     22[0m [0;34m[0m[0m
+[1;32m     23[0m [0mx[0m [0;34m=[0m [0;34m[[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
 
 [0;32msrc/gurobipy/env.pxi[0m in [0;36mgurobipy.Env.__init__[0;34m()[0m
 

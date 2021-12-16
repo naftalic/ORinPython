@@ -9,7 +9,7 @@
 # ## Scalars, Vectors, Matrices
 # 
 # Values consisting of one numerical quantity are called **scalars**. 
-# For example, the average annual temperature in New York City during is $53^\circ$F. 
+# For example, the average annual temperature in New York City is $53^\circ$F. 
 # In the following, we adopt the mathematical notation where **scalar** variables are denoted by ordinary lower-cased letters (e.g., $x, y,$ and $z$). 
 # 
 # We denote the space of real-valued scalars by $\mathbb{R}$. Formally, $x \in \mathbb{R}$ means that $x$ is a real-valued scalar, where the symbol $\in$ is pronounced "in," and simply denotes membership in a set. 
@@ -25,7 +25,7 @@ b = 2.5 #scalar
 a, b
 
 
-# **Vector** is simply a list (or an array) of scalar values.
+# **Vector** is a list (a.k.a., array) of scalar values.
 # We denote vectors in bold, lower-case letters (e.g., $\mathbf{x}$). 
 # Vectors can be presented either as a **column** or as a **row**.
 # In example,
@@ -120,7 +120,7 @@ A_T.shape
 
 
 A=np.array([[1,5,0],[5,2,0],[0,0,3]])
-print(A==A.T)
+(A == A.T).all()
 
 
 # Matrices are useful data structures, and they allow us to organize data efficiently. As an example, it is common to organize data in a way that the **rows** of a matrix correspond to different measurments, while the **columns** correspond to the various features or attributes. 
@@ -214,7 +214,7 @@ A.sum(axis=1)
 
 # ## Broadcasting
 
-# Broadcasting describes how Numpy handles arrays with different shapes during arithmetic operations. Subject to certain constraints, the smaller array is "broadcast" across the larger array so that they have compatible shapes. 
+# Broadcasting describes how numpy handles arrays with different shapes during arithmetic operations. Subject to certain constraints, the smaller array is "broadcast" across the larger array so that they have compatible shapes. 
 # NumPy operations are done on **pairs** of arrays on an element-by-element basis. 
 # 
 # The simplest broadcasting example occurs when an array and a scalar value are combined in an operation
@@ -268,15 +268,15 @@ x, y, np.dot(x, y)
 # The dot product has a geometric interpretation related to the **angle** between the two vectors
 # 
 # $$
-# \mathbf{x}\cdot\mathbf{y} = \mathbf{x}^\top\mathbf{y} = \|\mathbf{x}\|\|\mathbf{y}\|\cos(\theta),
+# \mathbf{x}\cdot\mathbf{y} = \mathbf{x}^\top\mathbf{y} = \|\mathbf{x}\|\|\mathbf{y}\|\cos\theta,
 # $$
 # 
 # where $\| \cdot \|$ is the **norm** operator applied to tha vector. Norms will be discussed later on. 
 # 
-# In the Machine Learning contexts, the angle $\theta$ is often used to measure the closeness, or similarity, of two vectors. This can be computed simply via
+# In the Machine Learning contexts, the angle $\theta$ is often used to measure the closeness, or similarity, of two vectors. This can be computed as
 # 
 # $$
-# \cos(\theta) = \frac{\mathbf{x}^\top\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}.
+# \cos\theta = \frac{\mathbf{x}^\top\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}.
 # $$
 # 
 # This (cosine) similarity takes values between -1 and 1. A maximum value of $1$
@@ -289,7 +289,7 @@ np.arccos(x.dot(y) / (np.linalg.norm(x) * np.linalg.norm(y)))
 
 
 # Consider now the dot product of a matrix $\mathbf{A} \in \mathbb{R}^{m \times n}$ and a vector $\mathbf{x} \in \mathbb{R}^n$.
-# We can write the matrix $\mathbf{A}$ in terms of its **row** vectors
+# To follow with the above dot-product definition we write the matrix $\mathbf{A}$ in terms of its **row** vectors
 # 
 # $$\mathbf{A}=
 # \begin{bmatrix}
@@ -303,54 +303,73 @@ np.arccos(x.dot(y) / (np.linalg.norm(x) * np.linalg.norm(y)))
 # is a **row** vector of length $n$, representing the $i^\mathrm{th}$ row of the matrix $\mathbf{A}$.
 # Now, the matrix-vector dot product $\mathbf{A}\mathbf{x}$
 # is simply a column vector of length $m$,
-# whose $i^\mathrm{th}$ element is the dot product $\mathbf{a}^\top_i \mathbf{x}$
+# whose $i^\mathrm{th}$ element is the dot product $\mathbf{a}^\top_i \cdot \mathbf{x}=\mathbf{a}_i \mathbf{x}$
 # 
 # $$
-# \mathbf{A}\mathbf{x}
+# \mathbf{A}\cdot\mathbf{x}
 # = \begin{bmatrix}
 # \mathbf{a}^\top_{1} \\
 # \mathbf{a}^\top_{2} \\
 # \vdots \\
 # \mathbf{a}^\top_m \\
-# \end{bmatrix}\mathbf{x}
+# \end{bmatrix}\cdot\mathbf{x}
 # = \begin{bmatrix}
-#  \mathbf{a}^\top_{1} \mathbf{x}  \\
-#  \mathbf{a}^\top_{2} \mathbf{x} \\
+#  \mathbf{a}^\top_{1}\cdot \mathbf{x}  \\
+#  \mathbf{a}^\top_{2}\cdot \mathbf{x} \\
 # \vdots\\
-#  \mathbf{a}^\top_{m} \mathbf{x}\\
+#  \mathbf{a}^\top_{m}\cdot \mathbf{x}\\
+# \end{bmatrix}
+# = \begin{bmatrix}
+#  \mathbf{a}_{1} \mathbf{x}  \\
+#  \mathbf{a}_{2} \mathbf{x} \\
+# \vdots\\
+#  \mathbf{a}_{m} \mathbf{x}\\
+# \end{bmatrix}
+# = \begin{bmatrix}
+#  b_{1} \\
+#  b_{2} \\
+# \vdots\\
+#  b_{m}\\
 # \end{bmatrix}.
 # $$
 # 
-# To make it clear, in the above example there are $m$ dot products, each $\mathbf{a}^\top_i \mathbf{x}$ which is a multiplcation on $n$-sized $\mathbf{a}^\top_i$ by $n$-sized $\mathbf{x}$. The result of each dot product is a scalar.
+# To make it clear, in the above example there are $m$ dot products, each $\mathbf{a}^\top_i \mathbf{x}$ which is a multiplcation of an $n$-sized $\mathbf{a}^\top_i$ by an $n$-sized $\mathbf{x}$. The result of each dot product is a scalar.
 # 
 # We can think of the multiplication of $\mathbf{A}\in \mathbb{R}^{m \times n}$ by $\mathbf{x}\in \mathbb{R}^n$ as a transformation that projects vectors, $\mathbf{x}\in \mathbb{R}^n$,
 # from $\mathbb{R}^{n}$ to $\mathbb{R}^{m}$.
-# Note that the column dimension of $\mathbf{A}$ (its length along axis 1)
-# must be the same as the dimension of $\mathbf{x}$.
+# Note that the column dimension of $\mathbf{A}$ must be the same as the dimension of $\mathbf{x}$.
 # 
 
 # In[25]:
 
 
 A = np.array([[1, 2], [3, 4], [5, 6]])
-x = np.arange(1,3)
+x = np.array([1,1])
 np.dot(A, x)
 
 
+# Whereas this is computation results in broadcasting 
+
+# In[26]:
+
+
+A*x
+
+
 # Next we consider matrix-matrix multiplication.
-# Given two matrices $\mathbf{A} \in \mathbb{R}^{n \times k}$ and $\mathbf{B} \in \mathbb{R}^{k \times m}$:
+# Given two matrices $\mathbf{A} \in \mathbb{R}^{m \times k}$ and $\mathbf{B} \in \mathbb{R}^{k \times n}$:
 # 
 # $$\mathbf{A}=\begin{bmatrix}
 #  a_{11} & a_{12} & \cdots & a_{1k} \\
 #  a_{21} & a_{22} & \cdots & a_{2k} \\
 # \vdots & \vdots & \ddots & \vdots \\
-#  a_{n1} & a_{n2} & \cdots & a_{nk} \\
+#  a_{m1} & a_{m2} & \cdots & a_{mk} \\
 # \end{bmatrix},\quad
 # \mathbf{B}=\begin{bmatrix}
-#  b_{11} & b_{12} & \cdots & b_{1m} \\
-#  b_{21} & b_{22} & \cdots & b_{2m} \\
+#  b_{11} & b_{12} & \cdots & b_{1n} \\
+#  b_{21} & b_{22} & \cdots & b_{2n} \\
 # \vdots & \vdots & \ddots & \vdots \\
-#  b_{k1} & b_{k2} & \cdots & b_{km} \\
+#  b_{k1} & b_{k2} & \cdots & b_{kn} \\
 # \end{bmatrix}.$$
 # 
 # 
@@ -358,43 +377,56 @@ np.dot(A, x)
 # the row vector representing the $i^\mathrm{th}$ row of the matrix $\mathbf{A}$,
 # and let $\mathbf{b}_{j} \in \mathbb{R}^k$
 # be the column vector of the $j^\mathrm{th}$ column of the matrix $\mathbf{B}$.
-# The matrix product $\mathbf{C} = \mathbf{A}\mathbf{B}$, is easiest to understand with $\mathbf{A}$ specified by its row vectors and $\mathbf{B}$ specified by its column vectors,
+# The dot matrix-matrix product $\mathbf{C} = \mathbf{A}\cdot\mathbf{B}$, is easiest to understand with $\mathbf{A}$ specified by its row vectors and $\mathbf{B}$ specified by its column vectors,
 # 
-# $$\mathbf{A}=
+# $$
+# \mathbf{A}=
 # \begin{bmatrix}
 # \mathbf{a}^\top_{1} \\
 # \mathbf{a}^\top_{2} \\
 # \vdots \\
-# \mathbf{a}^\top_n \\
+# \mathbf{a}^\top_m \\
 # \end{bmatrix},
 # \quad \mathbf{B}=\begin{bmatrix}
-#  \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{m} \\
+#  \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{n} \\
 # \end{bmatrix}.
 # $$
 # 
 # 
-# The matrix product $\mathbf{C}\in \mathbb{R}^{n \times m}$ is produced as we simply compute each element $c_{ij}$ as the dot product $\mathbf{a}^\top_i \mathbf{b}_j$:
+# The matrix product $\mathbf{C}\in \mathbb{R}^{m \times n}$ is produced by computing each element $c_{ij}$ as the dot product $\mathbf{a}^\top_i \mathbf{b}_j$:
 # 
-# $$\mathbf{C} = \mathbf{AB} = \begin{bmatrix}
+# \begin{align}
+# \mathbf{C} &= \mathbf{A\cdot B} \\
+# &= \begin{bmatrix}
 # \mathbf{a}^\top_{1} \\
 # \mathbf{a}^\top_{2} \\
 # \vdots \\
-# \mathbf{a}^\top_n \\
+# \mathbf{a}^\top_m \\
 # \end{bmatrix}
+# \cdot
 # \begin{bmatrix}
-#  \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{m} \\
-# \end{bmatrix}
-# = \begin{bmatrix}
-# \mathbf{a}^\top_{1} \mathbf{b}_1 & \mathbf{a}^\top_{1}\mathbf{b}_2& \cdots & \mathbf{a}^\top_{1} \mathbf{b}_m \\
-#  \mathbf{a}^\top_{2}\mathbf{b}_1 & \mathbf{a}^\top_{2} \mathbf{b}_2 & \cdots & \mathbf{a}^\top_{2} \mathbf{b}_m \\
+#  \mathbf{b}_{1} & \mathbf{b}_{2} & \cdots & \mathbf{b}_{n} \\
+# \end{bmatrix}\\
+# &= \begin{bmatrix}
+# \mathbf{a}^\top_1\cdot \mathbf{b}_1 & \mathbf{a}^\top_1\cdot\mathbf{b}_2& \cdots & \mathbf{a}^\top_1\cdot \mathbf{b}_n \\
+#  \mathbf{a}^\top_2\cdot\mathbf{b}_1 & \mathbf{a}^\top_2\cdot \mathbf{b}_2 & \cdots & \mathbf{a}^\top_2\cdot \mathbf{b}_n\\
 #  \vdots & \vdots & \ddots &\vdots\\
-# \mathbf{a}^\top_{n} \mathbf{b}_1 & \mathbf{a}^\top_{n}\mathbf{b}_2& \cdots& \mathbf{a}^\top_{n} \mathbf{b}_m
+# \mathbf{a}^\top_m\cdot \mathbf{b}_1 & \mathbf{a}^\top_m\cdot\mathbf{b}_2& \cdots& \mathbf{a}^\top_m\cdot \mathbf{b}_n
+# \end{bmatrix}\\
+# &= \begin{bmatrix}
+# \mathbf{a}_1\mathbf{b}_1 & \mathbf{a}_1\mathbf{b}_2& \cdots & \mathbf{a}_1 \mathbf{b}_n \\
+#  \mathbf{a}_2\mathbf{b}_1 & \mathbf{a}_2 \mathbf{b}_2 & \cdots & \mathbf{a}_2 \mathbf{b}_n\\
+#  \vdots & \vdots & \ddots &\vdots\\
+# \mathbf{a}_m \mathbf{b}_1 & \mathbf{a}_m\mathbf{b}_2& \cdots& \mathbf{a}_m \mathbf{b}_n
 # \end{bmatrix}.
-# $$
+# \end{align}
 # 
+# Again, $\mathbf{a}_1\mathbf{b}_1$ is the dot product of the 1st row in $\mathbf A$ by the 1st column in $\mathbf B$, etc.
 # 
 
-# In[26]:
+# It is common notation practice to *omit* the dot while writing $\mathbf A \cdot \mathbf x$ or $\mathbf A \cdot \mathbf B$.
+
+# In[27]:
 
 
 A = np.array([[1, 2], [3, 4], [5, 6]])
@@ -404,44 +436,44 @@ A.dot(B)
 
 # Matrix mutliplication is **distributive**, i.e. $\mathbf{A}(\mathbf{B}+\mathbf{C})=\mathbf{A}\mathbf{B}+\mathbf{A}\mathbf{C}$:
 
-# In[27]:
+# In[28]:
 
 
 A = np.array([[2, 3], [1, 4], [7, 6]])
 B = np.array([[5], [2]])
 C = np.array([[4], [3]])
-A.dot(B+C) == A.dot(B)+A.dot(C)
+(A.dot(B+C) == A.dot(B)+A.dot(C)).all()
 
 
 # Matrix mutliplication is **associative**, i.e. $\mathbf{A}(\mathbf{B}\mathbf{C})=(\mathbf{A}\mathbf{B})\mathbf{C}$:
 
-# In[28]:
+# In[29]:
 
 
 A = np.array([[2, 3], [1, 4], [7, 6]])
 B = np.array([[5, 3], [2, 2]])
 C = np.array([[4], [3]])
-A.dot(B.dot(C)) == (A.dot(B)).dot(C)
+(A.dot(B.dot(C)) == (A.dot(B)).dot(C)).all()
 
 
 # Vector multiplication is commutative, i.e. $\mathbf{x}^\top\mathbf{y}=\mathbf{y}^\top\mathbf{x}$
 
-# In[29]:
+# In[30]:
 
 
 x = np.array([[2], [6]])
 y = np.array([[5], [2]])
-x.T.dot(y) == y.T.dot(x)
+(x.T.dot(y) == y.T.dot(x)).all()
 
 
 # However, matrix multiplication is **not commutative**, i.e. $\mathbf{A}\mathbf{B}\ne\mathbf{B}\mathbf{A}$:
 
-# In[30]:
+# In[31]:
 
 
 A = np.array([[2, 3], [6, 5]])
 B = np.array([[5, 3], [2, 2]])
-np.dot(A, B) == np.dot(B, A)
+(np.dot(A, B) == np.dot(B, A)).all()
 
 
 # ## Norms
@@ -449,23 +481,20 @@ np.dot(A, B) == np.dot(B, A)
 # One of the important operators in linear algebra are the **norms**.
 # The norm of a vector tells you how large a vector is by maping a vector
 # to a scalar. This scalar measures, not the dimensions, but the magnitude of the components.
-# 
 # Formally, given any vector $\mathbf{x}$, the vector norm is a function $f$ that has multiple propeerties: 
-# 
-# The first is a scaling property that says
+# * The first is a scaling property that says
 # that if we scale all the elements of a vector
 # by a constant factor $\alpha$,
-# its norm also scales by the *absolute value*
+# its norm also scales by the **absolute value**
 # of the same constant factor. In example,
 # 
 # $$f(\alpha \mathbf{x}) = |\alpha| f(\mathbf{x}).$$
 # 
-# The second property is the triangle inequality:
+# * The second property is the triangle inequality:
 # 
 # $$f(\mathbf{x} + \mathbf{y}) \leq f(\mathbf{x}) + f(\mathbf{y}).$$
 # 
-# 
-# The third property simply says that the norm must be non-negative:
+# * The third property simply says that the norm must be non-negative:
 # 
 # $$f(\mathbf{x}) \geq 0.$$
 # 
@@ -480,7 +509,7 @@ np.dot(A, B) == np.dot(B, A)
 # $$\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^n x_i^2}.$$
 # 
 
-# In[31]:
+# In[32]:
 
 
 import numpy as np
@@ -490,17 +519,18 @@ np.linalg.norm(u, ord=2)
 
 # The $L_1$ norm is defined as the sum of the absolute values of the vector elements:
 # $$\|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|.$$
-# In more generality, the $L_p$ norm is defined as 
-# $$\|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}.$$
 
-# In[32]:
+# In[33]:
 
 
 u = np.array([1,2,3])
 np.linalg.norm(u, ord=1) # L1 norm
 
 
-# In[33]:
+# In more generality, the $L_p$ norm is defined as 
+# $$\|\mathbf{x}\|_p = \left(\sum_{i=1}^n \left|x_i \right|^p \right)^{1/p}.$$
+
+# In[34]:
 
 
 u = np.array([1,2,3])
@@ -508,22 +538,24 @@ np.linalg.norm(u, ord=np.inf) # L-inf norm, basically choosing the maximum value
 
 
 # ## Identity matrices
+# 
+# The identity matrix of size n is the $n \times n$ square matrix with ones on the main diagonal and zeros elsewhere. It is denoted by $\mathbf I_n$.
 
-# In[34]:
+# In[35]:
 
 
 A = np.eye(3)
 A
 
 
-# In[35]:
+# In[36]:
 
 
 x = np.array([[2], [6], [3]])
 x
 
 
-# In[36]:
+# In[37]:
 
 
 b = A.dot(x)
@@ -532,22 +564,30 @@ b
 
 # ## Inverse matrices
 # 
+# An $n\times n$ square matrix $\mathbf A$ is called invertible (also nonsingular or nondegenerate), if there exists an $n\times n$ square matrix $\mathbf B$ such that
+# $$
+# \mathbf {AB} =\mathbf {BA} =\mathbf {I} _{n}.
+# $$
+# 
+# In this case, the matrix $\mathbf B$ is uniquely determined by $\mathbf A$, and is called the inverse of $\mathbf A$, denoted by $\mathbf A^{-1}$.
+# A square matrix that is not invertible is called singular or degenerate. 
+# This topic will be discussed further in later sections.
 
-# In[37]:
+# In[38]:
 
 
 A = np.array([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
 A
 
 
-# In[38]:
+# In[39]:
 
 
 A_inv = np.linalg.inv(A)
 A_inv
 
 
-# In[39]:
+# In[40]:
 
 
 A_inv.dot(A)
@@ -562,24 +602,47 @@ A_inv.dot(A)
 # and **divides the space into two half-spaces**. 
 # In the Machine Learning language in the contex of classification hyperplanes that separate the space are named **decision planes**. 
 # 
-# In example, $\mathbf{a}=(1,2)$ and $\mathbf{a} \cdot \mathbf{b}=1$ define the line $2y = 1 - x$ in the two dimensional space, while $\mathbf{a}=(1,2,3)$ and $\mathbf{a} \cdot \mathbf{b}=1$ defines the plane $ z= 1 - x-2y$ in the three dimensional space.
+# In example, 
+# * if $\mathbf{a}=(1,2)$ the equation $\mathbf{a} \cdot \mathbf{b}=1$ defines the **line** $2y = 1 - x$ in the **two dimensional** space, while
+# * if $\mathbf{a}=(1,2,3)$ and $\mathbf{a} \cdot \mathbf{b}=1$ defines the **plane** $ z= 1 - x-2y$ in the **three dimensional** space.
 # 
 # 
 # 
 
 # ## Solving a system of linear equations
 # 
+# The set of equations
+# $$
+# \mathbf A \mathbf x = \mathbf b
+# $$
+# where $\mathbf{A}\in \mathbb{R}^{m \times n}$, $\mathbf{x}\in \mathbb{R}^n$, and $\mathbf{b}\in \mathbb{R}^m$, has the solution
+# $$
+# \mathbf A^{-1} \mathbf A \mathbf x =\mathbf I_n\mathbf x =\mathbf x=\mathbf A^{-1}  \mathbf b
+# $$
+# given that $\mathbf A^{-1}$ exists.
+# 
 
-# In[40]:
+# with $m=n=2$:
+
+# In[41]:
 
 
 A = np.array([[2, -1], [1, 1]])
-b = np.array([[0], [3]])
+b = np.array([0, 3])
 x = np.linalg.inv(A).dot(b)
 x
 
 
-# Singular matrices are not invertible and are called singular.
+# with $m=3$, and $n=2$ we use a **pseudoinverse**:
+
+# In[42]:
+
+
+A = np.array([[2, -1], [1, 1], [1, 1]])
+b = np.array([0,3,0])
+x = np.linalg.pinv(A).dot(b)
+x
+
 
 # ## Linear equations
 
@@ -587,16 +650,18 @@ x
 # 
 # $$\mathbf{A}\mathbf{x}=\mathbf{b}$$
 # 
-# corresponds
+# correspond to an $m$ equations with $n$ unknowns
 # 
 # $$
 # \begin{align}
 # a_{1,1}x_1 + a_{1,2}x_2 + \cdots + a_{1,n}x_n = b_1 \\\\
 # a_{2,1}x_1 + a_{2,2}x_2 + \cdots + a_{2,n}x_n = b_2 \\\\
 # \cdots \\\\
-# a_{m,1}x_1 + a_{m,2}x_2 + \cdots + a_{m,n}x_n = b_n
+# a_{m,1}x_1 + a_{m,2}x_2 + \cdots + a_{m,n}x_n = b_m
 # \end{align}
-# \quad\text{or}\quad
+# $$
+# or
+# $$
 # \begin{bmatrix}
 #     a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\\\
 #     a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\\\
@@ -618,33 +683,34 @@ x
 # \end{bmatrix}.
 # $$
 # 
-# Here we have $m$ equations representing..., with $n$ unknowns representing the **dimension space**. 
-# Commonly, we are given $\mathbf{A}$ and $\mathbf{b}$, and we solve for $\mathbf{x}$ that satisfy the above equations.
+# Commonly, we are given $\mathbf{A}$ and $\mathbf{b}$ as inputs, and we solve for $\mathbf{x}$ that satisfy the above equations.
 # 
-# How many solutions does $\mathbf{A}\mathbf{x}=\mathbf{b}$ have? There are three possibilites:
-# 
-#  1. No solution
-#  2. One solution
-#  3. Infinite number of solutions
+# How many solutions does $\mathbf{A}\mathbf{x}=\mathbf{b}$ have? There are the three possibilites:
+# 1. No solution
+# 2. One solution
+# 3. Infinite number of solutions
 #  
-# Why can't there be more than one solution and less than an infinite number of solutions ?
+# Why can't there be more than one solution and less than an infinite number of solutions?
 # 
 # On the intuition level, it is because we are working with linear equations.
-# It is clear if we consider the simple scenario of two equations and two unknowns: the solution of this system corresponds to the intersection of the lines. One possibility is that the two lines never cross (parallel). Another possibility is that they cross exactly once. And the last possibility is that they cross everywhere (superimposed).
+# It is clear if we consider the simple scenario of two equations and two unknowns: the solution of this system corresponds to the intersection of lines. 
+# 1. One possibility is that the two lines never cross (parallel). 
+# 2. Another possibility is that they cross exactly once. 
+# 3. And the last possibility is that they cross everywhere (superimposed).
 
 # There are two ways to describe a system of linear equations: the **row view** and the **column view**.
 
 # ## Row view
 # 
-# The row view is probably more intuitive because it is the representation used when we have only one equation. It can now be extended to an infinite number of equations and unknowns.
-# 
-# We said that the solutions of the linear system of equations are the sets of values of $x_1...x_n$ that satisfies all equations. For instance, in the case of $\mathbf{A}\in \mathbb{R}^{m \times n}$ with $m=n=2$ the equations correspond to 2 lines in the 2-dimensional space and the solution of the system is the intersection of these lines.
+# The row view is probably more intuitive than the column view.
+# We mentioned that the solution of a linear system of equations are the sets of values of $\mathbf x = (x_1, x_2, ... x_n)$ that satisfy all equations. For instance, in the case of $\mathbf{A}\in \mathbb{R}^{m \times n}$ with $m=n=2$ the equations correspond to 2 lines in the 2-dimensional space and the solution of the system is the intersection of these lines.
 # 
 # As mentioned before, a linear system can be viewed as a set of $(n-1)$-dimensional hyperplanes in a $n$-dimensional space. The system can also be characterized by its number of equations $m$, and the number of unknown variables $n$.
 # 
-# * If $m \gt n$, that is there are more equations than unknows the system is called **overdetermined**. In example, a system of 3 equations (represented by 3 lines) and 2 unknowns (corresponding to 2 dimensions). In this example, if the lines are independent, there is no solution since there is no point belonging to the three lines.
+# * If $m \gt n$, there are more equations than unknowns, the system is called **overdetermined**. For example, consider a system of 3 equations (represented by 3 lines) and 2 unknowns (corresponding to 2 dimensions). If the equations (or lines) are independent in this system, there is no solution since there is no point that belongs to the three lines.
+# * If $m \lt n$, there are more unknowns than equations, and the system is termed **underdetermined**. For example, consider a system of 1 equation (1 line) and 2 dimensions. In this case, each point along the line is a solution to the system, resulting in an infinite number of solutions.
 # 
-# * If $m\lt n$, that is there are more unknowns than equations the system is named **underdetermined**. In example, there is only 1 equation (1 line) and 2 dimensions. In this case, each point along the line is a solution to the system and the system has infinite number of solutions.
+# Let's look at these examples in more depth:
 # 
 
 # ### Example 1: 1 equation and 2 variables
@@ -655,9 +721,9 @@ x
 # a_{1,1}x_1 + a_{1,2}x_2 = b_1
 # $$
 # 
-# The graphical interpretation of $n=2$ is that we have a 2-dimensional space. So we represent it with 2 axes. Since our hyperplane is of $n-1$-dimensional, we have a 1-dimensional hyperplane. This is simply a line. As $m=1$, we have only one equation. This means that we have only one line characterizing our linear system.
+# The graphical interpretation of $n=2$ is that we have a 2-dimensional space represented visually by 2 axes. Since the hyperplane is of $n-1$-dimensional, we have a 1-dimensional hyperplane which is simply a line. As $m=1$, we have only one equation. This means that we have only one line characterizing the linear system.
 # 
-# Note that the last equation can also be written in a way that may be more usual:
+# Note that the last equation can also be written in a way that may be more common:
 # 
 # $$
 # x_2 = \frac{a_{1,1}}{a_{1,2}}x_1 +\frac{b_1}{a_{1,2}}b_1,\quad\text{or}\quad
@@ -678,19 +744,21 @@ x
 # a_{2,1}x_1 + a_{2,2}x_2 = b_2.
 # $$
 # 
-# The graphical interpretation of $n=2$ is as before. That is, we have a 2-dimensional space, represented with 2 axes, and each equation represents an $1$-dimensional hyperplane which is simply a line. 
+# The graphical interpretation of $n=2$ is as before. That is, we have a system in the 2-dimensional space, represented visually with 2 axes, and each equation represents a $1$-dimensional hyperplane which is simply a line. 
 # 
-# But, here $m=2$, which means that we have two equations, or 2 lines in a 2-dimensional space.
-# There are multiple scenarios:
+# But, here $m=2$, which means that we have two equations or 2 lines in the 2-dimensional space.
+# Now, there are multiple scenarios:
 # 
-# * The two lines run in parallel and there is no solution.
-# * The two lines intersect and we have one unique solution.
-# * The two lines superimpose: it is the same equation or linearily dependant. In this case there are infinite number of solutions since each and every point on the lines corresponds to a solution.
+# * The two lines run in parallel, and there is no solution,
+# * The two lines intersect, and there is a unique solution, or
+# * The two lines superimpose representing the same equation (or line). In this case, there is an infinite number of solutions since each point along the lines correspond to a solution.
 # 
-# Same conlusioned can be drawn with higher values of $m$ (number of equations) and $n$ (number of dimensions). For example, two 2-dimensional plane in a 3-dimensional space can be 
+# <!-- Same conclusion can be drawn with higher values of $m$ (number of equations) and $n$ (number of dimensions). For example, two 2-dimensional planes in a 3-dimensional space can be 
 # * parallel (no solution),
 # * cross (infinitely many solutions since their crossing is a line), or
-# * superimposed (infinitely many solutions). 
+# * superimposed (infinitely many solutions).  -->
+# 
+# 
 
 # ### Example 3: 3 equation and 2 variables
 # 
@@ -702,17 +770,17 @@ x
 # a_{3,1}x_1 + a_{3,2}x_2 = b_3
 # $$
 # 
-# The graphical interpretation of $n=2$ is as before. That is, we have a 2-dimensional space, represented by 2 axes, and each equation represents an $1$-dimensional hyperplane which is simply a line. 
+# The graphical interpretation of $n=2$ is as before. That is, we have a system in the 2-dimensional space, represented by 2 axes, and each equation represents an $1$-dimensional hyperplane which, as before, is simply a line. 
 # 
 # Here $m=3$, which means that we have three equations, or 3 lines in a 2-dimensional space.
 # 
 # There are multiple scenarios:
-# * The three lines run in parallel and there is no solution.
-# * The three lines intersect. If the three lines are independent, there are multiple intersections with no unique solution.
-# * Two lines are dependent and the third is independent: we have a unique solution at the intersection of them with the third line.
-# * The three lines superimpose: there are infinite number of solutions.
+# * The three lines run in parallel, and there is no solution,
+# * The three lines intersect. If the three lines are independent, there are multiple intersections with no unique solution,
+# * Two lines are dependent, and the third is independent: we have a unique solution at the intersection of the dependent's two with the third line, or
+# * The three lines superimpose: there is an infinite number of solutions.
 # 
-# As before, these conlusioned can be generalized to higher spaces.
+# These examples can be generalized to higher spaces.
 
 # ## Linear combination
 # 
@@ -720,11 +788,13 @@ x
 # In example:
 # 
 # $$
-# \mathbf{x}^\top=(1,2,3),~\mathbf{y}^\top=(4,5,6),\quad \text{and}\quad \mathbf{y}^\top=a\mathbf{x}^\top+b\mathbf{y}^\top,\text{with}~ a=1,~b=2.
+# \mathbf{x}^\top=(1,2,3),~\mathbf{y}^\top=(4,5,6),
+# \quad \text{and}
+# \quad \mathbf{z}^\top=a\mathbf{x}^\top+b\mathbf{y}^\top,\text{with}~ a=1,~b=2.
 # $$
 # 
 
-# In[41]:
+# In[43]:
 
 
 a=1.;b=2.;
@@ -735,25 +805,32 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 
 # 
 # 
-# Consider the above $\mathbf{x}$ and $\mathbf{y}$: ALL the points that can reached by their combination via some $a$ and $b$ are called the set of points is the span of the vectors $\{\mathbf{x}$, $\mathbf{y}\}$.
-# Vector **space** means all the points that can be reached by this vector. In example, the space of all real numbers is $\mathbb{R}$ and for $n$-dimensions the space is $\mathbb{R}^n$. 
-# Vector **subspace** means that the space occupies only part of the space. In example, a 2-dimensional plane is a subspace in $\mathbb{R}^3$ and a line is a subspace in $\mathbb{R}^2$.
+# Consider the above $\mathbf{x}$ and $\mathbf{y}$: ALL the points that can be reached by their combination via some $a$ and $b$ are called the set of points is the **span** of the vectors $\{\mathbf{x}$, $\mathbf{y}\}$.
+# Vector **space** means all the points that can be reached by this vector. In example, 
+# * the space of all real numbers is $\mathbb{R}$, and
+# * for $n$-dimensions the space is $\mathbb{R}^n$. 
+# 
+# Vector **subspace** means that the space occupies only part of the space. In example, 
+# * a 2-dimensional plane is a subspace in $\mathbb{R}^3$, and 
+# * a line is a subspace in $\mathbb{R}^2$.
 # 
 # In general, we will say that a collection of vectors
 # $\mathbf{x}_1,\mathbf{x}_2, \ldots, \mathbf{x}_n$ are linearly **dependent**
-# if there exist coefficients $a_1,a_2 \ldots, a_n$ not all zero such that
+# if there exist coefficients $a_1,a_2 \ldots, a_n$, not all zeros, such that
 # 
 # $$
 # \sum_{i=1}^n a_i\mathbf{x_i} = 0.
 # $$
 # 
-# In this case, we can solve for one of the vectors in terms of a combination of the others, and thus this vector is redundant.
-# Similarly, a linear dependence in the columns of a matrix means that this matrix can be compresed down to a lower dimension. If there is no linear dependence we say the vectors are linearly independent. In a matrix, if the columns are linearly independent, the matrix cannot be compressed to a lowed dimension.
+# In this case, we can solve for one of the vectors in terms of a combination of the others, and thus this vector is **redundant**.
+# Similarly, a linear dependence in the columns of a matrix means that this matrix can be **compressed** down to a lower dimension. 
 # 
-# A set of vectors which is linearly **independent** and **spans** some vector space, forms a **basis** for that vector space. 
+# If there is no linear dependence, we say the vectors are **linearly independent**. In a matrix, if the columns are linearly independent, the matrix cannot be compressed to a lowed dimension.
+# 
+# A set of vectors that is linearly **independent** and **spans** some vector space forms a **basis** for that vector space. 
 # The **standard basis** (also called natural basis or canonical basis) in $\mathbb{R}^n$ is the set of vectors whose components are all zero, except one that equals 1. For example, the standard basis in $\mathbb{R}^2$ is formed by the vectors $\mathbf{x}^\top=(1,0)^\top$ and $\mathbf{y}^\top=(0,1)^\top$.
 # 
-# The linear combination of vectors in a space stay in the same space. For instance, any linear combination of two lines in a $\mathbb{R}^2$ result in another vector in $\mathbb{R}^2$.
+# The linear combination of vectors in a space stays in the same space. For instance, any linear combination of two lines in a $\mathbb{R}^2$ results in another vector in $\mathbb{R}^2$.
 
 # ## Column view
 # 
@@ -801,38 +878,8 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # 
 # In this view, the solution $\mathbf{b}$ is a linear combination of the columns of $\mathbf{A}$, weighted by the components of $\mathbf{x}$.
 
-# * For the **underdetermined** system, $n \gt m$ and the system has **infinite number of solutions**. As an example in the column view,
-# $
-# \begin{align}
-# a_{1,1}x_1+a_{1,2}x_2+a_{1,3}x_3=b_1\\
-# a_{2,1}x_1+a_{2,2}x_2+a_{2,3}x_3=b_2
-# \end{align}
-# \quad\text{corresponds to}\quad\
-# x_1
-# \begin{bmatrix}
-#     a_{1,1}\\
-#     a_{2,1}
-# \end{bmatrix}
-# +x_2
-# \begin{bmatrix}
-#     a_{1,2}\\
-#     a_{2,2}
-# \end{bmatrix}
-# +x_3
-# \begin{bmatrix}
-#     a_{1,3}\\
-#     a_{2,3}
-# \end{bmatrix}
-# =
-# \begin{bmatrix}
-#     b_{1}\\
-#     b_{2}
-# \end{bmatrix}.
-# $
 # 
-# But, if the columns of $\mathbf{A}$ are independent, two of them are enough to reach any point in $\mathbb{R}^2$. So, two components out of the three in $\mathbf{x}$ are set and the third is free, meaning that there are infinite number of solutions.
-# 
-# * For the **overdetermined** system $m\gt n$ and there is **no solution**. For example using the column view,
+# * For the **overdetermined** system $m\gt n$ and there is **no solution**. For example, in the column view,
 # 
 # $
 # \begin{align}
@@ -861,20 +908,55 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # \end{bmatrix}.
 # $
 # 
-# In the row view we have 3 lines and we are looking for unique intersection in the 2-dimensional plan. The three lines (if independent) will intesect in multiple points resulting in no solution. In the column view, becuase $n=2$ the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vecotr $\mathbf{b}$ lies, for some reason, in the subspace formed by these two vectors.
+# In the row view, we have 3 lines, and we are looking for a unique intersection in the 2-dimensional plane. The three lines (if independent) will intersect in multiple points resulting in no solution. In the column view, because $n=2$ the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vector $\mathbf{b}$ lies, for some reason, in the subspace formed by these two vectors.
+# 
+# * For the **underdetermined** system, $m \lt n$ and the system has **infinite number of solutions**. As an example in the column view,
+# $$
+# \begin{align}
+# a_{1,1}x_1+a_{1,2}x_2+a_{1,3}x_3=b_1\\
+# a_{2,1}x_1+a_{2,2}x_2+a_{2,3}x_3=b_2
+# \end{align}
+# \quad\text{corresponds to}\quad\
+# x_1
+# \begin{bmatrix}
+#     a_{1,1}\\
+#     a_{2,1}
+# \end{bmatrix}
+# +x_2
+# \begin{bmatrix}
+#     a_{1,2}\\
+#     a_{2,2}
+# \end{bmatrix}
+# +x_3
+# \begin{bmatrix}
+#     a_{1,3}\\
+#     a_{2,3}
+# \end{bmatrix}
+# =
+# \begin{bmatrix}
+#     b_{1}\\
+#     b_{2}
+# \end{bmatrix}.
+# $$
+# 
+# But, if the columns of $\mathbf{A}$ are independent, two of them are enough to reach any point in $\mathbb{R}^2$. So, two components out of the three in $\mathbf{x}$ are used to determine the solution while the third is free, meaning that there is an infinite number of solutions.
+# 
 
 # ## Linear dependency
 # 
-# The number of columns can thus provide information on the number of solutions. But the number that we have to take into account is the number of linearly **independent** columns. Columns are linearly **dependent** if one of them is a linear combination of the others. In the column view, the direction of two linearly dependent vectors is the same and this doesn't add value in spanning the space.
+# The number of **columns** can thus provide information on the number of solutions. But the number that we have to take into account is the number of linearly **independent** columns. Columns are linearly **dependent** if one of them is a linear combination of the others. In the column view, the direction of two linearly dependent vectors is the same, and this doesn't add value in spanning the space.
 # 
 # As an example,
 # 
-# $
+# $$
 # \begin{align}
 # x_1+2x_2=b_1\\
 # 2x_1+4x_2=b_2
 # \end{align}
-# \quad\text{which in the column view is}\quad
+# $$
+# which in the column view is
+# 
+# $$
 # x_1
 # \begin{bmatrix}
 #     1 \\
@@ -891,19 +973,18 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 #     b_1 \\
 #     b_2
 # \end{bmatrix}
-# $.
+# $$.
 # 
 # The columns $(1,2)^\top$ and $(2,4)^\top$ are **dependent** and hence their linear combination is not enough to span the full $\mathbb{R}^2$ and reach all points in this space. If $\mathbf{b}=(3,6)^\top$ there is a solution $\mathbf{x}^\top=(1,1)^\top$ because the vector $(1,2)^\top$ spans a subspace of $\mathbb{R}^2$ that contains the vector $\mathbf{b}=(3,6)^\top$.
-# But for more general solution, as say $\mathbf{b}=(3,7)$, there is no solution 
-# as linear combinations of $(1,2)^\top$ are not enough to reach all points in $\mathbb{R}^2$. This is an example of an **overdetermined** system with $m=2\gt n=1$ because of the linear dependency between the columns.
+# But for a more general solution, as say $\mathbf{b}=(3,7)$, there is no solution as linear combinations of $(1,2)^\top$ are not enough to reach all points in $\mathbb{R}^2$. This is an example of an **overdetermined** system with $m=2\gt n=1$ because of the linear dependency between the columns.
 # 
 
 # ## Square matrix
 # 
-# When $\mathbf{A}\in\mathbb{R}^{m\times n}$ and $m=n$ the matrix $\mathbf{A}$ is called square matrix and if the columns are linearly **independant** there is a unique solution to $\mathbf{A}\mathbf{x}=\mathbf{b}$.
+# When $\mathbf{A}\in\mathbb{R}^{m\times n}$ and $m=n$, the matrix $\mathbf{A}$ is called square matrix and if the columns are linearly **independant** there is a unique solution to $\mathbf{A}\mathbf{x}=\mathbf{b}$.
 # The solution is simply $\mathbf{x}=\mathbf{A}^{-1}\mathbf{b}$, where $\mathbf{A}^{-1}$ is the inverse of $\mathbf{A}$.
 # 
-# When $\mathbf{A}^{-1}$ exist, we say that $\mathbf{A}$ is invertible (aka, nonsingular, or nondegenerate). 
+# When $\mathbf{A}^{-1}$ exist, we say that $\mathbf{A}$ is invertible (a.k.a., nonsingular, or nondegenerate). 
 # In this case, the columns and rows of $\mathbf{A}$ are linearly independent.
 # 
 # 
@@ -927,17 +1008,30 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # The matrix A can be expressed as a finite product of elementary matrices.
 # The matrix A has a left inverse (that is, there exists a B such that BA = I) or a right inverse (that is, there exists a C such that AC = I), in which case both left and right inverses exist and B = C = A−1. -->
 
+# In[44]:
+
+
+A = np.array([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
+np.linalg.inv(A)
+
+
 # ## Rank
 # 
 # The **column rank** of $\mathbf{A}$ is the dimension of the column space of $\mathbf{A}$ (i.e., the number of linearly independent columns), while the **row rank** of $\mathbf{A}$ is the dimension of the row space of $\mathbf{A}$ (i.e., the number of linearly independent rows).
 # 
-# A fundamental result in linear algebra is that the column rank and the row rank are **always equal** and this number is simply called the rank of $\mathbf{A}$.
+# A fundamental result in linear algebra is that the column rank and the row rank are **always equal**, and this number is called the rank of $\mathbf{A}$.
 # A matrix $\mathbf{A}\in\mathbb{R}^{m\times n}$ is said to have **full rank** if it's rank equals to $\min(m, n$); otherwise, the matrix is **rank deficient**.
 
-# In[42]:
+# In[45]:
 
 
-A=np.array([[1,2],[3,4]]); B=np.array([[1,2],[2,4]]); C=np.array([[1,0,0],[0,1,0],[0,0,1]])
+A = np.array([[1,2],[3,4]]); 
+print(A)
+B = np.array([[1,2],[2,4]]); 
+print(B)
+C = np.array([[1,0,0],[0,1,0],[0,0,1]])
+print(C)
+
 np.linalg.matrix_rank(A), np.linalg.matrix_rank(B), np.linalg.matrix_rank(C)
 
 
@@ -951,7 +1045,7 @@ np.linalg.matrix_rank(A), np.linalg.matrix_rank(B), np.linalg.matrix_rank(C)
 # where $\mathbf{I}_n$ denotes the $n\times n$ identity matrix. In this case, then the matrix $\mathbf{B}$ is uniquely determined by $\mathbf{A}$, and is called the inverse of $\mathbf{A}$, denoted by $\mathbf{A}^{-1}$.
 # 
 # A square matrix that is not invertible is called **singular** or **degenerate**. Non-square matrices ($m\times n$ matrices with $n\ne n$) do not have an inverse (but they may have a left inverse or right inverse). 
-# A square matrix is singular if and only if its determinant is zero. In practice, singular square matrices are quite rare. 
+# A square matrix is singular if and only if its determinant is zero. In practice, singular square matrices are pretty rare. 
 # 
 # 
 # 
@@ -971,6 +1065,17 @@ np.linalg.matrix_rank(A), np.linalg.matrix_rank(B), np.linalg.matrix_rank(C)
 # \end{bmatrix}.
 # $$
 # 
-# We can test to see this by seeing that multiplying
-# by the inverse given by the formula above works in practice.
 # 
+
+# In[46]:
+
+
+A = np.array([[1,2],[2,4]]); 
+np.linalg.det(A)
+
+
+# In[128]:
+
+
+
+
