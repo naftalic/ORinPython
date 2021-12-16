@@ -822,11 +822,11 @@ print(y)
 # If these conditions are not met, a ValueError is thrown. Here are a few more examples:
 # 
 # 
-# Ex 1.  | Shape  |    | Ex 2.  | Shape      | | Ex 3.  | Shape         | |
-# --     | --     | -- | --     | --         | | --     | --            | |
-# A      | 3 x 2  |    | A      | 10 x 3 x 3 | | A      | 6 x 1 x 4 x 1 | |
-# B      | 1 x 2  |    | B      | 10 x 1 x 3 | | B      | 1 x 5 x 1 x 3 | |
-# A+B    | 3 x 2  |    | A+B    | 10 x 3 x 3 | | A+B    | 6 x 5 x 4 x 3 | |
+# Ex 1.  | Shape  | Ex 2.  | Shape      | Ex 3.  | Shape         |
+# --     | --     | --     | --         | --     | --            |
+# A      | 3 x 2  | A      | 10 x 3 x 3 | A      | 6 x 1 x 4 x 1 | 
+# B      | 1 x 2  | B      | 10 x 1 x 3 | B      | 1 x 5 x 1 x 3 | 
+# A+B    | 3 x 2  | A+B    | 10 x 3 x 3 | A+B    | 6 x 5 x 4 x 3 |
 # 
 # Here are some more applications of broadcasting:
 

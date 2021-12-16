@@ -995,7 +995,7 @@ A spider has 8 legs
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 False
-{&#39;dog&#39;, &#39;cat&#39;}
+{&#39;cat&#39;, &#39;dog&#39;}
 </pre></div>
 </div>
 </div>
@@ -1012,7 +1012,7 @@ False
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 3
-{&#39;dog&#39;, &#39;cat&#39;, &#39;fish&#39;}
+{&#39;fish&#39;, &#39;cat&#39;, &#39;dog&#39;}
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1031,7 @@ False
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 2
-{&#39;dog&#39;, &#39;fish&#39;}
+{&#39;fish&#39;, &#39;dog&#39;}
 </pre></div>
 </div>
 </div>
@@ -1046,9 +1046,9 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>#1: mouse
-#2: dog
-#3: cat
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>#1: cat
+#2: mouse
+#3: dog
 </pre></div>
 </div>
 </div>
@@ -1300,8 +1300,11 @@ The shape of an array is a tuple of integers giving the size of the array along 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.12373552 0.20957628]
- [0.48773836 0.8972059 ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.02510993 0.59156781]
+ [0.40182837 0.69443142]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1326,9 +1329,7 @@ The shape of an array is a tuple of integers giving the size of the array along 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1  2  3  4]
  [ 5  6  7  8]
  [ 9 10 11 12]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2 3]
+[[2 3]
  [6 7]]
 </pre></div>
 </div>
@@ -1559,9 +1560,7 @@ original array:</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 6.  8.]
  [10. 12.]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 6.  8.]
+[[ 6.  8.]
  [10. 12.]]
 </pre></div>
 </div>
@@ -1580,6 +1579,9 @@ original array:</p>
  [-4. -4.]]
 [[-4. -4.]
  [-4. -4.]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1867,11 +1869,40 @@ original array:</p>
 <li><p>one of them is 1.</p></li>
 </ul>
 <p>If these conditions are not met, a ValueError is thrown. Here are a few more examples:</p>
-<p>Ex 1.  | Shape  |    | Ex 2.  | Shape      | | Ex 3.  | Shape         | |
-–     | –     | – | –     | –         | | –     | –            | |
-A      | 3 x 2  |    | A      | 10 x 3 x 3 | | A      | 6 x 1 x 4 x 1 | |
-B      | 1 x 2  |    | B      | 10 x 1 x 3 | | B      | 1 x 5 x 1 x 3 | |
-A+B    | 3 x 2  |    | A+B    | 10 x 3 x 3 | | A+B    | 6 x 5 x 4 x 3 | |</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ex 1.</p></th>
+<th class="head"><p>Shape</p></th>
+<th class="head"><p>Ex 2.</p></th>
+<th class="head"><p>Shape</p></th>
+<th class="head"><p>Ex 3.</p></th>
+<th class="head"><p>Shape</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>3 x 2</p></td>
+<td><p>A</p></td>
+<td><p>10 x 3 x 3</p></td>
+<td><p>A</p></td>
+<td><p>6 x 1 x 4 x 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>1 x 2</p></td>
+<td><p>B</p></td>
+<td><p>10 x 1 x 3</p></td>
+<td><p>B</p></td>
+<td><p>1 x 5 x 1 x 3</p></td>
+</tr>
+<tr class="row-even"><td><p>A+B</p></td>
+<td><p>3 x 2</p></td>
+<td><p>A+B</p></td>
+<td><p>10 x 3 x 3</p></td>
+<td><p>A+B</p></td>
+<td><p>6 x 5 x 4 x 3</p></td>
+</tr>
+</tbody>
+</table>
 <p>Here are some more applications of broadcasting:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1885,10 +1916,7 @@ A+B    | 3 x 2  |    | A+B    | 10 x 3 x 3 | | A+B    | 6 x 5 x 4 x 3 | |</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3,)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> (2,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3,) (2,)
 [[ 4  5]
  [ 8 10]
  [12 15]]

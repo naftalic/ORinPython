@@ -29,6 +29,7 @@ a, b
 # We denote vectors in bold, lower-case letters (e.g., $\mathbf{x}$). 
 # Vectors can be presented either as a **column** or as a **row**.
 # In example,
+# 
 # $$
 # \mathbf{x} =
 # \begin{bmatrix}
@@ -242,11 +243,11 @@ A + np.array([4, 4, 4])
 # If these conditions are not met, a ValueError is thrown. Here are a few more examples:
 # 
 # 
-# Ex 1.  | Shape  |    | Ex 2.  | Shape      | | Ex 3.  | Shape         | |
-# --     | --     | -- | --     | --         | | --     | --            | |
-# A      | 3 x 2  |    | A      | 10 x 3 x 3 | | A      | 6 x 1 x 4 x 1 | |
-# B      | 1 x 2  |    | B      | 10 x 1 x 3 | | B      | 1 x 5 x 1 x 3 | |
-# A+B    | 3 x 2  |    | A+B    | 10 x 3 x 3 | | A+B    | 6 x 5 x 4 x 3 | |
+# Ex 1.  | Shape  | Ex 2.  | Shape      | Ex 3.  | Shape         |
+# --     | --     | --     | --         |  --    | --            | 
+# A      | 3 x 2  | A      | 10 x 3 x 3 | A      | 6 x 1 x 4 x 1 | 
+# B      | 1 x 2  | B      | 10 x 1 x 3 | B      | 1 x 5 x 1 x 3 | 
+# A+B    | 3 x 2  | A+B    | 10 x 3 x 3 | A+B    | 6 x 5 x 4 x 3 | 
 # 
 # 
 # 
@@ -395,6 +396,7 @@ A*x
 # 
 # The matrix product $\mathbf{C}\in \mathbb{R}^{m \times n}$ is produced by computing each element $c_{ij}$ as the dot product $\mathbf{a}^\top_i \mathbf{b}_j$:
 # 
+# $$
 # \begin{align}
 # \mathbf{C} &= \mathbf{A\cdot B} \\
 # &= \begin{bmatrix}
@@ -420,6 +422,7 @@ A*x
 # \mathbf{a}_m \mathbf{b}_1 & \mathbf{a}_m\mathbf{b}_2& \cdots& \mathbf{a}_m \mathbf{b}_n
 # \end{bmatrix}.
 # \end{align}
+# $$
 # 
 # Again, $\mathbf{a}_1\mathbf{b}_1$ is the dot product of the 1st row in $\mathbf A$ by the 1st column in $\mathbf B$, etc.
 # 
@@ -612,13 +615,17 @@ A_inv.dot(A)
 # ## Solving a system of linear equations
 # 
 # The set of equations
+# 
 # $$
 # \mathbf A \mathbf x = \mathbf b
 # $$
+# 
 # where $\mathbf{A}\in \mathbb{R}^{m \times n}$, $\mathbf{x}\in \mathbb{R}^n$, and $\mathbf{b}\in \mathbb{R}^m$, has the solution
+# 
 # $$
 # \mathbf A^{-1} \mathbf A \mathbf x =\mathbf I_n\mathbf x =\mathbf x=\mathbf A^{-1}  \mathbf b
 # $$
+# 
 # given that $\mathbf A^{-1}$ exists.
 # 
 
@@ -660,8 +667,11 @@ x
 # a_{m,1}x_1 + a_{m,2}x_2 + \cdots + a_{m,n}x_n = b_m
 # \end{align}
 # $$
+# 
 # or
+# 
 # $$
+# \begin{align}
 # \begin{bmatrix}
 #     a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\\\
 #     a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\\\
@@ -681,6 +691,7 @@ x
 #     \cdots \\\\
 #     b_m
 # \end{bmatrix}.
+# \end{align}
 # $$
 # 
 # Commonly, we are given $\mathbf{A}$ and $\mathbf{b}$ as inputs, and we solve for $\mathbf{x}$ that satisfy the above equations.
@@ -848,6 +859,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # can be written by grouping the columns in $\mathbf{A}$
 # 
 # $$
+# \begin{align}
 # x_1
 # \begin{bmatrix}
 #     a_{1,1}\\\\
@@ -874,6 +886,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 #     b_2\\\\
 #     b_m
 # \end{bmatrix}.
+# \end{align}
 # $$
 # 
 # In this view, the solution $\mathbf{b}$ is a linear combination of the columns of $\mathbf{A}$, weighted by the components of $\mathbf{x}$.
@@ -881,7 +894,7 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # 
 # * For the **overdetermined** system $m\gt n$ and there is **no solution**. For example, in the column view,
 # 
-# $
+# $$
 # \begin{align}
 # a_{1,1}x_1+a_{1,2}x_2=b_1\\
 # a_{2,1}x_1+a_{2,2}x_2=b_2\\
@@ -906,11 +919,12 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 #     b_{2}\\
 #     b_{3}
 # \end{bmatrix}.
-# $
+# $$
 # 
 # In the row view, we have 3 lines, and we are looking for a unique intersection in the 2-dimensional plane. The three lines (if independent) will intersect in multiple points resulting in no solution. In the column view, because $n=2$ the linear combination of two 3-dimensional vectors is not enough to span the 3-dimensional space, unless the vector $\mathbf{b}$ lies, for some reason, in the subspace formed by these two vectors.
 # 
 # * For the **underdetermined** system, $m \lt n$ and the system has **infinite number of solutions**. As an example in the column view,
+# 
 # $$
 # \begin{align}
 # a_{1,1}x_1+a_{1,2}x_2+a_{1,3}x_3=b_1\\
@@ -954,9 +968,11 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # 2x_1+4x_2=b_2
 # \end{align}
 # $$
+# 
 # which in the column view is
 # 
 # $$
+# \begin{align}
 # x_1
 # \begin{bmatrix}
 #     1 \\
@@ -972,8 +988,9 @@ a*np.array([1,2,3])+b*np.array([4,5,6])
 # \begin{bmatrix}
 #     b_1 \\
 #     b_2
-# \end{bmatrix}
-# $$.
+# \end{bmatrix}.
+# \end{align}
+# $$
 # 
 # The columns $(1,2)^\top$ and $(2,4)^\top$ are **dependent** and hence their linear combination is not enough to span the full $\mathbb{R}^2$ and reach all points in this space. If $\mathbf{b}=(3,6)^\top$ there is a solution $\mathbf{x}^\top=(1,1)^\top$ because the vector $(1,2)^\top$ spans a subspace of $\mathbb{R}^2$ that contains the vector $\mathbf{b}=(3,6)^\top$.
 # But for a more general solution, as say $\mathbf{b}=(3,7)$, there is no solution as linear combinations of $(1,2)^\top$ are not enough to reach all points in $\mathbb{R}^2$. This is an example of an **overdetermined** system with $m=2\gt n=1$ because of the linear dependency between the columns.
@@ -1074,7 +1091,7 @@ A = np.array([[1,2],[2,4]]);
 np.linalg.det(A)
 
 
-# In[128]:
+# In[46]:
 
 
 
