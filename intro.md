@@ -6,9 +6,9 @@ Welcome to a short introductory material on Operation Research and Management Sc
 
 :::{note}
 For reference material on the topic, I strongly recommend reading:
-* Introduction to Management Science, 13th Edition, by Bernard Taylor, ISBN-13: 978-0134730660
-* Optimization in Operation Research, 2nd Edition, by Ronald Rardin, ISBN-13: 978-0134384559
-* Data, Models, and Decisions: The Fundamentals of Management Science, by Dimitris Bertsimas, Robert Freund, ISBN-13: 978-0975914601
+* [Introduction to Management Science, 13th Edition, by Bernard Taylor, ISBN-13: 978-0134730660](https://www.amazon.com/Introduction-Management-Science-Whats-Operations/dp/0134730666)
+* [Optimization in Operation Research, 2nd Edition, by Ronald Rardin, ISBN-13: 978-0134384559](https://www.amazon.com/Optimization-Operations-Research-Ronald-Rardin/dp/0134384555/ref=tmm_hrd_swatch_0?_encoding=UTF8&qid=1639675261&sr=1-1)
+* [Data, Models, and Decisions: The Fundamentals of Management Science, by Dimitris Bertsimas, Robert Freund, ISBN-13: 978-0975914601](https://www.amazon.com/Data-Models-Decisions-Fundamentals-Management/dp/097591460X/ref=sr_1_1?keywords=Data%2C+Models%2C+and+Decisions%3A+The+Fundamentals+of+Management+Science%2C+by+Dimitris+Bertsimas%2C+Robert+Freund%2C+ISBN-13%3A+978-0975914601&qid=1639675286&s=books&sr=1-1)
 
 Lastly, Ling-Chieh Kung, Associate Professor at the National Taiwan University, created a set of three online Coursera courses on Operations Research. These are 100% recommended:
 * [Operations Research (1): Models and Applications](https://www.coursera.org/learn/operations-research-modeling)
