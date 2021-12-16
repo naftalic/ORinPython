@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cells &#8212; OR/MS in Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OR/MS in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Notes on OR and MS with Python
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linear_Programming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Solving_problems_using_Python.html">
+   Solving problems using Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Theory_of_LP.html">
+   Theory of LP and the Simplex method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Integer_Programming.html">
+   Integer Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Multicriteria_Decision_Making.html">
+   Multicriteria Decision Making
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Nonlinear_Programming.html">
+   Nonlinear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Probability_and_Statistics.html">
+   Probability and Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Python_Review.html">
+   Python Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linear_Algebra_Review.html">
+   Linear Algebra Review
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Overview_of_Colaboratory_Features.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/naftalic/ORinPython"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/naftalic/ORinPython/issues/new?title=Issue%20on%20page%20%2FOverview_of_Colaboratory_Features.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/naftalic/ORinPython/master?urlpath=tree/docs/Overview_of_Colaboratory_Features.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Cells
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-cells">
+     Code cells
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#text-cells">
+     Text cells
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-and-moving-cells">
+     Adding and moving cells
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-python">
+   Working with python
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-aliases">
+     System aliases
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#magics">
+     Magics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#automatic-completions-and-exploring-code">
+     Automatic completions and exploring code
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exception-formatting">
+     Exception Formatting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rich-interactive-outputs">
+     Rich, interactive outputs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-with-drive">
+   Integration with Drive
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commenting-on-a-cell">
+     Commenting on a cell
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="cells">
+<h1>Cells<a class="headerlink" href="#cells" title="Permalink to this headline">¶</a></h1>
+<p>A notebook is a list of cells. Cells contain either explanatory text or executable code and its output. Click a cell to select it.</p>
+<div class="section" id="code-cells">
+<h2>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">¶</a></h2>
+<p>Below is a <strong>code cell</strong>. Once the toolbar button indicates CONNECTED, click in the cell to select it and execute the contents in the following ways:</p>
+<ul class="simple">
+<li><p>Click the <strong>Play icon</strong> in the left gutter of the cell;</p></li>
+<li><p>Type <strong>Cmd/Ctrl+Enter</strong> to run the cell in place;</p></li>
+<li><p>Type <strong>Shift+Enter</strong> to run the cell and move focus to the next cell (adding one if none exists); or</p></li>
+<li><p>Type <strong>Alt+Enter</strong> to run the cell and insert a new code cell immediately below it.</p></li>
+</ul>
+<p>There are additional options for running some or all cells in the <strong>Runtime</strong> menu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="text-cells">
+<h2>Text cells<a class="headerlink" href="#text-cells" title="Permalink to this headline">¶</a></h2>
+<p>This is a <strong>text cell</strong>. You can <strong>double-click</strong> to edit this cell. Text cells
+use markdown syntax. To learn more, see our <span class="xref myst">markdown
+guide</span>.</p>
+<p>You can also add math to text cells using <a class="reference external" href="http://www.latex-project.org/">LaTeX</a>
+to be rendered by <a class="reference external" href="https://www.mathjax.org">MathJax</a>. Just place the statement
+within a pair of <strong>$</strong> signs. For example <code class="docutils literal notranslate"><span class="pre">$\sqrt{3x-1}+(1+x)^2$</span></code> becomes
+<span class="math notranslate nohighlight">\(\sqrt{3x-1}+(1+x)^2.\)</span></p>
+</div>
+<div class="section" id="adding-and-moving-cells">
+<h2>Adding and moving cells<a class="headerlink" href="#adding-and-moving-cells" title="Permalink to this headline">¶</a></h2>
+<p>You can add new cells by using the <strong>+ CODE</strong> and <strong>+ TEXT</strong> buttons that show when you hover between cells. These buttons are also in the toolbar above the notebook where they can be used to add a cell below the currently selected cell.</p>
+<p>You can move a cell by selecting it and clicking <strong>Cell Up</strong> or <strong>Cell Down</strong> in the top toolbar.</p>
+<p>Consecutive cells can be selected by “lasso selection” by dragging from outside one cell and through the group.  Non-adjacent cells can be selected concurrently by clicking one and then holding down Ctrl while clicking another.  Similarly, using Shift instead of Ctrl will select all intermediate cells.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="working-with-python">
+<h1>Working with python<a class="headerlink" href="#working-with-python" title="Permalink to this headline">¶</a></h1>
+<p>Colaboratory is built on top of <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>. Below are some examples of convenience functions provided.</p>
+<p>Long running python processes can be interrupted. Run the following cell and select <strong>Runtime -&gt; Interrupt execution</strong> (<em>hotkey: Cmd/Ctrl-M I</em>) to stop execution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sleeping&quot;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># sleep for a while; interrupt me!</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done Sleeping&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sleeping
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">fb6d98dc021a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">time</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sleeping&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># sleep for a while; interrupt me!</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done Sleeping&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="system-aliases">
+<h2>System aliases<a class="headerlink" href="#system-aliases" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter includes shortcuts for common operations, such as ls:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /bin
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">arch</span>@      <span class=" -Color -Color-Bold -Color-Bold-Green">dmesg</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">ls</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">pwd</span>*        <span class=" -Color -Color-Bold -Color-Bold-Green">true</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">awk</span>@       <span class=" -Color -Color-Bold -Color-Bold-Green">dnsdomainname</span>*  <span class=" -Color -Color-Bold -Color-Bold-Green">lsmod</span>*       <span class=" -Color -Color-Bold -Color-Bold-Green">readlink</span>*   <span class=" -Color -Color-Bold -Color-Bold-Green">umount</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">basename</span>@  <span class=" -Color -Color-Bold -Color-Bold-Green">domainname</span>*     <span class=" -Color -Color-Bold -Color-Bold-Green">mail</span>*        <span class=" -Color -Color-Bold -Color-Bold-Cyan">red</span>@        <span class=" -Color -Color-Bold -Color-Bold-Green">uname</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">bash</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">echo</span>*           <span class=" -Color -Color-Bold -Color-Bold-Green">mkdir</span>*       <span class=" -Color -Color-Bold -Color-Bold-Green">rm</span>*         <span class=" -Color -Color-Bold -Color-Bold-Green">uncompress</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">bunzip2</span>@   <span class=" -Color -Color-Bold -Color-Bold-Cyan">ed</span>@             <span class=" -Color -Color-Bold -Color-Bold-Green">mknod</span>*       <span class=" -Color -Color-Bold -Color-Bold-Green">rmdir</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">usleep</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">busybox</span>*   <span class=" -Color -Color-Bold -Color-Bold-Green">egrep</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">mktemp</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">run-parts</span>*  <span class=" -Color -Color-Bold -Color-Bold-Green">ver</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">bzip2</span>@     <span class=" -Color -Color-Bold -Color-Bold-Green">false</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">more</span>*        <span class=" -Color -Color-Bold -Color-Bold-Green">sed</span>*        <span class=" -Color -Color-Bold -Color-Bold-Green">which</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">cat</span>*       <span class=" -Color -Color-Bold -Color-Bold-Green">fgrep</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">mount</span>*       <span class=" -Color -Color-Bold -Color-Bold-Cyan">sh</span>@         <span class=" -Color -Color-Bold -Color-Bold-Blue">wrapper_checkpoints</span>/
+<span class=" -Color -Color-Bold -Color-Bold-Green">chgrp</span>*     <span class=" -Color -Color-Bold -Color-Bold-Cyan">gawk</span>@           <span class=" -Color -Color-Bold -Color-Bold-Green">mountpoint</span>*  <span class=" -Color -Color-Bold -Color-Bold-Green">sleep</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">zcat</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">chmod</span>*     <span class=" -Color -Color-Bold -Color-Bold-Green">grep</span>*           <span class=" -Color -Color-Bold -Color-Bold-Green">mv</span>*          <span class=" -Color -Color-Bold -Color-Bold-Cyan">sort</span>@       <span class=" -Color -Color-Bold -Color-Bold-Green">zcmp</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">chown</span>*     <span class=" -Color -Color-Bold -Color-Bold-Green">gunzip</span>*         <span class=" -Color -Color-Bold -Color-Bold-Green">nc</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">stty</span>*       <span class=" -Color -Color-Bold -Color-Bold-Green">zdiff</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">cp</span>*        <span class=" -Color -Color-Bold -Color-Bold-Green">gzexe</span>*          <span class=" -Color -Color-Bold -Color-Bold-Cyan">netcat</span>@      <span class=" -Color -Color-Bold -Color-Bold-Green">su</span>*         <span class=" -Color -Color-Bold -Color-Bold-Green">zegrep</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">cpio</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">gzip</span>*           <span class=" -Color -Color-Bold -Color-Bold-Green">netstat</span>*     <span class=" -Color -Color-Bold -Color-Bold-Green">sync</span>*       <span class=" -Color -Color-Bold -Color-Bold-Green">zfgrep</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">csh</span>@       <span class=" -Color -Color-Bold -Color-Bold-Green">hostname</span>*       <span class=" -Color -Color-Bold -Color-Bold-Cyan">nice</span>@        <span class=" -Color -Color-Bold -Color-Bold-Green">tailf</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">zforce</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">cut</span>@       <span class=" -Color -Color-Bold -Color-Bold-Cyan">igawk</span>@          <span class=" -Color -Color-Bold -Color-Bold-Cyan">pidof</span>@       <span class=" -Color -Color-Bold -Color-Bold-Green">tar</span>*        <span class=" -Color -Color-Bold -Color-Bold-Green">zgrep</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">date</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">kill</span>*           <span class=" -Color -Color-Bold -Color-Bold-Green">ping</span>*        <span class=" -Color -Color-Bold -Color-Bold-Cyan">tcsh</span>@       <span class=" -Color -Color-Bold -Color-Bold-Green">zless</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">dd</span>*        <span class=" -Color -Color-Bold -Color-Bold-Green">ln</span>*             <span class=" -Color -Color-Bold -Color-Bold-Green">ping6</span>*       <span class=" -Color -Color-Bold -Color-Bold-Green">tempfile</span>*   <span class=" -Color -Color-Bold -Color-Bold-Green">zmore</span>*
+<span class=" -Color -Color-Bold -Color-Bold-Green">df</span>*        <span class=" -Color -Color-Bold -Color-Bold-Green">login</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">ps</span>*          <span class=" -Color -Color-Bold -Color-Bold-Green">touch</span>*      <span class=" -Color -Color-Bold -Color-Bold-Green">znew</span>*
+</pre></div>
+</div>
+</div>
+</div>
+<p>That <code class="docutils literal notranslate"><span class="pre">!ls</span></code> probably generated a large output. You can select the cell and clear the output by either:</p>
+<ol class="simple">
+<li><p>Clicking on the clear output button (x) in the toolbar above the cell; or</p></li>
+<li><p>Right clicking the left gutter of the output area and selecting “Clear output” from the context menu.</p></li>
+</ol>
+<p>Execute any other process using <code class="docutils literal notranslate"><span class="pre">!</span></code> with string interpolation from python variables, and note the result can be assigned to a variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Colaboratory is great!&#39;</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="o">!</span><span class="nb">echo</span> -e <span class="s1">&#39;$message\n$message&#39;</span>
+<span class="n">foo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Colaboratory is great!&#39;, &#39;Colaboratory is great!&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="magics">
+<h2>Magics<a class="headerlink" href="#magics" title="Permalink to this headline">¶</a></h2>
+<p>Colaboratory shares the notion of magics from Jupyter. There are shorthand annotations that change how a cell’s text is executed. To learn more, see <a class="reference external" href="http://nbviewer.jupyter.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb">Jupyter’s magics page</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">marquee</span> <span class="na">style</span><span class="o">=</span><span class="s">&#39;width: 30%; color: blue;&#39;</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Whee!<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">marquee</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><marquee style='width: 30%; color: blue;'><b>Whee!</b></marquee></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">svg</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 450 400&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;200&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;80&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;60&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">rx</span><span class="o">=</span><span class="s">&quot;20&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;fill:red; stroke:black; fill-opacity:0.7&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;180&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;110&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">rx</span><span class="o">=</span><span class="s">&quot;40&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;fill:blue; stroke:black; fill-opacity:0.5;&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 400" width="200" height="200">
+  <rect x="80" y="60" width="250" height="250" rx="20" style="fill:red; stroke:black; fill-opacity:0.7" />
+  <rect x="180" y="110" width="250" height="250" rx="40" style="fill:blue; stroke:black; fill-opacity:0.5;" />
+</svg></div></div>
+</div>
+</div>
+<div class="section" id="automatic-completions-and-exploring-code">
+<h2>Automatic completions and exploring code<a class="headerlink" href="#automatic-completions-and-exploring-code" title="Permalink to this headline">¶</a></h2>
+<p>Colab provides automatic completions to explore attributes of Python objects, as well as to quickly view documentation strings. As an example, first run the following cell to import the  <a class="reference external" href="http://www.numpy.org"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></a> module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you now insert your cursor after <code class="docutils literal notranslate"><span class="pre">np</span></code> and press <strong>Period</strong>(<code class="docutils literal notranslate"><span class="pre">.</span></code>), you will see the list of available completions within the <code class="docutils literal notranslate"><span class="pre">np</span></code> module. Completions can be opened again by using <strong>Ctrl+Space</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you type an open parenthesis after any function or class in the module, you will see a pop-up of its documentation string:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The documentation can be opened again using <strong>Ctrl+Shift+Space</strong> or you can view the documentation for method by mouse hovering over the method name.</p>
+<p>When hovering over the method name the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">in</span> <span class="pre">tab</span></code> link will open the documentation in a persistent pane. The <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">source</span></code> link will navigate to the source code for the method.</p>
+</div>
+<div class="section" id="exception-formatting">
+<h2>Exception Formatting<a class="headerlink" href="#exception-formatting" title="Permalink to this headline">¶</a></h2>
+<p>Exceptions are formatted nicely in Colab outputs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-14-dc39888fd1d2&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">ZeroDivisionError</span>: integer division or modulo by zero
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="rich-interactive-outputs">
+<h2>Rich, interactive outputs<a class="headerlink" href="#rich-interactive-outputs" title="Permalink to this headline">¶</a></h2>
+<p>Until now all of the generated outputs have been text, but they can be more interesting, like the chart below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">ys</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">))]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">ys</span> <span class="o">&gt;</span> <span class="mi">195</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fills and Alpha Example&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Overview_of_Colaboratory_Features_26_0.png" src="_images/Overview_of_Colaboratory_Features_26_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="integration-with-drive">
+<h1>Integration with Drive<a class="headerlink" href="#integration-with-drive" title="Permalink to this headline">¶</a></h1>
+<p>Colaboratory is integrated with Google Drive. It allows you to share, comment, and collaborate on the same document with multiple people:</p>
+<ul class="simple">
+<li><p>The <strong>SHARE</strong> button (top-right of the toolbar) allows you to share the notebook and control permissions set on it.</p></li>
+<li><p><strong>File-&gt;Make a Copy</strong> creates a copy of the notebook in Drive.</p></li>
+<li><p><strong>File-&gt;Save</strong> saves the File to Drive. <strong>File-&gt;Save and checkpoint</strong> pins the version so it doesn’t get deleted from the revision history.</p></li>
+<li><p><strong>File-&gt;Revision history</strong> shows the notebook’s revision history.</p></li>
+</ul>
+<div class="section" id="commenting-on-a-cell">
+<h2>Commenting on a cell<a class="headerlink" href="#commenting-on-a-cell" title="Permalink to this headline">¶</a></h2>
+<p>You can comment on a Colaboratory notebook like you would on a Google Document. Comments are attached to cells, and are displayed next to the cell they refer to. If you have <strong>comment-only</strong> permissions, you will see a comment button on the top right of the cell when you hover over it.</p>
+<p>If you have edit or comment permissions you can comment on a cell in one of three ways:</p>
+<ol class="simple">
+<li><p>Select a cell and click the comment button in the toolbar above the top-right corner of the cell.</p></li>
+<li><p>Right click a text cell and select <strong>Add a comment</strong> from the context menu.</p></li>
+<li><p>Use the shortcut <strong>Ctrl+Shift+M</strong> to add a comment to the currently selected cell.</p></li>
+</ol>
+<p>You can resolve and reply to comments, and you can target comments to specific collaborators by typing <em>+[email address]</em> (e.g., <code class="docutils literal notranslate"><span class="pre">+user&#64;domain.com</span></code>). Addressed collaborators will be emailed.</p>
+<p>The Comment button in the top-right corner of the page shows all comments attached to the notebook.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Naftali Cohen<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

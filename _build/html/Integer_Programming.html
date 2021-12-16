@@ -92,7 +92,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Lecture notes in OR/MS with Python
+   Notes on OR and MS with Python
   </a>
  </li>
 </ul>
@@ -144,17 +144,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
-   Python Tutorial
+   Python Review
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Linear_Algebra_Review.html">
    Linear Algebra Review
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Probability_and_Statistics_Review.html">
-   Probability and Statistics Review
   </a>
  </li>
 </ul>
@@ -316,9 +311,9 @@
 <h1>Integer Programming<a class="headerlink" href="#integer-programming" title="Permalink to this headline">¶</a></h1>
 <p>There are three types of model problems:</p>
 <ul class="simple">
-<li><p>Total integer model: where all the decision variables required to have integer solution values.</p></li>
-<li><p>Binary integer (0-1) model: where all decision variables required to have integer values of zero or one.</p></li>
-<li><p>Mixed integer (MI) model: where some of the decision variables (but not all) required to have integer values.</p></li>
+<li><p>Total integer model: all the decision variables are required to have integer solution values</p></li>
+<li><p>Binary integer (0-1) model: all decision variables must have zero or one integer value</p></li>
+<li><p>Mixed-integer (MI) model: some decision variables required to have integer values</p></li>
 </ul>
 <div class="section" id="a-0-1-integer-model">
 <h2>A 0 - 1 Integer Model:<a class="headerlink" href="#a-0-1-integer-model" title="Permalink to this headline">¶</a></h2>
@@ -332,12 +327,12 @@
 &amp;\qquad x_1+x_2 \le 1\
 &amp;\qquad x_1,x_2,x_3,x_4 = 0~\text{or}~1\
 \end{align}</p>
+<p>Note to make use of vtype = GRB.BINARY</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install gurobipy
 
-<span class="c1"># Import gurobi library</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -356,6 +351,7 @@
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">:</span>
     <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
 
+<span class="c1"># list comprehensions</span>
 <span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> <span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span> 
 <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">decision_variables</span><span class="p">)</span> 
                            <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">),</span> <span class="s2">&quot;constraints&quot;</span><span class="p">)</span>
@@ -376,12 +372,12 @@
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">GurobiError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">88</span><span class="n">f5e44bf11a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">5237</span><span class="n">bf5d8ce0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">constraints</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> 
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
 
@@ -406,6 +402,7 @@
 &amp;\qquad 15x_1+30x_2\le200\
 &amp;\qquad x_1,x_2\ge \text{and integer}\
 \end{align}</p>
+<p>Note to make use of vtype = GRB.INTEGER</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">]</span>    
@@ -460,7 +457,7 @@ Root relaxation: objective 1.033333e+03, 2 iterations, 0.00 seconds (0.00 work u
 H    0     0                    1000.0000000 1033.33333  3.33%     -    0s
      0     0 1033.33333    0    2 1000.00000 1033.33333  3.33%     -    0s
 
-Explored 1 nodes (2 simplex iterations) in 0.04 seconds (0.00 work units)
+Explored 1 nodes (2 simplex iterations) in 0.03 seconds (0.00 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 3: 1000 550 500 
@@ -489,6 +486,7 @@ objective value = 1000.0
 &amp;\qquad x_2\ge 0\
 &amp;\qquad x_1,x_3\ge \text{and integer}\
 \end{align}</p>
+<p>Note that vtype has a mixture of INTEGER and CONTINUOUS</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9000</span><span class="p">,</span><span class="mi">1500</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>    
@@ -540,7 +538,7 @@ Variable types: 0 continuous, 3 integer (0 binary)
 
 Root relaxation: cutoff, 0 iterations, 0.00 seconds (0.00 work units)
 
-Explored 1 nodes (0 simplex iterations) in 0.05 seconds (0.00 work units)
+Explored 1 nodes (0 simplex iterations) in 0.03 seconds (0.00 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 1: 42250 
@@ -616,14 +614,14 @@ Coefficient statistics:
   Objective range  [4e+01, 5e+01]
   Bounds range     [0e+00, 0e+00]
   RHS range        [2e+02, 2e+02]
-Presolve time: 0.01s
+Presolve time: 0.02s
 Presolved: 2 rows, 2 columns, 4 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    9.0000000e+31   2.750000e+30   9.000000e+01      0s
        2    1.4736842e+03   0.000000e+00   0.000000e+00      0s
 
-Solved in 2 iterations and 0.02 seconds (0.00 work units)
+Solved in 2 iterations and 0.03 seconds (0.00 work units)
 Optimal objective  1.473684211e+03
 x0 = 10.526315789473683 (50.0, 24.000000000000004, 100.0, 0.0)
 x1 = 23.68421052631579 (40.0, 19.999999999999996, 83.33333333333334, 0.0)
@@ -708,7 +706,7 @@ Root relaxation: objective 1.473684e+03, 2 iterations, 0.00 seconds (0.00 work u
 H    0     0                    1460.0000000 1473.68421  0.94%     -    0s
      0     0 1473.68421    0    2 1460.00000 1473.68421  0.94%     -    0s
 
-Explored 1 nodes (2 simplex iterations) in 0.02 seconds (0.00 work units)
+Explored 1 nodes (2 simplex iterations) in 0.03 seconds (0.00 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 2: 1460 1000 
@@ -988,7 +986,7 @@ Root relaxation: cutoff, 3 iterations, 0.00 seconds (0.00 work units)
 
      0     0     cutoff    0       640.00000  640.00000  0.00%     -    0s
 
-Explored 1 nodes (3 simplex iterations) in 0.04 seconds (0.00 work units)
+Explored 1 nodes (3 simplex iterations) in 0.03 seconds (0.00 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 1: 640 
@@ -1069,7 +1067,7 @@ Presolve time: 0.00s
 Presolved: 3 rows, 3 columns, 9 nonzeros
 Variable types: 0 continuous, 3 integer (0 binary)
 
-Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds (0.00 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 1: 100000 

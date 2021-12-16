@@ -94,7 +94,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Lecture notes in OR/MS with Python
+   Notes on OR and MS with Python
   </a>
  </li>
 </ul>
@@ -146,17 +146,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
-   Python Tutorial
+   Python Review
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Linear_Algebra_Review.html">
    Linear Algebra Review
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Probability_and_Statistics_Review.html">
-   Probability and Statistics Review
   </a>
  </li>
 </ul>
@@ -264,6 +259,16 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#goal-programming-example">
+   Goal programming example:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#altered-goal-programming-example">
+   Altered goal programming example:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problem-example-c9q8">
    Problem Example: C9Q8
   </a>
@@ -295,8 +300,9 @@
 <li><p><strong>At least one</strong> or both deviational variables in a goal constraint must equal zero</p></li>
 <li><p>The objective function seeks to <strong>minimize</strong> the deviation from the respective goals in the order of the goal priorities.</p></li>
 </ul>
-<p>##Goal programming example:
-Solve the following problem:</p>
+<div class="section" id="goal-programming-example">
+<h2>Goal programming example:<a class="headerlink" href="#goal-programming-example" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following problem:</p>
 <p>\begin{align}
 &amp;\text{min}\
 &amp;\qquad z=P_1d_1^-,P_2d_2^-,P_3d_3^+,P_4d_1^+\
@@ -369,8 +375,10 @@ Solve the following problem:</p>
 </div>
 </div>
 </div>
-<p>##Altered goal programming example:
-Solve the following problem:
+</div>
+<div class="section" id="altered-goal-programming-example">
+<h2>Altered goal programming example:<a class="headerlink" href="#altered-goal-programming-example" title="Permalink to this headline">¶</a></h2>
+<p>Solve the following problem:
 \begin{align}
 &amp;\text{min}\
 &amp;\qquad z=P_1d_1^-,P_2d_2^-,P_3d_3^+,P_4d_1^+,4P_5d_5^-+5P_5d_6^-\
@@ -549,6 +557,7 @@ dp[1] 0.0
 dp[2] 0.0
 dp[3] 5.0
 </pre></div>
+</div>
 </div>
 </div>
 </div>
