@@ -22,7 +22,7 @@ from gurobipy import *
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/var/folders/7g/0mhn561929v4m3ljwjf_r_0c0000gn/T/ipykernel_69371/2174118868.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/7g/0mhn561929v4m3ljwjf_r_0c0000gn/T/ipykernel_69559/2174118868.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0;32mfrom[0m [0mgurobipy[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mModuleNotFoundError[0m: No module named 'gurobipy'
