@@ -281,6 +281,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="multicriteria-decision-making">
 <h1>Multicriteria Decision Making<a class="headerlink" href="#multicriteria-decision-making" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1MkbZ9JcZlq3C1biZRc7YiZV0_Fj14vtW?usp=sharing">Colab notebook</a></p>
 <p>Goal programming is a variation of linear programming considering more than one objective (goals) in the objective function. Goal programming solutions do not always achieve all goals and they are not optimal; they achieve the best or most satisfactory solution possible.</p>
 <p>Goal Constraint Requirements:</p>
 <ul class="simple">
@@ -293,15 +294,18 @@
 <div class="section" id="goal-programming-example">
 <h2>Goal programming example:<a class="headerlink" href="#goal-programming-example" title="Permalink to this headline">¶</a></h2>
 <p>Solve the following problem:</p>
-<p>\begin{align}
-&amp;\text{min}\
-&amp;\qquad z=P_1d_1^-,P_2d_2^-,P_3d_3^+,P_4d_1^+\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+2x_2+d_1^–d_1^+=40\
-&amp;\qquad 40x_1+50x_2+d_2^–d_2^+=1600\
-&amp;\qquad 4x_1+3x_2+d_3^–d_3^+=120\
-&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{min}\\
+&amp;\qquad z=P_1d_1^-,P_2d_2^-,P_3d_3^+,P_4d_1^+\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+2x_2+d_1^--d_1^+=40\\
+&amp;\qquad 40x_1+50x_2+d_2^--d_2^+=1600\\
+&amp;\qquad 4x_1+3x_2+d_3^--d_3^+=120\\
+&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}
+\end{align}  
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
@@ -344,7 +348,7 @@ for v in m.getVars():
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting gurobipy
   Downloading gurobipy-9.5.0-cp37-cp37m-manylinux2014_x86_64.whl (11.5 MB)
-     |████████████████████████████████| 11.5 MB 30.0 MB/s 
+     |████████████████████████████████| 11.5 MB 12.7 MB/s 
 ?25hInstalling collected packages: gurobipy
 Successfully installed gurobipy-9.5.0
 Restricted license - for non-production use only - expires 2023-10-25
@@ -377,7 +381,7 @@ Presolve removed 3 rows and 8 columns
 Presolve time: 0.00s
 Presolve: All rows and columns removed
 
-Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.07 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 0 
@@ -393,7 +397,7 @@ Multi-objectives: optimize objective 2 () ...
 Loaded user MIP start with objective 0
 
 
-Explored 0 nodes (0 simplex iterations) in 0.09 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.11 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 0 
@@ -412,7 +416,7 @@ Presolve removed 5 rows and 8 columns
 Presolve time: 0.00s
 Presolve: All rows and columns removed
 
-Explored 0 nodes (0 simplex iterations) in 0.12 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.14 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 2: 0 40 
@@ -439,7 +443,7 @@ Root relaxation: objective 1.500000e+01, 0 iterations, 0.00 seconds (0.00 work u
 
 *    0     0               0      15.0000000   15.00000  0.00%     -    0s
 
-Explored 1 nodes (0 simplex iterations) in 0.16 seconds (0.00 work units)
+Explored 1 nodes (0 simplex iterations) in 0.18 seconds (0.00 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 2: 15 24 
@@ -448,7 +452,7 @@ Optimal solution found (tolerance 1.00e-04)
 Best objective 1.500000000000e+01, best bound 1.500000000000e+01, gap 0.0000%
 
 ---------------------------------------------------------------------------
-Multi-objectives: solved in 0.18 seconds (0.00 work units), solution count 3
+Multi-objectives: solved in 0.24 seconds (0.00 work units), solution count 3
 
 x[0] 15.0
 x[1] 20.0
@@ -465,19 +469,22 @@ dp[2] 0.0
 </div>
 <div class="section" id="altered-goal-programming-example">
 <h2>Altered goal programming example:<a class="headerlink" href="#altered-goal-programming-example" title="Permalink to this headline">¶</a></h2>
-<p>Solve the following problem:
+<p>Solve the following problem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-&amp;\text{min}\
-&amp;\qquad z=P_1d_1^-,P_2d_2^-,P_3d_3^+,P_4d_1^+,4P_5d_5^-+5P_5d_6^-\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+2x_2+d_1^–d_1^+=40\
-&amp;\qquad 40x_1+50x_2+d_2^–d_2^+=1600\
-&amp;\qquad 4x_1+3x_2+d_3^–d_3^+=120\
-&amp;\qquad  d_1^++d_4^–d_4^+=10 \
-&amp;\qquad x_1+d_5^-=30\
-&amp;\qquad x_2+d_6^-=20\
-&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\
-\end{align}</p>
+&amp;\text{min}\\
+&amp;\qquad z=P_1d_1^-,P_2d_2^-,P_3d_3^+,P_4d_1^+,4P_5d_5^-+5P_5d_6^-\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+2x_2+d_1^--d_1^+=40\\
+&amp;\qquad 40x_1+50x_2+d_2^--d_2^+=1600\\
+&amp;\qquad 4x_1+3x_2+d_3^--d_3^+=120\\
+&amp;\qquad  d_1^++d_4^--d_4^+=10 \\
+&amp;\qquad x_1+d_5^-=30\\
+&amp;\qquad x_2+d_6^-=20\\
+&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}
+\end{align}  
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -563,7 +570,7 @@ Multi-objectives: optimize objective 2 () ...
 Loaded user MIP start with objective 0
 
 
-Explored 0 nodes (0 simplex iterations) in 0.08 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.07 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 0 
@@ -582,7 +589,7 @@ Presolve removed 6 rows and 10 columns
 Presolve time: 0.00s
 Presolve: All rows and columns removed
 
-Explored 0 nodes (0 simplex iterations) in 0.11 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.10 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 2: 0 60 
@@ -620,7 +627,7 @@ Presolve removed 8 rows and 10 columns
 Presolve time: 0.00s
 Presolve: All rows and columns removed
 
-Explored 0 nodes (0 simplex iterations) in 0.15 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.16 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 60 
@@ -629,7 +636,7 @@ Optimal solution found (tolerance 1.00e-04)
 Best objective 6.000000000000e+01, best bound 6.000000000000e+01, gap 0.0000%
 
 ---------------------------------------------------------------------------
-Multi-objectives: solved in 0.17 seconds (0.00 work units), solution count 2
+Multi-objectives: solved in 0.18 seconds (0.00 work units), solution count 2
 
 x[0] 15.0
 x[1] 20.0
@@ -650,16 +657,19 @@ dp[3] 5.0
 </div>
 <div class="section" id="problem-example-c9q8">
 <h2>Problem Example: C9Q8<a class="headerlink" href="#problem-example-c9q8" title="Permalink to this headline">¶</a></h2>
-<p>Solve the following goal programming model:
+<p>Solve the following goal programming model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-&amp;\text{min}\
-&amp;\qquad z=P_1d_1^-+P_1d_1^+,P_2d_2^-,P_3d_3^-,3P_4d_2^++5P_4d_3^+\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+x_2+d_1^–d_1^+=800\
-&amp;\qquad 5x_1+d_2^–d_2^+=2500\
-&amp;\qquad 3x_2+d_3^–d_3^+=1400\
-&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\
-\end{align}</p>
+&amp;\text{min}\\
+&amp;\qquad z=P_1d_1^-+P_1d_1^+,P_2d_2^-,P_3d_3^-,3P_4d_2^++5P_4d_3^+\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+x_2+d_1^--d_1^+=800\\
+&amp;\qquad 5x_1+d_2^--d_2^+=2500\\
+&amp;\qquad 3x_2+d_3^--d_3^+=1400\\
+&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}
+\end{align}  
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -740,7 +750,7 @@ Multi-objectives: optimize objective 2 () ...
 Loaded user MIP start with objective 0
 
 
-Explored 0 nodes (0 simplex iterations) in 0.07 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.06 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 0 
@@ -775,7 +785,7 @@ Multi-objectives: optimize objective 4 () ...
 Loaded user MIP start with objective 0
 
 
-Explored 0 nodes (0 simplex iterations) in 0.11 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.10 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 0 
@@ -801,17 +811,20 @@ dp[2] 0.0
 </div>
 <div class="section" id="problem-example-c9q10">
 <h2>Problem Example: C9Q10<a class="headerlink" href="#problem-example-c9q10" title="Permalink to this headline">¶</a></h2>
-<p>Solve the following goal programming model:
+<p>Solve the following goal programming model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-&amp;\text{min}\
-&amp;\qquad z=P_1d_1^-,5P_2d_2^-+2P_2d_3^-,P_3d_4^+\
-&amp;\text{s.t.}\
-&amp;\qquad 8x_1+6x_2+d_1^–d_1^+=480\
-&amp;\qquad x_1+d_2^–d_2^+=40\
-&amp;\qquad x_2+d_3^–d_3^+=50\
-&amp;\qquad d_1^++d_4^–d_4^+=20\
-&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}\
-\end{align}</p>
+&amp;\text{min}\\
+&amp;\qquad z=P_1d_1^-,5P_2d_2^-+2P_2d_3^-,P_3d_4^+\\
+&amp;\text{s.t.}\\
+&amp;\qquad 8x_1+6x_2+d_1^--d_1^+=480\\
+&amp;\qquad x_1+d_2^--d_2^+=40\\
+&amp;\qquad x_2+d_3^--d_3^+=50\\
+&amp;\qquad d_1^++d_4^--d_4^+=20\\
+&amp;\qquad x_i,d_j^-,d_j^+ \ge 0~ \text{and integer}
+\end{align}  
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
@@ -876,7 +889,7 @@ Presolve removed 4 rows and 10 columns
 Presolve time: 0.00s
 Presolve: All rows and columns removed
 
-Explored 0 nodes (0 simplex iterations) in 0.04 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 0 
@@ -895,7 +908,7 @@ Presolve removed 5 rows and 10 columns
 Presolve time: 0.00s
 Presolve: All rows and columns removed
 
-Explored 0 nodes (0 simplex iterations) in 0.06 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.08 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 2: 0 100 
@@ -914,7 +927,7 @@ Presolve removed 6 rows and 10 columns
 Presolve time: 0.00s
 Presolve: All rows and columns removed
 
-Explored 0 nodes (0 simplex iterations) in 0.08 seconds (0.00 work units)
+Explored 0 nodes (0 simplex iterations) in 0.10 seconds (0.00 work units)
 Thread count was 1 (of 2 available processors)
 
 Solution count 1: 120 
@@ -923,7 +936,7 @@ Optimal solution found (tolerance 1.00e-04)
 Best objective 1.200000000000e+02, best bound 1.200000000000e+02, gap 0.0000%
 
 ---------------------------------------------------------------------------
-Multi-objectives: solved in 0.09 seconds (0.00 work units), solution count 2
+Multi-objectives: solved in 0.11 seconds (0.00 work units), solution count 2
 
 x[0] 40.0
 x[1] 50.0

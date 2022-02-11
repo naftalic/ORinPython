@@ -42,6 +42,8 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -279,6 +281,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="nonlinear-programming">
 <h1>Nonlinear Programming<a class="headerlink" href="#nonlinear-programming" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1ppSECyuu_iwGMfrHenSemO9Ovd0TtuDP?usp=sharing">Colab notebook</a></p>
 <p>Problems that fit the general linear programming format but contain nonlinear functions are termed nonlinear programming problems.</p>
 <ul class="simple">
 <li><p>Solution methods are more complex than linear programming methods.</p></li>
@@ -294,14 +297,17 @@
 </ul>
 <div class="section" id="nonlinear-problem-example">
 <h2>Nonlinear problem example:<a class="headerlink" href="#nonlinear-problem-example" title="Permalink to this headline">¶</a></h2>
-<p>Solve the following nonlinear programming model:
+<p>Solve the following nonlinear programming model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-&amp;\text{max}\
-&amp;\qquad z=(4-0.1x_1)x_1+(5-0.2x_2)x_2\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+2x_2=40\
-&amp;\qquad x_i \ge 0\
-\end{align}</p>
+&amp;\text{max}\\
+&amp;\qquad z=(4-0.1x_1)x_1+(5-0.2x_2)x_2\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+2x_2=40\\
+&amp;\qquad x_i \ge 0
+\end{align}  
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
@@ -331,7 +337,7 @@ print(&#39;optimal total revenue:&#39;, m.objVal)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting gurobipy
   Downloading gurobipy-9.5.0-cp37-cp37m-manylinux2014_x86_64.whl (11.5 MB)
-     |████████████████████████████████| 11.5 MB 5.2 MB/s 
+     |████████████████████████████████| 11.5 MB 4.7 MB/s 
 ?25hInstalling collected packages: gurobipy
 Successfully installed gurobipy-9.5.0
 Restricted license - for non-production use only - expires 2023-10-25
@@ -346,7 +352,7 @@ Coefficient statistics:
   QObjective range [2e-01, 4e-01]
   Bounds range     [0e+00, 0e+00]
   RHS range        [4e+01, 4e+01]
-Presolve time: 0.01s
+Presolve time: 0.02s
 Presolved: 1 rows, 2 columns, 2 nonzeros
 Presolved model has 2 quadratic objective terms
 Ordering time: 0.00s
@@ -367,7 +373,7 @@ Iter       Primal          Dual         Primal    Dual     Compl     Time
    5   7.04166667e+01  7.04166669e+01  0.00e+00 0.00e+00  1.08e-07     0s
    6   7.04166667e+01  7.04166667e+01  0.00e+00 8.88e-16  1.08e-10     0s
 
-Barrier solved model in 6 iterations and 0.05 seconds (0.00 work units)
+Barrier solved model in 6 iterations and 0.09 seconds (0.00 work units)
 Optimal objective 7.04166667e+01
 
 x1 18.33333333336888
@@ -380,17 +386,20 @@ optimal total revenue: 70.41666666666666
 </div>
 <div class="section" id="a-nonlinear-programming-model-with-multiple-constraints">
 <h2>A Nonlinear Programming Model with Multiple Constraints:<a class="headerlink" href="#a-nonlinear-programming-model-with-multiple-constraints" title="Permalink to this headline">¶</a></h2>
-<p>Solve the following nonlinear programming model:
+<p>Solve the following nonlinear programming model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-&amp;\text{max}\
+&amp;\text{max}\\
 &amp;\qquad z=\left(\frac{1500-x_1}{24.6}-12\right)x_1
-+\left(\frac{2700-x_2}{63.8}-9\right)x_2\
-&amp;\text{s.t.}\
-&amp;\qquad 2x_1+2.7x_2\le 6000\
-&amp;\qquad 3.6x_1+2.9x_2\le 8500\
-&amp;\qquad 7.2x_1+8.5x_2\le 15000\
-&amp;\qquad x_i \ge 0\
-\end{align}</p>
++\left(\frac{2700-x_2}{63.8}-9\right)x_2\\
+&amp;\text{s.t.}\\
+&amp;\qquad 2x_1+2.7x_2\le 6000\\
+&amp;\qquad 3.6x_1+2.9x_2\le 8500\\
+&amp;\qquad 7.2x_1+8.5x_2\le 15000\\
+&amp;\qquad x_i \ge 0
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
@@ -429,7 +438,7 @@ Coefficient statistics:
   QObjective range [3e-02, 8e-02]
   Bounds range     [0e+00, 0e+00]
   RHS range        [6e+03, 2e+04]
-Presolve time: 0.01s
+Presolve time: 0.06s
 Presolved: 3 rows, 2 columns, 6 nonzeros
 Presolved model has 2 quadratic objective terms
 Ordering time: 0.00s
@@ -452,7 +461,7 @@ Iter       Primal          Dual         Primal    Dual     Compl     Time
    7   3.24592344e+04  3.24592344e+04  0.00e+00 2.84e-14  1.29e-06     0s
    8   3.24592344e+04  3.24592344e+04  0.00e+00 0.00e+00  1.29e-09     0s
 
-Barrier solved model in 8 iterations and 0.04 seconds (0.00 work units)
+Barrier solved model in 8 iterations and 0.23 seconds (0.00 work units)
 Optimal objective 3.24592344e+04
 
 x1 602.3999999996935
@@ -465,19 +474,22 @@ optimal total revenue: 32459.234379539725
 </div>
 <div class="section" id="problem-example-c10q14">
 <h2>Problem Example: C10Q14<a class="headerlink" href="#problem-example-c10q14" title="Permalink to this headline">¶</a></h2>
-<p>Solve the following nonlinear programming model:
+<p>Solve the following nonlinear programming model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-&amp;\text{max}\
-&amp;\qquad z=\left(15000-\frac{9000}{x_1} \right)\
-&amp;\qquad ~~+\left(24000-\frac{15000}{x_2} \right)\
-&amp;\qquad ~~+\left(8100-\frac{5300}{x_3} \right)\
-&amp;\qquad ~~+\left(12000-\frac{7600}{x_4} \right)\
-&amp;\qquad ~~+\left(21000-\frac{12500}{x_4} \right)\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+x_2+x_3+x_4+x_5 \le 15\
-&amp;\qquad 355x_1+540x_2+290x_3+275x_4+490x_5 \le 6500\
-&amp;\qquad x_i \ge 0,~\text{and integer}\
-\end{align}</p>
+&amp;\text{max}\\
+&amp;\qquad z=\left(15000-\frac{9000}{x_1} \right)\\
+&amp;\qquad ~~+\left(24000-\frac{15000}{x_2} \right)\\
+&amp;\qquad ~~+\left(8100-\frac{5300}{x_3} \right)\\
+&amp;\qquad ~~+\left(12000-\frac{7600}{x_4} \right)\\
+&amp;\qquad ~~+\left(21000-\frac{12500}{x_4} \right)\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+x_2+x_3+x_4+x_5 \le 15\\
+&amp;\qquad 355x_1+540x_2+290x_3+275x_4+490x_5 \le 6500\\
+&amp;\qquad x_i \ge 0,~\text{and integer}
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> 
@@ -546,7 +558,7 @@ Cutting planes:
   MIR: 6
   RLT: 6
 
-Explored 70 nodes (193 simplex iterations) in 0.09 seconds (0.00 work units)
+Explored 70 nodes (193 simplex iterations) in 0.33 seconds (0.00 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 4: 64000 63791.7 63633.3 60400 
@@ -571,17 +583,20 @@ optimal total revenue: 64000.0
 </div>
 <div class="section" id="facility-location-problem-example-c10q19">
 <h2>Facility Location Problem Example: C10Q19<a class="headerlink" href="#facility-location-problem-example-c10q19" title="Permalink to this headline">¶</a></h2>
-<p>Solve the following nonlinear programming model:
+<p>Solve the following nonlinear programming model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-&amp;\text{min}\
-&amp;\qquad z=7000\sqrt{(1000-x)^2+(1250-y)^2}\
-&amp;\qquad ~~+9000\sqrt{(1500-x)^2+(2700-y)^2}\
-&amp;\qquad ~+11500\sqrt{(2000-x)^2+(700-y)^2}\
-&amp;\qquad ~~+4300\sqrt{(2200-x)^2+(2000-y)^2}\
-\
-&amp;\text{s.t.}\
-&amp;\qquad x, y \ge 0\
-\end{align}</p>
+&amp;\text{min}\\
+&amp;\qquad z=7000\sqrt{(1000-x)^2+(1250-y)^2}\\
+&amp;\qquad ~~+9000\sqrt{(1500-x)^2+(2700-y)^2}\\
+&amp;\qquad ~+11500\sqrt{(2000-x)^2+(700-y)^2}\\
+&amp;\qquad ~~+4300\sqrt{(2200-x)^2+(2000-y)^2}\\
+\\
+&amp;\text{s.t.}\\
+&amp;\qquad x, y \ge 0
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
@@ -655,7 +670,7 @@ H  194    56                    2.901548e+07 8429605.93  70.9%   1.3    0s
 * 3078   107              66    2.894464e+07 2.8858e+07  0.30%   1.0    0s
 * 3079   105              66    2.894464e+07 2.8858e+07  0.30%   1.0    0s
 
-Explored 3536 nodes (3724 simplex iterations) in 0.48 seconds (0.04 work units)
+Explored 3536 nodes (3724 simplex iterations) in 0.56 seconds (0.04 work units)
 Thread count was 2 (of 2 available processors)
 
 Solution count 10: 2.89446e+07 2.89446e+07 2.89446e+07 ... 2.9047e+07
