@@ -1,0 +1,44 @@
+a = 10
+a
+
+import time
+print("Sleeping")
+time.sleep(30) # sleep for a while; interrupt me!
+print("Done Sleeping")
+
+!ls /bin
+
+message = 'Colaboratory is great!'
+foo = !echo -e '$message\n$message'
+foo
+
+%%html
+<marquee style='width: 30%; color: blue;'><b>Whee!</b></marquee>
+
+%%html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 400" width="200" height="200">
+  <rect x="80" y="60" width="250" height="250" rx="20" style="fill:red; stroke:black; fill-opacity:0.7" />
+  <rect x="180" y="110" width="250" height="250" rx="40" style="fill:blue; stroke:black; fill-opacity:0.5;" />
+</svg>
+
+import numpy as np
+
+np
+
+np.ndarray
+
+x = 1
+y = 4
+z = y/(1-x)
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+ys = 200 + np.random.randn(100)
+x = [x for x in range(len(ys))]
+
+plt.plot(x, ys, '-')
+plt.fill_between(x, ys, 195, where=(ys > 195), facecolor='g', alpha=0.6)
+
+plt.title("Fills and Alpha Example")
+plt.show()

@@ -135,16 +135,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
    Python Review
   </a>
@@ -335,6 +325,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="solving-problems-using-python">
 <h1>Solving problems using Python<a class="headerlink" href="#solving-problems-using-python" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1M1UZ2X9bZK6DV_puEH5WVtisVoYt1iMQ?usp=sharing">Colab notebook</a></p>
 <p>We will solve LP problems using Python. In case you are less familiar with Python, I recommend you to go over the Python Review section.</p>
 <p>In this course we will mostly use Gurobi to solve the optimization problems. The Gurobi optimizer is a mathematical optimization software library for solving mixed-integer linear and quadratic optimization problems.</p>
 <p>For more information, see:
@@ -346,20 +337,20 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install the Gurobi package</span>
-<span class="o">!</span>pip install gurobipy
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># install the Gurobi package
+!pip install gurobipy
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /Users/naftali/opt/anaconda3/lib/python3.7/site-packages (9.1.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /usr/local/lib/python3.7/dist-packages (9.5.0)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import gurobi library</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import gurobi library</span>
 <span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
 </pre></div>
 </div>
@@ -367,34 +358,21 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create new model</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span> <span class="c1"># The Model() constructor creates a model object m. The name of this new model is &#39;Factory&#39;.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create new model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1"># The Model() constructor creates a model object m. The name of this new model is &#39;Factory&#39;.</span>
                      <span class="c1"># This new model m initially contains no decision variables, constraints, or objective function.</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">GurobiError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">25</span><span class="n">b7f5509421</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Create new model</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span> <span class="c1"># The Model() constructor creates a model object m. The name of this new model is &#39;Factory&#39;.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                      <span class="c1"># This new model m initially contains no decision variables, constraints, or objective function.</span>
-
-<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
-
-<span class="nn">src/gurobipy/gurobi.pxi</span> in <span class="ni">gurobipy.gurobi._getdefaultenv</span><span class="nt">()</span>
-
-<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
-
-<span class="ne">GurobiError</span>: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Restricted license - for non-production use only - expires 2023-10-25
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create decision variables</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create decision variables</span>
 <span class="c1"># This method adds a decision variable to the model object m, one by one; i.e. x1 and then x2. </span>
 <span class="c1"># The argument of the method gives the name of added decision variable. </span>
 <span class="c1"># The default values are applied here; i.e. the decision variables are of type continuous and non-negative, with no upper bound.</span>
@@ -406,7 +384,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define objective function</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define objective function</span>
 <span class="c1"># This method adds the objective function to the model object m. The first</span>
 <span class="c1"># argument is a linear expression and the second argument defines</span>
 <span class="c1"># the sense of the optimization.</span>
@@ -417,7 +395,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add constraints</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add constraints</span>
 <span class="c1"># This method adds a constraint to the model object m</span>
 <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x2</span><span class="o">&lt;=</span><span class="mi">40</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;wood&#39;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">x2</span><span class="o">&lt;=</span><span class="mi">120</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="s1">&#39;labor&#39;</span><span class="p">)</span>
@@ -432,7 +410,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run optimization engine</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run optimization engine</span>
 <span class="c1"># This method runs the optimization engine to solve the LP problem in the model object m</span>
 <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
@@ -463,7 +441,7 @@ Optimal objective  1.360000000e+03
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#display optimal production plan</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#display optimal production plan</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
@@ -485,7 +463,7 @@ We should use appropriate data structures, python functions and objects to abstr
 <p>Python list comprehension:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#List comprehension is compact way to create lists</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#List comprehension is compact way to create lists</span>
 <span class="n">sqrd</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sqrd</span><span class="p">)</span> 
 
@@ -514,7 +492,7 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resource data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resource data</span>
 <span class="c1"># The multidict function returns a list which maps each resource (key) to its capacity value.</span>
 <span class="n">resources</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span> 
     <span class="s1">&#39;wood&#39;</span><span class="p">:</span>  <span class="mi">40</span><span class="p">,</span>
@@ -531,7 +509,7 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Products data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Products data</span>
 <span class="c1"># This multidict function returns a list which maps each product (key) to its price value.</span>
 <span class="n">products</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span>
     <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
@@ -548,7 +526,7 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bill of materials: resources required by each product</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bill of materials: resources required by each product</span>
 <span class="c1"># This dictionary has a 2-tuple as a key, mapping the resource required by a product with its quantity per.</span>
 <span class="n">bom</span><span class="o">=</span><span class="p">{</span>
 <span class="p">(</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;chair&#39;</span><span class="p">):</span><span class="mi">1</span><span class="p">,</span>
@@ -568,14 +546,14 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This method adds decision variables to the model object m</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This method adds decision variables to the model object m</span>
 <span class="n">make</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -583,7 +561,7 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This method adds constraints to the model object m</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This method adds constraints to the model object m</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(((</span><span class="nb">sum</span><span class="p">(</span><span class="n">bom</span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="n">make</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">products</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -591,7 +569,7 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This method adds the objective function to the model object m.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This method adds the objective function to the model object m.</span>
 <span class="c1"># The first argument is a linear expression which is generated by the &#39;prod&#39; method. </span>
 <span class="c1"># The &#39;prod&#39; method is the product of the object (revenue) with the object (make) </span>
 <span class="c1"># for each product p in the set (products). The second argument defines the sense of the optimization.</span>
@@ -602,7 +580,7 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#save model for inspection</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#save model for inspection</span>
 <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;factory.lp&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -610,7 +588,7 @@ We should use appropriate data structures, python functions and objects to abstr
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
 </pre></div>
 </div>
 </div>
@@ -630,7 +608,7 @@ End
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run optimization engine</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># run optimization engine</span>
 <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -652,7 +630,7 @@ Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    9.0000000e+31   3.250000e+30   9.000000e+01      0s
        2    1.3600000e+03   0.000000e+00   0.000000e+00      0s
 
-Solved in 2 iterations and 0.02 seconds (0.00 work units)
+Solved in 2 iterations and 0.03 seconds (0.00 work units)
 Optimal objective  1.360000000e+03
 </pre></div>
 </div>
@@ -660,7 +638,7 @@ Optimal objective  1.360000000e+03
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#display optimal production plan</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#display optimal production plan</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
@@ -681,7 +659,7 @@ optimal total revenue: 1360.0
 <p>Solving LP problems provides more information than only the values of the decision variables and the value of the objective function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
 </pre></div>
@@ -697,7 +675,7 @@ optimal total revenue: 1360.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span> <span class="c1"># descision variable</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span><span class="n">var</span><span class="o">.</span><span class="n">SAObjLow</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">SAObjUp</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">RC</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -711,7 +689,7 @@ make[table] = 8.0 (50.0, 30.0, 80.0, 0.0)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getConstrs</span><span class="p">():</span> <span class="c1"># constraints</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">ConstrName</span><span class="p">,</span> <span class="s1">&#39;: slack =&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">slack</span><span class="p">,</span><span class="s1">&#39;, shadow price=&#39;</span><span class="p">,</span>
           <span class="n">con</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">RHS</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSLow</span><span class="p">,</span> <span class="n">con</span><span class="o">.</span><span class="n">SARHSUp</span><span class="p">))</span>
 </pre></div>
@@ -726,7 +704,7 @@ R[labor] : slack = 0.0 , shadow price= 6.0 , (120.0, 60.0, 160.0)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;objective value =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -770,7 +748,7 @@ The <strong>shadow price</strong> of a constraint associated with the optimal so
 Assume that the price of a bench is $30, and a bench consumes 1.2 units of wood and 2 units of labor, then we can formulate the LP model using the previous resources constraints on wood and labor as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new variable</span>
 
 <span class="n">products</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span>
     <span class="s1">&#39;chair&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
@@ -797,7 +775,7 @@ Assume that the price of a bench is $30, and a bench consumes 1.2 units of wood 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
 </pre></div>
 </div>
 </div>
@@ -817,7 +795,7 @@ End
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
 <span class="c1">#display optimal production plan</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
@@ -845,14 +823,14 @@ Coefficient statistics:
   Objective range  [3e+01, 5e+01]
   Bounds range     [0e+00, 0e+00]
   RHS range        [4e+01, 1e+02]
-Presolve time: 0.01s
+Presolve time: 0.03s
 Presolved: 2 rows, 3 columns, 6 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    1.2000000e+32   4.350000e+30   1.200000e+02      0s
        2    1.3600000e+03   0.000000e+00   0.000000e+00      0s
 
-Solved in 2 iterations and 0.02 seconds (0.00 work units)
+Solved in 2 iterations and 0.05 seconds (0.00 work units)
 Optimal objective  1.360000000e+03
 make[chair] 24.0
 make[table] 8.0
@@ -871,7 +849,7 @@ objective value = 1360.0
 <p>What about adding a new constraint as packaging and varying costs for chairs and tables?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new constraint</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding new constraint</span>
 
 <span class="n">resources</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">multidict</span><span class="p">({</span> 
     <span class="s1">&#39;wood&#39;</span><span class="p">:</span>  <span class="mi">40</span><span class="p">,</span>
@@ -903,7 +881,7 @@ objective value = 1360.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">factory</span><span class="o">.</span><span class="n">lp</span>
 </pre></div>
 </div>
 </div>
@@ -924,7 +902,7 @@ End
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
 <span class="c1">#display optimal production plan</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
@@ -952,14 +930,14 @@ Coefficient statistics:
   Objective range  [4e+01, 5e+01]
   Bounds range     [0e+00, 0e+00]
   RHS range        [5e+00, 1e+02]
-Presolve time: 0.01s
+Presolve time: 0.02s
 Presolved: 3 rows, 2 columns, 6 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    9.0000000e+31   4.450000e+30   9.000000e+01      0s
        3    1.3000000e+03   0.000000e+00   0.000000e+00      0s
 
-Solved in 3 iterations and 0.02 seconds (0.00 work units)
+Solved in 3 iterations and 0.04 seconds (0.00 work units)
 Optimal objective  1.300000000e+03
 make[chair] 20.0
 make[table] 10.0
@@ -978,17 +956,20 @@ objective value = 1300.0
 <div class="section" id="problem-example-c2q1">
 <h2>Problem example: C2Q1<a class="headerlink" href="#problem-example-c2q1" title="Permalink to this headline">¶</a></h2>
 <p>Solve the following LP problem:</p>
-<p>\begin{align}
-&amp;\text{max}\
-&amp;\qquad z=10x_1+6x_2\
-&amp;\text{s.t.}\
-&amp;\qquad 3x_1+8x_2\le 20\
-&amp;\qquad 45x_1+30x_2\le 180\
-&amp;\qquad x_1, x_2\ge 0\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{max}\\
+&amp;\qquad z=10x_1+6x_2\\
+&amp;\text{s.t.}\\
+&amp;\qquad 3x_1+8x_2\le 20\\
+&amp;\qquad 45x_1+30x_2\le 180\\
+&amp;\qquad x_1, x_2\ge 0\\
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span>   <span class="mi">8</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">30</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">180</span><span class="p">]</span>
@@ -1055,17 +1036,20 @@ objective value = 40.0
 <div class="section" id="problem-example-c2q2">
 <h2>Problem example: C2Q2<a class="headerlink" href="#problem-example-c2q2" title="Permalink to this headline">¶</a></h2>
 <p>Solve the following LP problem:</p>
-<p>\begin{align}
-&amp;\text{min}\
-&amp;\qquad z=0.5x_1+0.03x_2\
-&amp;\text{s.t.}\
-&amp;\qquad 8x_1+6x_2\ge 48\
-&amp;\qquad x_1+2x_2\ge 12\
-&amp;\qquad x_1, x_2\ge 0\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{min}\\
+&amp;\qquad z=0.5x_1+0.03x_2\\
+&amp;\text{s.t.}\\
+&amp;\qquad 8x_1+6x_2\ge 48\\
+&amp;\qquad x_1+2x_2\ge 12\\
+&amp;\qquad x_1, x_2\ge 0\\
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">]</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
@@ -1108,14 +1092,14 @@ Coefficient statistics:
   Objective range  [3e-02, 5e-01]
   Bounds range     [0e+00, 0e+00]
   RHS range        [1e+01, 5e+01]
-Presolve time: 0.01s
+Presolve time: 0.02s
 Presolved: 2 rows, 2 columns, 4 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    0.0000000e+00   1.200000e+01   0.000000e+00      0s
        1    2.4000000e-01   0.000000e+00   0.000000e+00      0s
 
-Solved in 1 iterations and 0.02 seconds (0.00 work units)
+Solved in 1 iterations and 0.03 seconds (0.00 work units)
 Optimal objective  2.400000000e-01
 x0 = 0.0 (0.5, 0.03999999999999998, inf, 0.46)
 x1 = 8.0 (0.03, -3.469446951953614e-18, 0.375, 0.0)
@@ -1130,17 +1114,20 @@ objective value = 0.24
 <div class="section" id="problem-example-c4q8">
 <h2>Problem example: C4Q8<a class="headerlink" href="#problem-example-c4q8" title="Permalink to this headline">¶</a></h2>
 <p>Solve the following LP problem:</p>
-<p>\begin{align}
-&amp;\text{min}\
-&amp;\qquad z=4x_1+3x_2+2x_3\
-&amp;\text{s.t.}\
-&amp;\qquad 2x_1+4x_2+x_3\ge 16\
-&amp;\qquad 3x_1+2x_2+x_3\ge 12\
-&amp;\qquad x_1, x_2, x_3\ge 0\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{min}\\
+&amp;\qquad z=4x_1+3x_2+2x_3\\
+&amp;\text{s.t.}\\
+&amp;\qquad 2x_1+4x_2+x_3\ge 16\\
+&amp;\qquad 3x_1+2x_2+x_3\ge 12\\
+&amp;\qquad x_1, x_2, x_3\ge 0\\
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span> <span class="p">]]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
@@ -1206,21 +1193,24 @@ objective value = 17.0
 <div class="section" id="problem-example-c4q32">
 <h2>Problem example: C4Q32<a class="headerlink" href="#problem-example-c4q32" title="Permalink to this headline">¶</a></h2>
 <p>Solve the following LP problem:</p>
-<p>\begin{align}
-&amp;\text{min}\
-&amp;\qquad z=22x_1+18x_2+35x_3+41x_4+30x_5+28x_6+25x_7+36x_8+18x_9\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+x_2+x_3=1\
-&amp;\qquad x_4+x_5+x_6=1\
-&amp;\qquad x_7+x_8+x_9=1\
-&amp;\qquad x_1+x_4+x_7=1\
-&amp;\qquad x_2+x_5+x_8=1\
-&amp;\qquad x_3+x_6+x_9=1\
-&amp;\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{min}\\
+&amp;\qquad z=22x_1+18x_2+35x_3+41x_4+30x_5+28x_6+25x_7+36x_8+18x_9\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+x_2+x_3=1\\
+&amp;\qquad x_4+x_5+x_6=1\\
+&amp;\qquad x_7+x_8+x_9=1\\
+&amp;\qquad x_1+x_4+x_7=1\\
+&amp;\qquad x_2+x_5+x_8=1\\
+&amp;\qquad x_3+x_6+x_9=1\\
+&amp;\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0\\
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
@@ -1267,14 +1257,14 @@ Coefficient statistics:
   Objective range  [2e+01, 4e+01]
   Bounds range     [0e+00, 0e+00]
   RHS range        [1e+00, 1e+00]
-Presolve time: 0.01s
+Presolve time: 0.03s
 Presolved: 6 rows, 9 columns, 18 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    6.4000000e+01   2.000000e+00   0.000000e+00      0s
        2    7.0000000e+01   0.000000e+00   0.000000e+00      0s
 
-Solved in 2 iterations and 0.02 seconds (0.00 work units)
+Solved in 2 iterations and 0.06 seconds (0.00 work units)
 Optimal objective  7.000000000e+01
 x0 = 1.0 (22.0, -inf, 23.0, 0.0)
 x1 = 0.0 (18.0, 17.0, 37.0, 0.0)
@@ -1297,21 +1287,24 @@ objective value = 70.0
 </div>
 </div>
 <p>This would require the model to be reformulated with three new variables, <span class="math notranslate nohighlight">\(x_{10}, x_{11}, x_{12}\)</span>, representing Kelly’s assignment to the press, lathe, and grinder. The model would be reformulated as,</p>
-<p>\begin{align}
-&amp;\text{min}\
-&amp;\qquad z=22x_1+18x_2+35x_3+41x_4+30x_5+28x_6+25x_7+36x_8+18x_9+20x_{10}+20x_{11}+20x_{12}\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+x_2+x_3=1\
-&amp;\qquad x_4+x_5+x_6=1\
-&amp;\qquad x_7+x_8+x_9=1\
-&amp;\qquad x_1+x_4+x_7=1\
-&amp;\qquad x_2+x_5+x_8=1\
-&amp;\qquad x_3+x_6+x_9=1\
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{min}\\
+&amp;\qquad z=22x_1+18x_2+35x_3+41x_4+30x_5+28x_6+25x_7+36x_8+18x_9+20x_{10}+20x_{11}+20x_{12}\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+x_2+x_3=1\\
+&amp;\qquad x_4+x_5+x_6=1\\
+&amp;\qquad x_7+x_8+x_9=1\\
+&amp;\qquad x_1+x_4+x_7=1\\
+&amp;\qquad x_2+x_5+x_8=1\\
+&amp;\qquad x_3+x_6+x_9=1\\
 &amp;\qquad x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9\ge 0
-\end{align}</p>
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
@@ -1361,13 +1354,13 @@ Coefficient statistics:
   Objective range  [2e+01, 4e+01]
   Bounds range     [0e+00, 0e+00]
   RHS range        [1e+00, 1e+00]
-Presolve time: 0.02s
+Presolve time: 0.01s
 Presolved: 7 rows, 12 columns, 24 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    5.6000000e+01   0.000000e+00   0.000000e+00      0s
 
-Solved in 0 iterations and 0.03 seconds (0.00 work units)
+Solved in 0 iterations and 0.02 seconds (0.00 work units)
 Optimal objective  5.600000000e+01
 x0 = 0.0 (22.0, 20.0, inf, 2.0)
 x1 = 1.0 (18.0, -inf, 20.0, 0.0)
@@ -1398,19 +1391,22 @@ objective value = 56.0
 <h2>Problem example: C4Q33<a class="headerlink" href="#problem-example-c4q33" title="Permalink to this headline">¶</a></h2>
 <p>Solve the following LP problem:</p>
 <p>This is a transportation problem</p>
-<p>\begin{align}
-&amp;\text{min}\
-&amp;\qquad z=40x_1 + 65x_2 + 70x_3 + 30x_4\
-&amp;\text{s.t.}\
-&amp;\qquad x_1+x_2=250\
-&amp;\qquad x_3+x_4=400\
-&amp;\qquad x_1+x_3=300\
-&amp;\qquad x_2+x_4=350\
-&amp;\qquad x_1,x_2,x_3,x_4\ge 0\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{min}\\
+&amp;\qquad z=40x_1 + 65x_2 + 70x_3 + 30x_4\\
+&amp;\text{s.t.}\\
+&amp;\qquad x_1+x_2=250\\
+&amp;\qquad x_3+x_4=400\\
+&amp;\qquad x_1+x_3=300\\
+&amp;\qquad x_2+x_4=350\\
+&amp;\qquad x_1,x_2,x_3,x_4\ge 0\\
+\end{align} 
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">30</span><span class="p">]</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">30</span><span class="p">]</span>    
 <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span>
      <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span>
@@ -1459,7 +1455,7 @@ Presolve: All rows and columns removed
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    2.4000000e+04   0.000000e+00   0.000000e+00      0s
 
-Solved in 0 iterations and 0.03 seconds (0.00 work units)
+Solved in 0 iterations and 0.06 seconds (0.00 work units)
 Optimal objective  2.400000000e+04
 x0 = 250.0 (40.0, -inf, 105.0, 0.0)
 x1 = 0.0 (65.0, 0.0, inf, 65.0)

@@ -21,7 +21,7 @@ A_T
 A_T.shape
 
 A=np.array([[1,5,0],[5,2,0],[0,0,3]])
-print(A==A.T)
+(A == A.T).all()
 
 A = np.array([[1, 2], [3, 4], [5, 6]])
 A
@@ -59,8 +59,10 @@ x, y, np.dot(x, y)
 np.arccos(x.dot(y) / (np.linalg.norm(x) * np.linalg.norm(y)))
 
 A = np.array([[1, 2], [3, 4], [5, 6]])
-x = np.arange(1,3)
+x = np.array([1,1])
 np.dot(A, x)
+
+A*x
 
 A = np.array([[1, 2], [3, 4], [5, 6]])
 B = np.array([[5, 3], [2, 2]])
@@ -69,20 +71,20 @@ A.dot(B)
 A = np.array([[2, 3], [1, 4], [7, 6]])
 B = np.array([[5], [2]])
 C = np.array([[4], [3]])
-A.dot(B+C) == A.dot(B)+A.dot(C)
+(A.dot(B+C) == A.dot(B)+A.dot(C)).all()
 
 A = np.array([[2, 3], [1, 4], [7, 6]])
 B = np.array([[5, 3], [2, 2]])
 C = np.array([[4], [3]])
-A.dot(B.dot(C)) == (A.dot(B)).dot(C)
+(A.dot(B.dot(C)) == (A.dot(B)).dot(C)).all()
 
 x = np.array([[2], [6]])
 y = np.array([[5], [2]])
-x.T.dot(y) == y.T.dot(x)
+(x.T.dot(y) == y.T.dot(x)).all()
 
 A = np.array([[2, 3], [6, 5]])
 B = np.array([[5, 3], [2, 2]])
-np.dot(A, B) == np.dot(B, A)
+(np.dot(A, B) == np.dot(B, A)).all()
 
 import numpy as np
 u = np.array([1,2,3]) # L2 norm
@@ -112,12 +114,31 @@ A_inv
 A_inv.dot(A)
 
 A = np.array([[2, -1], [1, 1]])
-b = np.array([[0], [3]])
+b = np.array([0, 3])
 x = np.linalg.inv(A).dot(b)
+x
+
+A = np.array([[2, -1], [1, 1], [1, 1]])
+b = np.array([0,3,0])
+x = np.linalg.pinv(A).dot(b)
 x
 
 a=1.;b=2.;
 a*np.array([1,2,3])+b*np.array([4,5,6])
 
-A=np.array([[1,2],[3,4]]); B=np.array([[1,2],[2,4]]); C=np.array([[1,0,0],[0,1,0],[0,0,1]])
+A = np.array([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
+np.linalg.inv(A)
+
+A = np.array([[1,2],[3,4]]); 
+print(A)
+B = np.array([[1,2],[2,4]]); 
+print(B)
+C = np.array([[1,0,0],[0,1,0],[0,0,1]])
+print(C)
+
 np.linalg.matrix_rank(A), np.linalg.matrix_rank(B), np.linalg.matrix_rank(C)
+
+A = np.array([[1,2],[2,4]]); 
+np.linalg.det(A)
+
+
