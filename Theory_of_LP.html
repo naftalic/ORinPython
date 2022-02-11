@@ -335,7 +335,11 @@ print(&#39;*&#39;*100)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /usr/local/lib/python3.7/dist-packages (9.5.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting gurobipy
+  Downloading gurobipy-9.5.0-cp37-cp37m-manylinux2014_x86_64.whl (11.5 MB)
+     |████████████████████████████████| 11.5 MB 4.8 MB/s 
+?25hInstalling collected packages: gurobipy
+Successfully installed gurobipy-9.5.0
 Restricted license - for non-production use only - expires 2023-10-25
 Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
 Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
@@ -433,7 +437,7 @@ v_1(1x_1 + 2𝑥_2)+v_2(4𝑥_1 + 3𝑥_2)\le 40v_1+120v_2
 &amp;\text{s.t.}\\
 &amp;\qquad 1v_1 + 4v_2 \ge 40\\
 &amp;\qquad 2v_1 + 3v_2 \ge 50\\
-&amp;\qquad v_1, v_2 \ge 0.\\
+&amp;\qquad v_1, v_2 \ge 0.
 \end{align} 
 \end{split}\]</div>
 <p>In general, the dual to primal LP is another LP model that is derived from it in the following way:</p>
@@ -561,10 +565,11 @@ c2 : slack = 0.0 , shadow price= 8.0 , (50.0, 30.0, 80.0)
 \mathbf c-\mathbf v\mathbf A\le0, \qquad\text{and}\qquad
 \mathbf A\mathbf x- \mathbf b\le0.
 \]</div>
-<p>Hence,
-$<span class="math notranslate nohighlight">\(
+<p>Hence,</p>
+<div class="math notranslate nohighlight">
+\[
 \qquad \mathbf c\cdot \mathbf x\le\mathbf v\cdot \mathbf b
-\)</span>$</p>
+\]</div>
 <p>That is, for maximize objective problem, the dual objective provides a natural upper bound assuming all points are feasible.</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="complementary-slackness">
@@ -767,10 +772,11 @@ t=0       &amp; N &amp; N  &amp; B &amp; B &amp; \\
 \[
 \mathbf A(\mathbf{x}^{(t)}+\lambda \Delta \mathbf{x})-\mathbf A\mathbf{x}^{(t)}=\mathbf{b}-\mathbf{b}=0.
 \]</div>
-<p>It follows that
-$<span class="math notranslate nohighlight">\(
+<p>It follows that</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf A \Delta \mathbf{x}=0.
-\)</span>$</p>
+\]</div>
 <p>In our example,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
