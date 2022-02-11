@@ -417,22 +417,25 @@ v_1(1x_1 + 2𝑥_2)+v_2(4𝑥_1 + 3𝑥_2)\le 40v_1+120v_2
 \]</div>
 <p>In the above notation:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
+\[\begin{split}
 \begin{align}
-&amp;d_1=v_1+4v_2,\\
+&amp;d_1=v_1+4v_2, \\
 &amp;d_2=2v_2+3v_2,\qquad \text{and}\\
-&amp;h=40v_1+120v_2.\\
+&amp;h=40v_1+120v_2.
 \end{align}
-$$.\end{split}\\How do we choose the best coefficients $v_1$, and $v_2$? We must ensure that $d_1\ge 40$ and $d_2\ge 50$, and we want $h$ to be as **small** as possible under these constraints. This is again an LP model which is called the **dual** to the primal set\end{aligned}\end{align} \]</div>
-<p>\begin{align}
-&amp;\text{min}\
-&amp;\qquad h=40v_1 + 120v_2\
-&amp;\text{subject to}\
-&amp;\qquad 1v_1 + 4v_2 \ge 40\
-&amp;\qquad 2v_1 + 3v_2 \ge 50\
-&amp;\qquad v_1, v_2 \ge 0.\
-\end{align}
-$$</p>
+\end{split}\]</div>
+<p>How do we choose the best coefficients <span class="math notranslate nohighlight">\(v_1\)</span>, and <span class="math notranslate nohighlight">\(v_2\)</span>? We must ensure that <span class="math notranslate nohighlight">\(d_1\ge 40\)</span> and <span class="math notranslate nohighlight">\(d_2\ge 50\)</span>, and we want <span class="math notranslate nohighlight">\(h\)</span> to be as <strong>small</strong> as possible under these constraints. This is again an LP model which is called the <strong>dual</strong> to the primal set</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{min}\\
+&amp;\qquad h=40v_1 + 120v_2\\
+&amp;\text{s.t.}\\
+&amp;\qquad 1v_1 + 4v_2 \ge 40\\
+&amp;\qquad 2v_1 + 3v_2 \ge 50\\
+&amp;\qquad v_1, v_2 \ge 0.\\
+\end{align} 
+\end{split}\]</div>
 <p>In general, the dual to primal LP is another LP model that is derived from it in the following way:</p>
 <ul class="simple">
 <li><p>Each variable in the primal becomes a constraint in the dual</p></li>
