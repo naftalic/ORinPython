@@ -135,16 +135,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
    Python Review
   </a>
@@ -314,63 +304,160 @@
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install gurobipy
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
 
-<span class="c1"># Import gurobi library</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
+# Import gurobi library
+from gurobipy import * # This command imports the Gurobi functions and classes.
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+import numpy as np
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;multiobj&#39;</span><span class="p">)</span>
+m = Model(&#39;multiobj&#39;)
 
-<span class="c1"># Add Variables</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">lb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">INTEGER</span><span class="p">)</span>
-<span class="n">dm</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dm&#39;</span><span class="p">,</span> <span class="n">lb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">INTEGER</span><span class="p">)</span>
-<span class="n">dp</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dp&#39;</span><span class="p">,</span> <span class="n">lb</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">INTEGER</span><span class="p">)</span>
-<span class="c1">#totSlack = m.addVar(name=&#39;totSlack&#39;)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+# Add Variables
+x = m.addVars(range(2), name=&#39;x&#39;, lb=0, vtype = GRB.INTEGER)
+dm = m.addVars(range(3), name=&#39;dm&#39;, lb=0, vtype = GRB.INTEGER)
+dp = m.addVars(range(3), name=&#39;dp&#39;, lb=0, vtype = GRB.INTEGER)
+#totSlack = m.addVar(name=&#39;totSlack&#39;)
+m.update()
 
-<span class="c1"># Add Constraints</span>
-<span class="n">c1</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">dm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">40</span><span class="p">)</span>
-<span class="n">c2</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">40</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">50</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">dm</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1600</span><span class="p">)</span>
-<span class="n">c3</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">dm</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="n">dp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">120</span><span class="p">)</span>
+# Add Constraints
+c1 = m.addConstr(1 *x[0]  + 2*x[1] + 1*dm[0] - 1*dp[0] == 40)
+c2 = m.addConstr(40*x[0] + 50*x[1] + 1*dm[1] - 1*dp[1] == 1600)
+c3 = m.addConstr(4 *x[0]  + 3*x[1] + 1*dm[2] - 1*dp[2] == 120)
 
-<span class="c1"># Add Objective Function</span>
-<span class="n">m</span><span class="o">.</span><span class="n">ModelSense</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span>
-<span class="n">m</span><span class="o">.</span><span class="n">setObjectiveN</span><span class="p">(</span><span class="n">dm</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">setObjectiveN</span><span class="p">(</span><span class="n">dm</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">setObjectiveN</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">setObjectiveN</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="c1"># Optimize Model</span>
-<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+# Add Objective Function
+m.ModelSense = GRB.MINIMIZE
+m.setObjectiveN(dm[0], index=0, priority=3)
+m.setObjectiveN(dm[1], index=1, priority=2)
+m.setObjectiveN(dp[2], index=2, priority=1)
+m.setObjectiveN(dp[0], index=3, priority=0)
+# Optimize Model
+m.optimize()
 
-<span class="c1"># Output formatted solution</span>
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-<span class="c1">#print(&#39;Obj :&#39;, m.objVal)</span>
+# Output formatted solution
+for v in m.getVars():
+    print(v.varName, v.x)
+#print(&#39;Obj :&#39;, m.objVal)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /Users/naftali/opt/anaconda3/lib/python3.7/site-packages (9.1.2)
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">GurobiError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">3</span><span class="n">f4bd03f2ef0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;multiobj&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> 
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Add Variables</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting gurobipy
+  Downloading gurobipy-9.5.0-cp37-cp37m-manylinux2014_x86_64.whl (11.5 MB)
+     |████████████████████████████████| 11.5 MB 30.0 MB/s 
+?25hInstalling collected packages: gurobipy
+Successfully installed gurobipy-9.5.0
+Restricted license - for non-production use only - expires 2023-10-25
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 3 rows, 8 columns and 12 nonzeros
+Model fingerprint: 0xedfe4e5b
+Variable types: 0 continuous, 8 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 5e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+01, 2e+03]
 
-<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+---------------------------------------------------------------------------
+Multi-objectives: starting optimization with 4 objectives ... 
+---------------------------------------------------------------------------
 
-<span class="nn">src/gurobipy/gurobi.pxi</span> in <span class="ni">gurobipy.gurobi._getdefaultenv</span><span class="nt">()</span>
+Multi-objectives: applying initial presolve ...
+---------------------------------------------------------------------------
 
-<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+Presolve time: 0.00s
+Presolved: 3 rows and 8 columns
+---------------------------------------------------------------------------
 
-<span class="ne">GurobiError</span>: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
+Multi-objectives: optimize objective 1 () ...
+---------------------------------------------------------------------------
+
+Presolve removed 3 rows and 8 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.00 work units)
+Thread count was 1 (of 2 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 2 () ...
+---------------------------------------------------------------------------
+
+
+Loaded user MIP start with objective 0
+
+
+Explored 0 nodes (0 simplex iterations) in 0.09 seconds (0.00 work units)
+Thread count was 1 (of 2 available processors)
+
+Solution count 1: 0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 3 () ...
+---------------------------------------------------------------------------
+
+
+Loaded user MIP start with objective 40
+
+Presolve removed 5 rows and 8 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.12 seconds (0.00 work units)
+Thread count was 1 (of 2 available processors)
+
+Solution count 2: 0 40 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 4 () ...
+---------------------------------------------------------------------------
+
+
+Loaded user MIP start with objective 24
+
+Presolve removed 4 rows and 6 columns
+Presolve time: 0.00s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+Variable types: 0 continuous, 2 integer (0 binary)
+
+Root relaxation: objective 1.500000e+01, 0 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0      15.0000000   15.00000  0.00%     -    0s
+
+Explored 1 nodes (0 simplex iterations) in 0.16 seconds (0.00 work units)
+Thread count was 2 (of 2 available processors)
+
+Solution count 2: 15 24 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.500000000000e+01, best bound 1.500000000000e+01, gap 0.0000%
+
+---------------------------------------------------------------------------
+Multi-objectives: solved in 0.18 seconds (0.00 work units), solution count 3
+
+x[0] 15.0
+x[1] 20.0
+dm[0] 0.0
+dm[1] 0.0
+dm[2] 0.0
+dp[0] 15.0
+dp[1] 0.0
+dp[2] 0.0
 </pre></div>
 </div>
 </div>
@@ -393,7 +480,7 @@
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;multiobj&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add Variables</span>
@@ -575,7 +662,7 @@ dp[3] 5.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;C9Q8&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add Variables</span>
@@ -727,7 +814,7 @@ dp[2] 0.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;C9Q10&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add Variables</span>

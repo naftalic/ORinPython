@@ -133,16 +133,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
    Python Review
   </a>
@@ -348,7 +338,7 @@
 <p>There are additional options for running some or all cells in the <strong>Runtime</strong> menu.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">a</span>
 </pre></div>
 </div>
@@ -383,7 +373,7 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>Long running python processes can be interrupted. Run the following cell and select <strong>Runtime -&gt; Interrupt execution</strong> (<em>hotkey: Cmd/Ctrl-M I</em>) to stop execution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sleeping&quot;</span><span class="p">)</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># sleep for a while; interrupt me!</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done Sleeping&quot;</span><span class="p">)</span>
@@ -396,11 +386,11 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">fb6d98dc021a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nn">&lt;ipython-input-3-626f81edbca4&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">time</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sleeping&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span> <span class="s2">&quot;Sleeping&quot;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># sleep for a while; interrupt me!</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done Sleeping&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span> <span class="s2">&quot;Done Sleeping&quot;</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -412,7 +402,7 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>Jupyter includes shortcuts for common operations, such as ls:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /bin
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!ls /bin
 </pre></div>
 </div>
 </div>
@@ -447,9 +437,9 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>Execute any other process using <code class="docutils literal notranslate"><span class="pre">!</span></code> with string interpolation from python variables, and note the result can be assigned to a variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Colaboratory is great!&#39;</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="o">!</span><span class="nb">echo</span> -e <span class="s1">&#39;$message\n$message&#39;</span>
-<span class="n">foo</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>message = &#39;Colaboratory is great!&#39;
+foo = !echo -e &#39;$message\n$message&#39;
+foo
 </pre></div>
 </div>
 </div>
@@ -465,8 +455,8 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>Colaboratory shares the notion of magics from Jupyter. There are shorthand annotations that change how a cell’s text is executed. To learn more, see <a class="reference external" href="http://nbviewer.jupyter.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb">Jupyter’s magics page</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
-<span class="p">&lt;</span><span class="nt">marquee</span> <span class="na">style</span><span class="o">=</span><span class="s">&#39;width: 30%; color: blue;&#39;</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Whee!<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">marquee</span><span class="p">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%%html
+&lt;marquee style=&#39;width: 30%; color: blue;&#39;&gt;&lt;b&gt;Whee!&lt;/b&gt;&lt;/marquee&gt;
 </pre></div>
 </div>
 </div>
@@ -475,11 +465,11 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
-<span class="p">&lt;</span><span class="nt">svg</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 450 400&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;200&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;80&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;60&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">rx</span><span class="o">=</span><span class="s">&quot;20&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;fill:red; stroke:black; fill-opacity:0.7&quot;</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;180&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;110&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;250&quot;</span> <span class="na">rx</span><span class="o">=</span><span class="s">&quot;40&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;fill:blue; stroke:black; fill-opacity:0.5;&quot;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">html</span>
+<span class="o">&lt;</span><span class="n">svg</span> <span class="n">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">viewBox</span><span class="o">=</span><span class="s2">&quot;0 0 450 400&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;200&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;200&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">rect</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;80&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;60&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;250&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;250&quot;</span> <span class="n">rx</span><span class="o">=</span><span class="s2">&quot;20&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;fill:red; stroke:black; fill-opacity:0.7&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">rect</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;180&quot;</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;110&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;250&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;250&quot;</span> <span class="n">rx</span><span class="o">=</span><span class="s2">&quot;40&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;fill:blue; stroke:black; fill-opacity:0.5;&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -495,7 +485,7 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>Colab provides automatic completions to explore attributes of Python objects, as well as to quickly view documentation strings. As an example, first run the following cell to import the  <a class="reference external" href="http://www.numpy.org"><code class="docutils literal notranslate"><span class="pre">numpy</span></code></a> module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -503,7 +493,7 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>If you now insert your cursor after <code class="docutils literal notranslate"><span class="pre">np</span></code> and press <strong>Period</strong>(<code class="docutils literal notranslate"><span class="pre">.</span></code>), you will see the list of available completions within the <code class="docutils literal notranslate"><span class="pre">np</span></code> module. Completions can be opened again by using <strong>Ctrl+Space</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span>
 </pre></div>
 </div>
 </div>
@@ -511,7 +501,7 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>If you type an open parenthesis after any function or class in the module, you will see a pop-up of its documentation string:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </pre></div>
 </div>
 </div>
@@ -524,7 +514,7 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>Exceptions are formatted nicely in Colab outputs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -549,7 +539,7 @@ within a pair of <strong>$</strong> signs. For example <code class="docutils lit
 <p>Until now all of the generated outputs have been text, but they can be more interesting, like the chart below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">ys</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>

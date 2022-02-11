@@ -133,16 +133,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="Python_Review.html">
    Python Review
   </a>
@@ -314,50 +304,75 @@
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install gurobipy
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
 
-<span class="c1"># Import gurobi library</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
+# Import gurobi library
+from gurobipy import * # This command imports the Gurobi functions and classes.
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+import numpy as np
 
-<span class="c1"># create new model</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Beaver Creek Pottery Company &#39;</span><span class="p">)</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">)</span> 
-<span class="n">x2</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">)</span>
+# create new model
+m = Model(&#39;Beaver Creek Pottery Company &#39;)
+x1 = m.addVar(lb = 0, vtype = GRB.CONTINUOUS, name=&#39;x1&#39;) 
+x2 = m.addVar(lb = 0, vtype = GRB.CONTINUOUS, name=&#39;x2&#39;)
 
-<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">((</span><span class="mi">4</span><span class="o">-</span><span class="mf">0.1</span><span class="o">*</span><span class="n">x1</span><span class="p">)</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="mf">0.2</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span><span class="o">*</span><span class="n">x2</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x2</span><span class="o">==</span><span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;const1&#39;</span><span class="p">)</span>
+m.setObjective((4-0.1*x1)*x1+(5-0.2*x2)*x2, GRB.MAXIMIZE)
+m.addConstr(1*x1+2*x2==40, &#39;const1&#39;)
 
-<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+m.optimize()
 
-<span class="c1">#display optimal production plan</span>
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+#display optimal production plan
+for v in m.getVars():
+  print(v.varName, v.x)
+print(&#39;optimal total revenue:&#39;, m.objVal)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in /Users/naftali/opt/anaconda3/lib/python3.7/site-packages (9.1.2)
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">GurobiError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">d235cf0d5ec0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># create new model</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Beaver Creek Pottery Company &#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting gurobipy
+  Downloading gurobipy-9.5.0-cp37-cp37m-manylinux2014_x86_64.whl (11.5 MB)
+     |████████████████████████████████| 11.5 MB 5.2 MB/s 
+?25hInstalling collected packages: gurobipy
+Successfully installed gurobipy-9.5.0
+Restricted license - for non-production use only - expires 2023-10-25
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (linux64)
+Thread count: 1 physical cores, 2 logical processors, using up to 2 threads
+Optimize a model with 1 rows, 2 columns and 2 nonzeros
+Model fingerprint: 0x34cdafe3
+Model has 2 quadratic objective terms
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+00]
+  Objective range  [4e+00, 5e+00]
+  QObjective range [2e-01, 4e-01]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+01, 4e+01]
+Presolve time: 0.01s
+Presolved: 1 rows, 2 columns, 2 nonzeros
+Presolved model has 2 quadratic objective terms
+Ordering time: 0.00s
 
-<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+Barrier statistics:
+ AA&#39; NZ     : 0.000e+00
+ Factor NZ  : 1.000e+00
+ Factor Ops : 1.000e+00 (less than 1 second per iteration)
+ Threads    : 1
 
-<span class="nn">src/gurobipy/gurobi.pxi</span> in <span class="ni">gurobipy.gurobi._getdefaultenv</span><span class="nt">()</span>
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -5.98930000e+05  6.12060000e+05  2.00e+03 0.00e+00  1.01e+06     0s
+   1   7.00620769e+01  1.96612266e+04  2.00e-03 0.00e+00  9.80e+03     0s
+   2   7.00738420e+01  9.86563122e+01  9.19e-07 0.00e+00  1.43e+01     0s
+   3   7.04164770e+01  7.06320152e+01  2.71e-10 0.00e+00  1.08e-01     0s
+   4   7.04166667e+01  7.04168819e+01  0.00e+00 8.88e-16  1.08e-04     0s
+   5   7.04166667e+01  7.04166669e+01  0.00e+00 0.00e+00  1.08e-07     0s
+   6   7.04166667e+01  7.04166667e+01  0.00e+00 8.88e-16  1.08e-10     0s
 
-<span class="nn">src/gurobipy/env.pxi</span> in <span class="ni">gurobipy.Env.__init__</span><span class="nt">()</span>
+Barrier solved model in 6 iterations and 0.05 seconds (0.00 work units)
+Optimal objective 7.04166667e+01
 
-<span class="ne">GurobiError</span>: No Gurobi license found (user naftali, host Naftalis-MacBook-Pro-15.local, hostid d3c3e9a1, cores 6)
+x1 18.33333333336888
+x2 10.833333333315561
+optimal total revenue: 70.41666666666666
 </pre></div>
 </div>
 </div>
@@ -378,26 +393,26 @@
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install gurobipy
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># This command imports the Gurobi functions and classes.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install gurobipy
+from gurobipy import * # This command imports the Gurobi functions and classes.
 
-<span class="c1"># create new model</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Western Clothing Company&#39;</span><span class="p">)</span>
-<span class="n">x1</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">)</span> 
-<span class="n">x2</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">lb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vtype</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">)</span>
+# create new model
+m = Model(&#39;Western Clothing Company&#39;)
+x1 = m.addVar(lb = 0, vtype = GRB.CONTINUOUS, name=&#39;x1&#39;) 
+x2 = m.addVar(lb = 0, vtype = GRB.CONTINUOUS, name=&#39;x2&#39;)
 
 
-<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(((</span><span class="mi">1500</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="mf">24.6</span><span class="o">-</span><span class="mi">12</span><span class="p">)</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="p">((</span><span class="mi">2700</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mf">63.8</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="n">x2</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mf">2.7</span><span class="o">*</span><span class="n">x2</span><span class="o">&lt;=</span><span class="mi">6000</span><span class="p">,</span> <span class="s1">&#39;const1&#39;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mf">3.6</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mf">2.9</span><span class="o">*</span><span class="n">x2</span><span class="o">&lt;=</span><span class="mi">8500</span><span class="p">,</span> <span class="s1">&#39;const2&#39;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mf">7.2</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="mf">8.5</span><span class="o">*</span><span class="n">x2</span><span class="o">&lt;=</span><span class="mi">15000</span><span class="p">,</span> <span class="s1">&#39;const3&#39;</span><span class="p">)</span>
+m.setObjective(((1500-x1)/24.6-12)*x1+((2700-x2)/63.8-9)*x2, GRB.MAXIMIZE)
+m.addConstr(2*x1+2.7*x2&lt;=6000, &#39;const1&#39;)
+m.addConstr(3.6*x1+2.9*x2&lt;=8500, &#39;const2&#39;)
+m.addConstr(7.2*x1+8.5*x2&lt;=15000, &#39;const3&#39;)
 
-<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+m.optimize()
 
-<span class="c1">#display optimal production plan</span>
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimal total revenue:&#39;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+#display optimal production plan
+for v in m.getVars():
+  print(v.varName, v.x)
+print(&#39;optimal total revenue:&#39;, m.objVal)
 </pre></div>
 </div>
 </div>
@@ -465,7 +480,7 @@ optimal total revenue: 32459.234379539725
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span> 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;C10Q14&#39;</span><span class="p">)</span>
@@ -569,7 +584,7 @@ optimal total revenue: 64000.0
 \end{align}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
 <span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="n">GRB</span>
 
 <span class="c1"># create new model</span>
@@ -664,7 +679,7 @@ optimal total revenue: 28944635.12888354
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">x</span><span class="o">=</span><span class="mf">1658.8</span><span class="p">;</span><span class="n">y</span><span class="o">=</span><span class="mf">1416.7</span><span class="p">;</span>
 <span class="n">d</span><span class="o">=</span><span class="mi">7000</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">1000</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">1250</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span>\
 <span class="mi">9000</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">1500</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">2700</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span>\
