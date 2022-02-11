@@ -17,47 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-!pip install gurobipy
-
 from gurobipy import *
-
-import numpy as np
-
-c = [300,90,400,150]    
-A = [[35000,10000,25000,90000 ],
-     [4,2,7,3 ],
-     [1,1,0,0 ]]
-b =  [120000,12,1]
-print(np.array(c).shape,np.array(A).shape,np.array(b).shape)
-decision_variables = range(len(c))     
-constraints = range(np.array(A).shape[0])
-
-m = Model("Example")
-
-x = []
-for i in decision_variables:
-    x.append(m.addVar(lb = 0, vtype = GRB.BINARY, name = 'x' + str(i)))
-
-# list comprehensions
-m.setObjective(quicksum(c[i] * x[i] for i in decision_variables) , GRB.MAXIMIZE) 
-m.addConstrs((quicksum(A[j][i] * x[i] for i in decision_variables) 
-                           <= b[j] for j in constraints), "constraints")
-m.optimize()
-
-for var in m.getVars(): # descision variable
-    print(var.varName, '=', var.x, var.obj)
-print("objective value =", m.objVal)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/var/folders/7g/0mhn561929v4m3ljwjf_r_0c0000gn/T/ipykernel_69213/3857559289.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0mget_ipython[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0msystem[0m[0;34m([0m[0;34m'pip install gurobipy'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      2[0m [0;34m[0m[0m
-[0;32m----> 3[0;31m [0;32mfrom[0m [0mgurobipy[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      4[0m [0;34m[0m[0m
-[1;32m      5[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
-
+[0;32m/var/folders/7g/0mhn561929v4m3ljwjf_r_0c0000gn/T/ipykernel_69371/2174118868.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0mgurobipy[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
+[0m
 [0;31mModuleNotFoundError[0m: No module named 'gurobipy'
 ModuleNotFoundError: No module named 'gurobipy'
 
