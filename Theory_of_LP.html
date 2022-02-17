@@ -803,9 +803,23 @@ t=0       &amp; N &amp; N  &amp; B &amp; B &amp; \\
 0 \\
 \Delta x_3 \\
 \Delta x_4
-\end{pmatrix}\Rightarrow \Delta \mathbf{x}^T=(1,0,-1,-4)
+\end{pmatrix}=0\Rightarrow \Delta \mathbf{x}^T=(1,0,-1,-4)
 \end{split}\]</div>
-<p>and for the latter we find that <span class="math notranslate nohighlight">\(\Delta \mathbf{x}^T=(0,1,-2,-3)\)</span>. The corresponding change to the objective <span class="math notranslate nohighlight">\(\mathbf c^T \Delta \mathbf{x}\)</span> yield values of 40 and 50 which leads us to prefer the higher number with <span class="math notranslate nohighlight">\(\Delta \mathbf{x}^T=(1,0,-1,-4)\)</span>.</p>
+<p>and for the latter we find that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+1 &amp; 2 &amp; 1 &amp; 0 \\
+4 &amp; 3 &amp; 0 &amp; 1
+\end{pmatrix}
+\begin{pmatrix}
+0 \\
+1 \\
+\Delta x_3 \\
+\Delta x_4
+\end{pmatrix}=0\Rightarrow \Delta \mathbf{x}^T=(0,1,-2,-3).
+\end{split}\]</div>
+<p>The corresponding change to the objective <span class="math notranslate nohighlight">\(\mathbf c^T \Delta \mathbf{x}\)</span> yield values of 40 and 50 which leads us to prefer the higher change of 5 that goes with <span class="math notranslate nohighlight">\(\Delta \mathbf{x}^T=(1,0,-1,-4)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{lccccl}
