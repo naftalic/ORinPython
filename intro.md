@@ -1,6 +1,6 @@
 # Notes on OR and MS with Python
 
-[Operations Research](https://en.wikipedia.org/wiki/Operations_research) (a.k.a., [Management Science](https://en.wikipedia.org/wiki/Management_science)) is an interdisciplinary field that uses analytical methods for quantitative decision-making. The emphasis of Operations Research is on practical applications, and as such, it has substantial overlap with many other disciplines, like industrial engineering and business management. It uses tools from mathematical sciences, such as modeling, probability, statistics, and optimization, to arrive at optimal or near-optimal solutions to complex decision-making problems. Operations Research is often concerned with determining the best answers to real-world objectives, such as maximizing profit or minimizing cost.
+[Operations Research](https://en.wikipedia.org/wiki/Operations_research) (OR), also known as [Management Science](https://en.wikipedia.org/wiki/Management_science), is a systematic approach to decision-making that utilizes mathematical and statistical methods. OR focuses on providing effective solutions to real-world problems in industries such as engineering and business management. By utilizing tools like modeling, probability, statistics, and optimization, OR practitioners can determine the optimal or near-optimal outcomes for complex decision-making challenges, such as maximizing profits or minimizing costs.
 
 :::{note}
 For reference material on the topic, I strongly recommend reading:
